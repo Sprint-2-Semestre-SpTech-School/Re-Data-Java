@@ -23,33 +23,35 @@ public class App {
         ServicoGrupo grupoDeServicos = looca.getGrupoDeServicos();
         ProcessoGrupo grupoDeProcessos = looca.getGrupoDeProcessos();
 
-
-        List<Disco> discos = grupoDeDiscos.getDiscos();
-        List<Processo> processos = grupoDeProcessos.getProcessos();
+        System.out.println(looca.getProcessador());
 
 
-        //Exibindo individualmente cada disco e cada processo. Com for tradicional e for enhanced.
-        for(int i = 0; i < processos.size() - 1; i++){
-            System.out.println(processos.get(i));
-            System.out.println();
-        }
-
-        for(Disco disco : discos){
-            System.out.println(disco);
-        }
-
-        //Infos gerais do sistema
-
-        System.out.println("Quantidade de processos: "+ processos.size());
-        System.out.println("Temperatura do sistema: "+ temperatura.getTemperatura());
-        System.out.println();
-        System.out.println("Uso do processador: "+ processador.getUso());
-        System.out.println("Frequência do processador: "+ processador.getFrequencia());
-        System.out.println("Nome do processador: "+ processador.getNome());
-        System.out.println();
-        System.out.println("Memória disponível: "+ memoria.getDisponivel());
-        System.out.println("Memória em uso: "+ memoria.getEmUso());
-        System.out.println("Memória total: "+ memoria.getTotal());
+//        List<Disco> discos = grupoDeDiscos.getDiscos();
+//        List<Processo> processos = grupoDeProcessos.getProcessos();
+//
+//
+//        //Exibindo individualmente cada disco e cada processo. Com for tradicional e for enhanced.
+//        for(int i = 0; i < processos.size() - 1; i++){
+//            System.out.println(processos.get(i));
+//            System.out.println();
+//        }
+//
+//        for(Disco disco : discos){
+//            System.out.println(disco);
+//        }
+//
+//        //Infos gerais do sistema
+//
+//        System.out.println("Quantidade de processos: "+ processos.size());
+//        System.out.println("Temperatura do sistema: "+ temperatura.getTemperatura());
+//        System.out.println();
+//        System.out.println("Uso do processador: "+ processador.getUso());
+//        System.out.println("Frequência do processador: "+ processador.getFrequencia());
+//        System.out.println("Nome do processador: "+ processador.getNome());
+//        System.out.println();
+//        System.out.println("Memória disponível: "+ memoria.getDisponivel());
+//        System.out.println("Memória em uso: "+ memoria.getEmUso());
+//        System.out.println("Memória total: "+ memoria.getTotal());
 
     }
 }
