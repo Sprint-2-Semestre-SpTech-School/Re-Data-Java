@@ -6,7 +6,11 @@ import com.github.britooo.looca.api.group.discos.DiscoGrupo;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
 import com.github.britooo.looca.api.group.rede.Rede;
+import com.github.britooo.looca.api.group.rede.RedeInterface;
+import com.github.britooo.looca.api.group.rede.RedeInterfaceGroup;
 import com.github.britooo.looca.api.group.rede.RedeParametros;
+import com.github.britooo.looca.api.group.sistema.Sistema;
+import oshi.hardware.NetworkIF;
 
 public class DadosUtilizados {
     public static void main(String[] args) {
@@ -17,6 +21,8 @@ public class DadosUtilizados {
         DiscoGrupo disco01 = looca.getGrupoDeDiscos();
         Rede rede01 = looca.getRede();
         RedeParametros redeParam01 = looca.getRede().getParametros();
+        RedeInterfaceGroup redeGroup = looca.getRede().getGrupoDeInterfaces();
+        RedeInterface redeInterface = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(2);
 
         // ========================================DADOS DE CPU====================================//
         System.out.println("DADOS DE CPU");
@@ -51,5 +57,12 @@ public class DadosUtilizados {
         System.out.println("\n");
         // ========================================= DADOS DE REDE =========================================//
         System.out.println("DADOS DE REDE");
+        System.out.println(redeInterface.getEnderecoIpv4()); // Saber qual o ip que os computadores estão
+        // Conectados
+        System.out.println(redeInterface.getBytesRecebidos()); // Se os computadores estão recebendo bem a rede
+        System.out.println(redeInterface.getNomeExibicao()); // Nome da rede que eles estão conectados
+        System.out.println(redeInterface.getPacotesEnviados()); // Mais dados para
+        System.out.println(redeInterface.getPacotesRecebidos());
+
     }
 }
