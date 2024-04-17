@@ -1,4 +1,4 @@
-package data.re;
+package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.processador.Processador;

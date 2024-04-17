@@ -1,7 +1,4 @@
-package data.re;
-
-import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.processador.Processador;
+package org.example;
 
 public class Main {
     public static void main(String[] args) {
