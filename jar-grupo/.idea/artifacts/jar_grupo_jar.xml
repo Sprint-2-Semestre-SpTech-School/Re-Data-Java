@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="jar-grupo:jar">
+  <artifact type="jar" build-on-make="true" name="jar-grupo:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/jar_grupo_jar</output-path>
     <root id="archive" name="jar-grupo.jar">
       <element id="module-output" name="jar-grupo" />

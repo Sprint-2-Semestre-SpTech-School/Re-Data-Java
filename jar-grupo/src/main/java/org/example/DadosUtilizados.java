@@ -68,6 +68,7 @@ public class DadosUtilizados {
         System.out.println("Bytes de leitura: " + disco01.getBytesDeLeitura() / (1024 * 1024) + "Mb");
         System.out.println("Qtd de discos: " + discoGrupo.getQuantidadeDeDiscos()); // Importante para separar depois
         System.out.println("Tamanho total " + discoGrupo.getTamanhoTotal());
+        System.out.println("Tempo de transferência" + disco01.getTempoDeTransferencia());
         System.out.println("\n");
 
         System.out.println("Informações do volume do disco");
@@ -76,6 +77,8 @@ public class DadosUtilizados {
         System.out.println("Volume disponível: " + volume01.getDisponivel() / 1000000 + "Mb");
         System.out.println("Volume total: " + volume01.getTotal() / 1000000 + "Mb");
         System.out.println("Quantidade de volume: " + discoGrupo.getQuantidadeDeVolumes());
+        System.out.println("Tempo de transferência: " + disco01.getTempoDeTransferencia());
+
         // Não achei os dois métodos de volume úteis
 
         System.out.println("\n");
@@ -94,7 +97,5 @@ public class DadosUtilizados {
         // System.out.println(redeInterface);
         // ======================================= Coisas que não sei =====================================//
         System.out.println(looca.getDispositivosUsbGrupo().getDispositivosUsbConectados()); // Só vê unidade de disco
-
-
     }
 }
