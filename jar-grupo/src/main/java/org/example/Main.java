@@ -2,8 +2,9 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        Cpu cpu01 = new Cpu();
-        cpu01.obterFabricante();
-
+        Empresa empresa01 = new Empresa();
+        empresa01.adicionarEmpresa();
+        empresa01.adicionarLocalizacaoEmpresa();
+        System.out.println(empresa01.obterIdsEmpresa());
     }
 }
