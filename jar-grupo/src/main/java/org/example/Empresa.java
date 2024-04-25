@@ -1,13 +1,10 @@
 package org.example;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
-
 import java.util.List;
 
 public class Empresa {
-    private Integer idEmpresa;
+    private List<Integer> idsEmpresa;
     private String nomeEmpresa;
     private String CNPJ;
     private String CEP;
@@ -19,8 +16,7 @@ public class Empresa {
     private Conexao conexao = new Conexao();
     private JdbcTemplate con = conexao.getConexaoBanco();
 
-    public Empresa(Integer idEmpresa,
-                   String nomeEmpresa,
+    public Empresa(String nomeEmpresa,
                    String CNPJ,
                    String CEP,
                    String estado,
@@ -28,7 +24,6 @@ public class Empresa {
                    String numero,
                    String bairro,
                    String complemento) {
-        this.idEmpresa = idEmpresa;
         this.nomeEmpresa = nomeEmpresa;
         this.CNPJ = CNPJ;
         this.CEP = CEP;
@@ -37,38 +32,23 @@ public class Empresa {
         this.numero = numero;
         this.bairro = bairro;
         this.complemento = complemento;
-
-        this.conexao = conexao;
-        this.con = con;
     }
 
     public Empresa() {
     }
 
-    public void adicionarEmpresa(){
-        nomeEmpresa = "ReData.inc";
-        CNPJ = "53719031000163";
-
+    private void adicionarEmpresa(){
         con.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
-        relacionarId();
+        consultarId();
     }
 
-    public List<Integer> relacionarId(){
+    public Integer consultarId(){
             String comandoSql = ("SELECT idEmpresa from Empresa");
-            List<Integer> idsEmpresa = con.queryForList(comandoSql, Integer.class);
-            idEmpresa = idsEmpresa.size();
-            return idsEmpresa;
+            idsEmpresa = con.queryForList(comandoSql, Integer.class);
+            return idsEmpresa.get(idsEmpresa.size() - 1);
     }
 
-    public void adicionarLocalizacaoEmpresa(){
-        CEP = "02587043";
-        estado = "São Paulo";
-        logradouro = "Rua Haddock Lobo";
-        numero = "595";
-        complemento = "Andar 15";
-        idEmpresa = this.idEmpresa;
-
-
+    private void adicionarLocalizacaoEmpresa(){
         con.update("INSERT INTO LocalizacaoEmpresa (CEP," +
                 "estado," +
                 "logradouro," +
@@ -81,6 +61,104 @@ public class Empresa {
                 numero,
                 bairro,
                 complemento,
-                idEmpresa);
+                idsEmpresa.get(idsEmpresa.size() -1));
+    }
+    public void inserirDadosEmpresa(){
+        adicionarEmpresa();
+        adicionarLocalizacaoEmpresa();
+    }
+
+    public List<Integer> getIdsEmpresa() {
+        return idsEmpresa;
+    }
+
+    public String getNomeEmpresa() {
+        return nomeEmpresa;
+    }
+
+    public void setNomeEmpresa(String nomeEmpresa) {
+        this.nomeEmpresa = nomeEmpresa;
+    }
+
+    public String getCNPJ() {
+        return CNPJ;
+    }
+
+    public void setCNPJ(String CNPJ) {
+        this.CNPJ = CNPJ;
+    }
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public Conexao getConexao() {
+        return conexao;
+    }
+
+    public JdbcTemplate getCon() {
+        return con;
+    }
+
+    @Override
+    public String toString() {
+        int idAtual = idsEmpresa.get(idsEmpresa.size() - 1);
+        return """
+                IdEmpresa: %d
+                Nome da empresa: %s
+                CNPJ: %s
+                CEP: %s
+                Estado: %s
+                Logradouro: %s
+                Numero: %s
+                Bairro: %s
+                Complemento: %s
+                fkEmpresa: %d""".formatted(
+                        idAtual, nomeEmpresa, CNPJ, CEP,estado, logradouro, numero, bairro, complemento, idAtual
+        );
     }
 }

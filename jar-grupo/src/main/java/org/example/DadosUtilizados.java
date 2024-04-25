@@ -35,6 +35,7 @@ public class DadosUtilizados {
         System.out.println("Temperatura maquina" + looca.getTemperatura());
         System.out.println("Inicializado " + looca.getSistema().getInicializado());
 
+
         // ========================================DADOS DE CPU====================================//
         System.out.println("DADOS DE CPU");
         System.out.println("Id de CPU: " + cpu01.getId()); // Id da própria tabela

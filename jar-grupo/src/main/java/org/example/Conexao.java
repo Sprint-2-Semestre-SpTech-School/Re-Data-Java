@@ -10,10 +10,10 @@ public class Conexao {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/ReData");
+
         // A conexão do MySql deve ser essa
         dataSource.setUsername("Re;Data");
         dataSource.setPassword("UrubuAbutre100");
-
         conexaoBanco = new JdbcTemplate(dataSource);
     }
 
