@@ -50,11 +50,13 @@ public class Empresa {
         CNPJ = "53719031000163";
 
         con.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
+        relacionarId();
     }
 
-    public List<Integer> obterIdsEmpresa(){
+    public List<Integer> relacionarId(){
             String comandoSql = ("SELECT idEmpresa from Empresa");
             List<Integer> idsEmpresa = con.queryForList(comandoSql, Integer.class);
+            idEmpresa = idsEmpresa.size();
             return idsEmpresa;
     }
 
@@ -64,6 +66,7 @@ public class Empresa {
         logradouro = "Rua Haddock Lobo";
         numero = "595";
         complemento = "Andar 15";
+        idEmpresa = this.idEmpresa;
 
 
         con.update("INSERT INTO LocalizacaoEmpresa (CEP," +
@@ -78,6 +81,6 @@ public class Empresa {
                 numero,
                 bairro,
                 complemento,
-                1);
+                idEmpresa);
     }
 }
