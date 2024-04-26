@@ -42,7 +42,7 @@ public class Projeto {
                 fkEmpresa);
     }
     public Integer consultarId(){
-        List<Integer> idsProjeto = new ArrayList<>();
+        List<Integer> idsProjeto;
 
         String comandoSql = ("SELECT idEmpresa from Empresa");
         idsProjeto = con.queryForList(comandoSql, Integer.class);

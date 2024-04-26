@@ -26,7 +26,6 @@ public class DadosUtilizados {
         RedeParametros redeParam01 = looca.getRede().getParametros();
         RedeInterfaceGroup redeGroup = looca.getRede().getGrupoDeInterfaces();
         RedeInterface redeInterface = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(2);
-
         // ====================================== DADOS GERAIS ============================================//
         System.out.println("\n");
         System.out.println("Dados que eu não sei");
@@ -97,5 +96,6 @@ public class DadosUtilizados {
         // System.out.println(redeInterface);
         // ======================================= Coisas que não sei =====================================//
         System.out.println(looca.getDispositivosUsbGrupo().getDispositivosUsbConectados()); // Só vê unidade de disco
+        System.out.println("\n\n");
     }
 }

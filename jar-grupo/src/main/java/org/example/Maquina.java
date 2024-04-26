@@ -3,6 +3,8 @@ package org.example;
 import com.github.britooo.looca.api.core.Looca;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+
 public class Maquina {
     Looca looca = new Looca();
     private Integer idMaquina;
@@ -51,5 +53,98 @@ public class Maquina {
         con.update("INSERT INTO Maquina (usuario, destino, sistemaOperacional, temperatura, tempoAtividade, " +
                 "fkProjeto, fkEmpresa) values (?, ?, ?, ?, ?, ?, ?)", usuario, destino, sistemaOperacional,
                 temperatura, tempoAtividade, fkProjeto, fkEmpresa);
+    }
+    public Integer consultarId(){
+        List<Integer> idsMaquina;
+
+        String comandoSql = ("SELECT idMaquina from Maquina");
+        idsMaquina = con.queryForList(comandoSql, Integer.class);
+        return idsMaquina.get(idsMaquina.size() - 1);
+    }
+
+    public Looca getLooca() {
+        return looca;
+    }
+
+    public void setLooca(Looca looca) {
+        this.looca = looca;
+    }
+
+    public Integer getIdMaquina() {
+        return idMaquina;
+    }
+
+    public void setIdMaquina(Integer idMaquina) {
+        this.idMaquina = idMaquina;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+    public String getSistemaOperacional() {
+        return sistemaOperacional;
+    }
+
+    public void setSistemaOperacional(String sistemaOperacional) {
+        this.sistemaOperacional = sistemaOperacional;
+    }
+
+    public Double getTemperatura() {
+        return temperatura;
+    }
+
+    public void setTemperatura(Double temperatura) {
+        this.temperatura = temperatura;
+    }
+
+    public Long getTempoAtividade() {
+        return tempoAtividade;
+    }
+
+    public void setTempoAtividade(Long tempoAtividade) {
+        this.tempoAtividade = tempoAtividade;
+    }
+
+    public Integer getFkProjeto() {
+        return fkProjeto;
+    }
+
+    public void setFkProjeto(Integer fkProjeto) {
+        this.fkProjeto = fkProjeto;
+    }
+
+    public Integer getFkEmpresa() {
+        return fkEmpresa;
+    }
+
+    public void setFkEmpresa(Integer fkEmpresa) {
+        this.fkEmpresa = fkEmpresa;
+    }
+
+    @Override
+    public String toString() {
+        return "Maquina{" +
+                "idMaquina=" + idMaquina +
+                ", usuario='" + usuario + '\'' +
+                ", destino='" + destino + '\'' +
+                ", sistemaOperacional='" + sistemaOperacional + '\'' +
+                ", temperatura=" + temperatura +
+                ", tempoAtividade=" + tempoAtividade +
+                ", fkProjeto=" + fkProjeto +
+                ", fkEmpresa=" + fkEmpresa +
+                '}';
     }
 }

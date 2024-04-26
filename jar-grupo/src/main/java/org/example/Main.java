@@ -44,7 +44,10 @@ public class Main {
         Maquina maquinaDemo = new Maquina(fkEmpresa, fkProjeto);
         maquinaDemo.capturarDadosMaquina();
         maquinaDemo.inserirDadosMaquina();
+        Integer fkMaquina = maquinaDemo.consultarId();
         System.out.println(maquinaDemo);
 
+        infoHardware infoHardwareDemo = new infoHardware(fkMaquina);
+        infoHardwareDemo.capturarDadosInfoHardware();
     }
 }
