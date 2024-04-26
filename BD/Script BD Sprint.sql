@@ -86,7 +86,7 @@ drop table Blacklist;
 create table InfoHardware
 (codHardware int primary key auto_increment,
 nomeCpu varchar(45),
-nomeRam varchar(45),
+memoriaTotalRam int,
 nomeDisco varchar(45),
 nomeRede varchar(45),
 fkMaquina int,
@@ -118,7 +118,6 @@ fkMaquina int,
 	constraint fkMaquinaRam foreign key (fkMaquina) references Maquina (idMaquina),
 memoriaDisponivel double,
 memoriaEmUso double,
-memoriaTotal double,
 tempoCapturas datetime
 );
 
