@@ -65,10 +65,6 @@ public class Contato {
         this.telefone = telefone;
     }
 
-    public void setFkEmpresa(Integer fkEmpresa) {
-        this.fkEmpresa = fkEmpresa;
-    }
-
     @Override
     public String toString() {
         return """
