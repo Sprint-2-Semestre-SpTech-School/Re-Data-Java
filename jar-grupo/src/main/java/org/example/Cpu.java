@@ -47,6 +47,6 @@ public class Cpu {
         numeroCpuLogica = looca.getProcessador().getNumeroCpusLogicas();
         numeroPacote = looca.getProcessador().getNumeroPacotesFisicos();
         usoDeCpu = looca.getProcessador().getUso();
-        con.update("")
+        //con.update("")
     }
 }

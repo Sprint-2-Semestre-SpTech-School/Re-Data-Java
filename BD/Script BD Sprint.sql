@@ -2,6 +2,16 @@ create database ReData;
 Use ReData;
 drop database ReData;
 
+select * from empresa;
+select * from localizacaoEmpresa;
+select * from contato;
+select * from conta;
+select * from projeto;
+select * from maquina;
+select * from infoHardware;
+
+select * from Cpu;
+
 create table Empresa 
 (idEmpresa int primary key auto_increment,
 nomeEmpresa varchar(45) not null,
@@ -48,6 +58,7 @@ fkEmpresa int,
         
 create table Maquina
 (idMaquina int primary key auto_increment,
+operacao tinyint,
 usuario varchar(45),
 destino varchar(45),
 sistemaOperacional varchar(45),
@@ -95,7 +106,7 @@ fkMaquina int,
 select * from InfoHardware;
     
 create table Cpu
-(idCpu int primary key auto_increment,
+(idCpu char primary key,
 fkCodHardware int,
 	constraint fkHardwareCpu foreign key (fkCodHardware) references InfoHardware (codHardware),
 fkMaquina int,
