@@ -104,7 +104,8 @@ frequencia double,
 numeroCpuFisica int,
 numeroCpuLogica int,
 numeroPacote int,
-usoDeCpu double
+usoDeCpu double,
+tempoCapturas datetime
 );
     
 select * from Cpu;
@@ -117,7 +118,8 @@ fkMaquina int,
 	constraint fkMaquinaRam foreign key (fkMaquina) references Maquina (idMaquina),
 memoriaDisponivel double,
 memoriaEmUso double,
-memoriaTotal double
+memoriaTotal double,
+tempoCapturas datetime
 );
 
 create table Disco
@@ -129,7 +131,8 @@ fkMaquina int,
 escritas int,
 bytesEscritos double,
 leituras int,
-bytesLidos double
+bytesLidos double,
+tempoCapturas datetime
 );
     
 create table Rede
@@ -143,7 +146,8 @@ enderecoMac varchar(30),
 pacotesEnviados int,
 pacotesRecebidos int,
 redeDNS varchar(30),
-nomeHost varchar(45)
+nomeHost varchar(45),
+tempoCapturas datetime
 );
     
 create table Volume (
@@ -159,7 +163,8 @@ pontoMontagem char(3),
 sistemaArmazenamento char(10),
 volumeDisponivel double,
 volumeTotal double,
-quantidadeDeVolume int
+quantidadeDeVolume int,
+tempoCapturas datetime
 );
 
 select * from Volume;
