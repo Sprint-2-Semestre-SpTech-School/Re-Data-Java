@@ -9,8 +9,7 @@ select * from conta;
 select * from projeto;
 select * from maquina;
 select * from infoHardware;
-
-select * from Cpu;
+	select * from Cpu;
 
 create table Empresa 
 (idEmpresa int primary key auto_increment,
@@ -96,68 +95,68 @@ drop table Blacklist;
     
 create table InfoHardware
 (codHardware int primary key auto_increment,
-nomeCpu varchar(45),
+nomeCpu varchar(150),
 memoriaTotalRam int,
-nomeDisco varchar(45),
-nomeRede varchar(45),
+nomeDisco varchar(150),
+nomeRede varchar(150),
 fkMaquina int,
 	constraint fkMaquinaHardware foreign key (fkMaquina) references Maquina (idMaquina));
     
 select * from InfoHardware;
     
 create table Cpu
-(idCpu char primary key,
-fkCodHardware int,
-	constraint fkHardwareCpu foreign key (fkCodHardware) references InfoHardware (codHardware),
-fkMaquina int,
-	constraint fkMaquinaCpu foreign key (fkMaquina) references Maquina (idMaquina),
+(idCpu char(45) primary key,
 frequencia double,
 numeroCpuFisica int,
 numeroCpuLogica int,
 numeroPacote int,
 usoDeCpu double,
-tempoCapturas datetime
+tempoCapturas datetime,
+fkCodHardware int,
+	constraint fkHardwareCpu foreign key (fkCodHardware) references InfoHardware (codHardware),
+fkMaquina int,
+	constraint fkMaquinaCpu foreign key (fkMaquina) references Maquina (idMaquina)
 );
     
 select * from Cpu;
     
 create table Ram
 (idRam int primary key auto_increment,
+memoriaDisponivel double,
+memoriaEmUso double,
+tempoCapturas datetime,
 fkCodHardware int,
 	constraint fkHardwareRam foreign key (fkCodHardware) references InfoHardware (codHardware),
 fkMaquina int,
-	constraint fkMaquinaRam foreign key (fkMaquina) references Maquina (idMaquina),
-memoriaDisponivel double,
-memoriaEmUso double,
-tempoCapturas datetime
+	constraint fkMaquinaRam foreign key (fkMaquina) references Maquina (idMaquina)
 );
 
 create table Disco
 (idDisco int primary key auto_increment,
-fkCodHardware int,
-	constraint fkHardwareDisco foreign key (fkCodHardware) references InfoHardware (codHardware),
-fkMaquina int,
-	constraint fkMaquinaDisco foreign key (fkMaquina) references Maquina (idMaquina),
 escritas int,
 bytesEscritos double,
 leituras int,
 bytesLidos double,
-tempoCapturas datetime
+tempoCapturas datetime,
+fkCodHardware int,
+	constraint fkHardwareDisco foreign key (fkCodHardware) references InfoHardware (codHardware),
+fkMaquina int,
+	constraint fkMaquinaDisco foreign key (fkMaquina) references Maquina (idMaquina)
 );
     
 create table Rede
 (idRede int primary key auto_increment,
-fkCodHardware int,
-	constraint fkHardwareRede foreign key (fkCodHardware) references InfoHardware (codHardware),
-fkMaquina int,
-	constraint fkMaquinaRede foreign key (fkMaquina) references Maquina (idMaquina),
 enderecoIPV4 varchar(15),
 enderecoMac varchar(30),
 pacotesEnviados int,
 pacotesRecebidos int,
 redeDNS varchar(30),
 nomeHost varchar(45),
-tempoCapturas datetime
+tempoCapturas datetime,
+fkCodHardware int,
+	constraint fkHardwareRede foreign key (fkCodHardware) references InfoHardware (codHardware),
+fkMaquina int,
+	constraint fkMaquinaRede foreign key (fkMaquina) references Maquina (idMaquina)
 );
     
 create table Volume (

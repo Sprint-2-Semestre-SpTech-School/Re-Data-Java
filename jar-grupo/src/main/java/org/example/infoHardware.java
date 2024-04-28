@@ -4,6 +4,8 @@ import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.processador.Processador;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+
 public class infoHardware {
     Looca looca = new Looca();
     private Integer codHardware;
@@ -36,12 +38,18 @@ public class infoHardware {
     public infoHardware() {
     }
     public void capturarDadosInfoHardware(){
-        nomeCpu = looca.getProcessador().getId();
+        nomeCpu = looca.getProcessador().getNome();
         memoriaTotalRam = looca.getMemoria().getTotal() / (1024 * 1024);
         nomeDisco = looca.getGrupoDeDiscos().getDiscos().get(0).getNome();
         nomeRede = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(2).getNomeExibicao();
         con.update("INSERT INTO infoHardware (nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina)" +
                 "values (?, ?, ?, ?, ?)", nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina);
+    }
+    public Integer consultarId(){
+        List<Integer> codsHardware;
 
+        String comandoSql = ("SELECT codHardware from infoHardware");
+        codsHardware = con.queryForList(comandoSql, Integer.class);
+        return codsHardware.get(codsHardware.size() - 1);
     }
 }

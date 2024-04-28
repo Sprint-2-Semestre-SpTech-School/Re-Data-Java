@@ -49,5 +49,13 @@ public class Main {
 
         infoHardware infoHardwareDemo = new infoHardware(fkMaquina);
         infoHardwareDemo.capturarDadosInfoHardware();
+        Integer fkCodHardware = infoHardwareDemo.consultarId();
+
+        Cpu cpuDemo = new Cpu(fkCodHardware, fkMaquina);
+        cpuDemo.capturarDadosCpu();
+        System.out.println(cpuDemo);
+
+        Ram ramDemo = new Ram(fkCodHardware, fkMaquina);
+        ramDemo.capturarDadosRam();
     }
 }
