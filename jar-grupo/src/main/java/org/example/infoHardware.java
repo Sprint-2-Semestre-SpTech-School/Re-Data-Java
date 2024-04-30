@@ -52,4 +52,67 @@ public class infoHardware {
         codsHardware = con.queryForList(comandoSql, Integer.class);
         return codsHardware.get(codsHardware.size() - 1);
     }
+
+    public Integer getCodHardware() {
+        return codHardware;
+    }
+
+    public void setCodHardware(Integer codHardware) {
+        this.codHardware = codHardware;
+    }
+
+    public String getNomeCpu() {
+        return nomeCpu;
+    }
+
+    public void setNomeCpu(String nomeCpu) {
+        this.nomeCpu = nomeCpu;
+    }
+
+    public Long getMemoriaTotalRam() {
+        return memoriaTotalRam;
+    }
+
+    public void setMemoriaTotalRam(Long memoriaTotalRam) {
+        this.memoriaTotalRam = memoriaTotalRam;
+    }
+
+    public String getNomeDisco() {
+        return nomeDisco;
+    }
+
+    public void setNomeDisco(String nomeDisco) {
+        this.nomeDisco = nomeDisco;
+    }
+
+    public String getNomeRede() {
+        return nomeRede;
+    }
+
+    public void setNomeRede(String nomeRede) {
+        this.nomeRede = nomeRede;
+    }
+
+    public Integer getFkMaquina() {
+        return fkMaquina;
+    }
+
+    public void setFkMaquina(Integer fkMaquina) {
+        this.fkMaquina = fkMaquina;
+    }
+    @Override
+    public String toString() {
+        return """
+            codHardware: %d
+            nomeCpu: '%s'
+            memoriaTotalRam: %d
+            nomeDisco: '%s'
+            nomeRede: '%s'
+            fkMaquina: %d""".formatted(codHardware,
+                nomeCpu,
+                memoriaTotalRam,
+                nomeDisco,
+                nomeRede,
+                fkMaquina);
+    }
 }

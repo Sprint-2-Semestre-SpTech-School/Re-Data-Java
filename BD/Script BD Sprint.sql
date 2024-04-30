@@ -1,22 +1,13 @@
-create database ReData;
+drop database if exists ReData;
+create database if not exists ReData;
 Use ReData;
-drop database ReData;
 
-select * from empresa;
-select * from localizacaoEmpresa;
-select * from contato;
-select * from conta;
-select * from projeto;
-select * from maquina;
-select * from infoHardware;
-	select * from Cpu;
-
-create table Empresa 
+create table if not exists Empresa 
 (idEmpresa int primary key auto_increment,
 nomeEmpresa varchar(45) not null,
 CNPJ char (14) not null);
 
-create table localizacaoEmpresa
+create table if not exists localizacaoEmpresa
 (idLocalizacaoEmpresa int primary key auto_increment,
 CEP char(8) not null,
 estado varchar(45),
@@ -27,7 +18,7 @@ complemento varchar(20),
 fkEmpresa int,
 	constraint fkEmpresaLocalizacao foreign key (fkEmpresa) references Empresa (idEmpresa));
     
-create table Contato
+create table if not exists Contato
 (idContato int primary key auto_increment,
 nome varchar(45) not null,
 email varchar(45) not null, 
@@ -35,7 +26,7 @@ telefone varchar(11),
 fkEmpresa int,
 	constraint fkEmpresaContato foreign key(fkEmpresa) references Empresa (idEmpresa));
 
-create table Conta
+create table if not exists Conta
 (idConta int primary key auto_increment,
 login varchar(45) not null,
 senha varchar(45) not null,
@@ -44,7 +35,7 @@ dataCriacao datetime,
 fkEmpresa int,
 	constraint fkEmpresaTipoConta foreign key (fkEmpresa) references Empresa (idEmpresa));
     
-create table Projeto (
+create table if not exists Projeto (
 idProjeto int primary key auto_increment,
 nomeDemanda varchar(45),
 quantidadeDeMaquinas int,
@@ -55,7 +46,7 @@ responsavel varchar(45),
 fkEmpresa int,
 	constraint fkEmpresaProjeto foreign key (fkEmpresa) references Empresa (idEmpresa));
         
-create table Maquina
+create table if not exists Maquina
 (idMaquina int primary key auto_increment,
 operacao tinyint,
 usuario varchar(45),
@@ -69,14 +60,11 @@ fkEmpresa int,
     foreign key (fkEmpresa) REFERENCES Projeto (fkEmpresa)
 );
 
-select * from Maquina;
-select * from Projeto;
-
-create table DispositivosUsb
+create table if not exists DispositivosUsb
 (deviceId char(50) primary key,
 descricao varchar(45));
 
-create table Blacklist
+create table if not exists Blacklist
 (idBlacklist int,
 statusBloqueio tinyint,
 motivoBloqueio varchar(250),
@@ -90,10 +78,8 @@ primary key (idBlacklist, fkDeviceId, fkMaquina, fkProjeto, fkEmpresa),
     foreign key (fkProjeto) references Projeto (idProjeto),
     foreign key (fkEmpresa) references Empresa (idEmpresa));
     
-select * from Blacklist;
-drop table Blacklist;
     
-create table InfoHardware
+create table if not exists InfoHardware
 (codHardware int primary key auto_increment,
 nomeCpu varchar(150),
 memoriaTotalRam int,
@@ -102,9 +88,7 @@ nomeRede varchar(150),
 fkMaquina int,
 	constraint fkMaquinaHardware foreign key (fkMaquina) references Maquina (idMaquina));
     
-select * from InfoHardware;
-    
-create table Cpu
+create table if not exists `Cpu`
 (idCpu char(45) primary key,
 frequencia double,
 numeroCpuFisica int,
@@ -118,9 +102,7 @@ fkMaquina int,
 	constraint fkMaquinaCpu foreign key (fkMaquina) references Maquina (idMaquina)
 );
     
-select * from Cpu;
-    
-create table Ram
+create table if not exists Ram
 (idRam int primary key auto_increment,
 memoriaDisponivel double,
 memoriaEmUso double,
@@ -131,7 +113,7 @@ fkMaquina int,
 	constraint fkMaquinaRam foreign key (fkMaquina) references Maquina (idMaquina)
 );
 
-create table Disco
+create table if not exists Disco
 (idDisco int primary key auto_increment,
 escritas int,
 bytesEscritos double,
@@ -144,13 +126,12 @@ fkMaquina int,
 	constraint fkMaquinaDisco foreign key (fkMaquina) references Maquina (idMaquina)
 );
     
-create table Rede
+create table if not exists Rede
 (idRede int primary key auto_increment,
 enderecoIPV4 varchar(15),
 enderecoMac varchar(30),
 pacotesEnviados int,
 pacotesRecebidos int,
-redeDNS varchar(30),
 nomeHost varchar(45),
 tempoCapturas datetime,
 fkCodHardware int,
@@ -159,9 +140,8 @@ fkMaquina int,
 	constraint fkMaquinaRede foreign key (fkMaquina) references Maquina (idMaquina)
 );
     
-create table Volume (
+create table if not exists Volume (
 idVolume int primary key auto_increment,
-
 fkDisco int,
     constraint fkDiscoVolume foreign key (fkDisco) references Disco (idDisco),
 fkCodHardware int,
@@ -176,4 +156,16 @@ quantidadeDeVolume int,
 tempoCapturas datetime
 );
 
-select * from Volume;
+select * from empresa;
+select * from localizacaoEmpresa;
+select * from contato;
+select * from conta;
+select * from projeto;
+select * from maquina;
+select * from infoHardware;
+select * from Cpu;
+select * from ram;
+select * from rede;
+select * from disco;
+select * from dispositivosUSB;
+

@@ -30,18 +30,13 @@ public class Ram {
     public Ram() {
     }
 
-    public void capturarDadosRam(){
-        memoriaDisponivel = looca.getMemoria().getDisponivel();
-        memoriaEmUso = looca.getMemoria().getEmUso();
-        con.update("INSERT INTO Ram (memoriaDisponivel, memoriaEmUso, tempoCapturas, fkCodHardware, fkMaquina) " +
-                "values (? ,? , CURRENT_TIMESTAMP, ?, ?",
-                memoriaDisponivel,
-                memoriaEmUso,
-                tempoCapturas,
-                fkCodHardware,
-                fkMaquina);
-
-    }
+        public void capturarDadosRam(){
+            memoriaDisponivel = looca.getMemoria().getDisponivel();
+            memoriaEmUso = looca.getMemoria().getEmUso();
+            con.update("INSERT INTO Ram (memoriaDisponivel, memoriaEmUso, tempoCapturas, fkCodHardware, fkMaquina)" +
+                    "values (? , ?, CURRENT_TIMESTAMP, ?, ?)",
+            memoriaDisponivel, memoriaEmUso, fkCodHardware, fkMaquina);
+        }
 
     public Integer getIdRam() {
         return idRam;
@@ -93,13 +88,17 @@ public class Ram {
 
     @Override
     public String toString() {
-        return "Ram{" +
-                "idRam=" + idRam +
-                ", memoriaDisponivel=" + memoriaDisponivel +
-                ", memoriaEmUso=" + memoriaEmUso +
-                ", tempoCapturas=" + tempoCapturas +
-                ", fkCodHardware='" + fkCodHardware + '\'' +
-                ", fkMaquina=" + fkMaquina +
-                '}';
+        return """
+            idRam: %d
+            memoriaDisponivel: %d
+            memoriaEmUso: %d
+            tempoCapturas: %s
+            fkCodHardware: '%s'
+            fkMaquina: %d""".formatted(idRam,
+                memoriaDisponivel,
+                memoriaEmUso,
+                tempoCapturas,
+                fkCodHardware,
+                fkMaquina);
     }
 }

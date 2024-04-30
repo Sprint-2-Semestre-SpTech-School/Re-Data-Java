@@ -1,5 +1,6 @@
 package org.example;
 
+import com.github.britooo.looca.api.group.dispositivos.DispositivosUsbGrupo;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Main {
@@ -57,5 +58,23 @@ public class Main {
 
         Ram ramDemo = new Ram(fkCodHardware, fkMaquina);
         ramDemo.capturarDadosRam();
+        System.out.println(ramDemo);
+
+        Rede redeDemo = new Rede(fkCodHardware, fkMaquina);
+        redeDemo.capturarDadosRede();
+        System.out.println(redeDemo);
+
+        Disco discoDemo = new Disco(fkCodHardware, fkMaquina);
+        discoDemo.capturarDadosDisco();
+        Integer fkDisco = discoDemo.getIdDisco();
+        System.out.println(discoDemo);
+
+        Volume volumeDemo = new Volume(fkDisco, fkCodHardware, fkMaquina);
+        volumeDemo.capturarDadosVolume();
+        System.out.println(volumeDemo);
+
+        dispositivosUSB dispositivosUSBDemo = new dispositivosUSB();
+        dispositivosUSBDemo.listarUSB();
+        System.out.println(dispositivosUSBDemo);
     }
 }

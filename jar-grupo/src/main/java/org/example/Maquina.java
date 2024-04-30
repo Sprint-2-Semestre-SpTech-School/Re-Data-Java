@@ -136,15 +136,21 @@ public class Maquina {
 
     @Override
     public String toString() {
-        return "Maquina{" +
-                "idMaquina=" + idMaquina +
-                ", usuario='" + usuario + '\'' +
-                ", destino='" + destino + '\'' +
-                ", sistemaOperacional='" + sistemaOperacional + '\'' +
-                ", temperatura=" + temperatura +
-                ", tempoAtividade=" + tempoAtividade +
-                ", fkProjeto=" + fkProjeto +
-                ", fkEmpresa=" + fkEmpresa +
-                '}';
+        return """
+            idMaquina: %d
+            usuario: '%s'
+            destino: '%s'
+            sistemaOperacional: '%s'
+            temperatura: %.2f
+            tempoAtividade: %d
+            fkProjeto: %d
+            fkEmpresa: %d""".formatted(idMaquina,
+                usuario,
+                destino,
+                sistemaOperacional,
+                temperatura,
+                tempoAtividade,
+                fkProjeto,
+                fkEmpresa);
     }
 }

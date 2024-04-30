@@ -51,7 +51,8 @@ public class Cpu {
         numeroPacote = looca.getProcessador().getNumeroPacotesFisicos();
         usoDeCpu = looca.getProcessador().getUso();
 
-        con.update("INSERT INTO Cpu (idCpu, frequencia, numeroCpuFisica, numeroCpuLogica, numeroPacote, usoDeCpU, tempoCapturas, fkCodHardware, fkMaquina) values (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)",
+        con.update("INSERT INTO Cpu (idCpu, frequencia, numeroCpuFisica, numeroCpuLogica, numeroPacote, usoDeCpu," +
+                        "tempoCapturas, fkCodHardware, fkMaquina) values (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)",
                 idCpu, frequencia, numeroCpuFisica, numeroCpuLogica, numeroPacote, usoDeCpu, fkCodHardware, fkMaquina);
     }
 
