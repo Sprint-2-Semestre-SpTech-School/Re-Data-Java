@@ -12,7 +12,7 @@ public class Conexao {
         dataSource.setUrl("jdbc:mysql://localhost:3306/ReData");
 
         // A conexão do MySql deve ser essa
-        dataSource.setUsername("root");
+        dataSource.setUsername("Root");
         dataSource.setPassword("urubu100");
         conexaoBanco = new JdbcTemplate(dataSource);
     }
