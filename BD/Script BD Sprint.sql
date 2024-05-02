@@ -156,16 +156,16 @@ quantidadeDeVolume int,
 tempoCapturas datetime
 );
 
-select * from empresa;
-select * from localizacaoEmpresa;
-select * from contato;
-select * from conta;
-select * from projeto;
-select * from maquina;
-select * from infoHardware;
-select * from Cpu;
-select * from ram;
-select * from rede;
-select * from disco;
-select * from dispositivosUSB;
+-- select * from empresa;
+-- select * from localizacaoEmpresa;
+-- select * from contato;
+-- select * from conta;
+-- select * from projeto;
+-- select * from maquina;
+-- select * from infoHardware;
+-- select * from Cpu;
+-- select * from ram;
+-- select * from rede;
+-- select * from disco;
+-- select * from dispositivosUSB;
 
