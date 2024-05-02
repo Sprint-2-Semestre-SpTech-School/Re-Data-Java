@@ -12,8 +12,8 @@ public class Conexao {
         dataSource.setUrl("jdbc:mysql://localhost:3306/ReData");
 
         // A conexão do MySql deve ser essa
-        dataSource.setUsername("Re;Data");
-        dataSource.setPassword("UrubuAbutre100");
+        dataSource.setUsername("root");
+        dataSource.setPassword("urubu100");
         conexaoBanco = new JdbcTemplate(dataSource);
     }
 
