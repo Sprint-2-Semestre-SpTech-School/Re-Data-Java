@@ -26,4 +26,25 @@ if [ $? == 0 ]; #Aqui ele vai perguntar o valor de retorno do comando de cima (q
 	fi
 fi
 
+#Instalação do SQL
 
+mysql --version
+
+if [ $? == 0 ];
+        then 
+                echo "O mysql instalado na máquina!"
+        else 
+                echo "Mysql não foi encontrado, deseja instala-lo"
+
+        read mysql
+
+        if [ \"$mysql\" == \"s\" ];
+	then
+        	sudo apt install -y mysql-server
+        	sudo system start mysql.service
+        	sudo mysql
+        	# ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'urubu100';
+        	mysql -u root -p < "Script BD Sprint.sql"
+	fi
+
+fi
