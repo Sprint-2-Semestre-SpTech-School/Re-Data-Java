@@ -15,7 +15,7 @@ if [ $? == 0 ]; #Aqui ele vai perguntar o valor de retorno do comando de cima (q
 
 	read testeVar #o read serve para iniciar uma pergunta, como se fosse o scanner do JAVA, e o valor de retorno é armazenada da VAR (get)
 
-	if [ \"$testeVar\" == \"s\"]; #Aqui ele vai ver a resposta de cima, então pra apresentação, COLOQUEI (s) E NÃO (SIM) POR FAVOR!!
+	if [ \"$testeVar\" == \"s\" ]; #Aqui ele vai ver a resposta de cima, então pra apresentação, COLOQUEI (s) E NÃO (SIM) POR FAVOR!!
 
 	then
 		sudo apt install openjdk-17-jre -y #ele vai jogar caso ele caia no IF de cima
