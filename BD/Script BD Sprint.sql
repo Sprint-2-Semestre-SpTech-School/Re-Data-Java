@@ -1,6 +1,6 @@
-drop database if exists ReData;
-create database if not exists ReData;
-Use ReData;
+drop database if exists redata;
+create database if not exists redata;
+Use redata;
 
 create table if not exists Empresa 
 (idEmpresa int primary key auto_increment,
@@ -58,9 +58,9 @@ fkProjeto int,
 fkEmpresa int,
     foreign key (fkProjeto) REFERENCES Projeto (idProjeto),
     foreign key (fkEmpresa) REFERENCES Projeto (fkEmpresa)
-);
+)auto_increment = 10000;
 
-create table if not exists DispositivosUsb
+create table if not exists DispositivosUSB
 (deviceId char(50) primary key,
 descricao varchar(45));
 
@@ -73,13 +73,13 @@ fkMaquina int,
 fkProjeto int,
 fkEmpresa int,
 primary key (idBlacklist, fkDeviceId, fkMaquina, fkProjeto, fkEmpresa),
-    foreign key (fkDeviceId) references DispositivosUsb (deviceId),
+    foreign key (fkDeviceId) references DispositivosUSB (deviceId),
 	foreign key (fkMaquina) references Maquina (idMaquina),
     foreign key (fkProjeto) references Projeto (idProjeto),
     foreign key (fkEmpresa) references Empresa (idEmpresa));
     
     
-create table if not exists InfoHardware
+create table if not exists infoHardware
 (codHardware int primary key auto_increment,
 nomeCpu varchar(150),
 memoriaTotalRam int,
@@ -97,7 +97,7 @@ numeroPacote int,
 usoDeCpu double,
 tempoCapturas datetime,
 fkCodHardware int,
-	constraint fkHardwareCpu foreign key (fkCodHardware) references InfoHardware (codHardware),
+	constraint fkHardwareCpu foreign key (fkCodHardware) references infoHardware (codHardware),
 fkMaquina int,
 	constraint fkMaquinaCpu foreign key (fkMaquina) references Maquina (idMaquina)
 );
@@ -108,7 +108,7 @@ memoriaDisponivel double,
 memoriaEmUso double,
 tempoCapturas datetime,
 fkCodHardware int,
-	constraint fkHardwareRam foreign key (fkCodHardware) references InfoHardware (codHardware),
+	constraint fkHardwareRam foreign key (fkCodHardware) references infoHardware (codHardware),
 fkMaquina int,
 	constraint fkMaquinaRam foreign key (fkMaquina) references Maquina (idMaquina)
 );
@@ -121,7 +121,7 @@ leituras int,
 bytesLidos double,
 tempoCapturas datetime,
 fkCodHardware int,
-	constraint fkHardwareDisco foreign key (fkCodHardware) references InfoHardware (codHardware),
+	constraint fkHardwareDisco foreign key (fkCodHardware) references infoHardware (codHardware),
 fkMaquina int,
 	constraint fkMaquinaDisco foreign key (fkMaquina) references Maquina (idMaquina)
 );
@@ -135,7 +135,7 @@ pacotesRecebidos int,
 nomeHost varchar(45),
 tempoCapturas datetime,
 fkCodHardware int,
-	constraint fkHardwareRede foreign key (fkCodHardware) references InfoHardware (codHardware),
+	constraint fkHardwareRede foreign key (fkCodHardware) references infoHardware (codHardware),
 fkMaquina int,
 	constraint fkMaquinaRede foreign key (fkMaquina) references Maquina (idMaquina)
 );
@@ -145,7 +145,7 @@ idVolume int primary key auto_increment,
 fkDisco int,
     constraint fkDiscoVolume foreign key (fkDisco) references Disco (idDisco),
 fkCodHardware int,
-    constraint fkCodHardwareVolume foreign key (fkCodHardware) references InfoHardware (codHardware),
+    constraint fkCodHardwareVolume foreign key (fkCodHardware) references infoHardware (codHardware),
 fkMaquina int,
     constraint fkMaquinaVolume foreign key (fkMaquina) references Maquina (idMaquina),
 pontoMontagem char(3),
@@ -156,16 +156,17 @@ quantidadeDeVolume int,
 tempoCapturas datetime
 );
 
--- select * from empresa;
--- select * from localizacaoEmpresa;
--- select * from contato;
--- select * from conta;
--- select * from projeto;
--- select * from maquina;
--- select * from infoHardware;
--- select * from Cpu;
--- select * from ram;
--- select * from rede;
--- select * from disco;
--- select * from dispositivosUSB;
+select * from Empresa;
+select * from localizacaoEmpresa;
+select * from Contato;
+select * from Conta;
+select * from Projeto;
+select * from Maquina;
+select * from infoHardware;
+select * from Cpu;
+select * from Ram;
+select * from Disco;
+select * from DispositivosUSB;
+
+select * from Rede;
 

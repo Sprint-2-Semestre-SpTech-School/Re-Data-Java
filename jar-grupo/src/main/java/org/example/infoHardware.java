@@ -41,9 +41,9 @@ public class infoHardware {
         nomeCpu = looca.getProcessador().getNome();
         memoriaTotalRam = looca.getMemoria().getTotal() / (1024 * 1024);
         nomeDisco = looca.getGrupoDeDiscos().getDiscos().get(0).getNome();
-        nomeRede = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(2).getNomeExibicao();
+//        nomeRede = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(2).getNomeExibicao();
         con.update("INSERT INTO infoHardware (nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina)" +
-                "values (?, ?, ?, ?, ?)", nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina);
+                "values (?, ?, ?, ?, ?)", nomeCpu, memoriaTotalRam, nomeDisco, null, fkMaquina);
     }
     public Integer consultarId(){
         List<Integer> codsHardware;
