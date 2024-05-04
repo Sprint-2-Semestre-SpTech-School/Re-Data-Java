@@ -11,13 +11,17 @@ if [ $? == 0 ]; #Aqui ele vai perguntar o valor de retorno do comando de cima (q
 
 	else
 		echo"Java não instalado";
-		echo "Gostaria de Instalar o Java? [s/n]";
+		echo "Gostaria de Instalar o Java? [sim/nao]";
 
 	read testeVar #o read serve para iniciar uma pergunta, como se fosse o scanner do JAVA, e o valor de retorno é armazenada da VAR (get)
+
 	if [ \"$testeVar\" == \"s\"]; #Aqui ele vai ver a resposta de cima, então pra apresentação, COLOQUEI (s) E NÃO (SIM) POR FAVOR!!
 
 	then
 		sudo apt install openjdk-17-jre -y #ele vai jogar caso ele caia no IF de cima
+
+	else 
+		exit
 
 	fi
 fi
@@ -36,9 +40,9 @@ if [ $? == 0 ];
 	then
         	sudo apt install -y mysql-server
         	sudo system start mysql.service
-        	sudo mysql
-        	# ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'urubu100';
-        	mysql -u root -p < "Script BD Sprint.sql"
+
+        	# mudar a senha do user por meio do comando: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'urubu100';
+
 	fi
 
 fi
