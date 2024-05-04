@@ -49,7 +49,7 @@ public class Empresa {
     }
 
     private void adicionarLocalizacaoEmpresa(){
-        con.update("INSERT INTO LocalizacaoEmpresa (CEP," +
+        con.update("INSERT INTO localizacaoEmpresa (CEP," +
                 "estado," +
                 "logradouro," +
                 "numero," +
