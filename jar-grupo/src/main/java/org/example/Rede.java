@@ -47,17 +47,28 @@ public class Rede {
     }
 
     public void capturarDadosRede(){
-//        RedeInterface redeInterface = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(2);
-//
-//        enderecoIPV4 = redeInterface.getEnderecoIpv4().get(0);
-//        enderecoMAC = redeInterface.getEnderecoMac();
-//        pacotesEnviados = redeInterface.getPacotesEnviados();
-//        pacotesRecebidos = redeInterface.getPacotesRecebidos();
-//        nomeHost = looca.getRede().getParametros().getHostName();
+        if (looca.getSistema().getSistemaOperacional().equalsIgnoreCase("windows")) {
+            RedeInterface redeInterface = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(2);
+            enderecoIPV4 = redeInterface.getEnderecoIpv4().get(0);
+            enderecoMAC = redeInterface.getEnderecoMac();
+            pacotesEnviados = redeInterface.getPacotesEnviados();
+            pacotesRecebidos = redeInterface.getPacotesRecebidos();
+            nomeHost = looca.getRede().getParametros().getHostName();
 
-        con.update("INSERT INTO Rede (enderecoIPV4, enderecoMAC, pacotesEnviados, pacotesRecebidos, " +
-                "nomeHost, tempoCapturas, fkCodHardware, fkMaquina) values (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)",
-                null, null, null, null, null, null, null);
+            con.update("INSERT INTO Rede (enderecoIPV4, enderecoMAC, pacotesEnviados, pacotesRecebidos, " +
+                            "nomeHost, tempoCapturas, fkCodHardware, fkMaquina) values (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)",
+                    enderecoIPV4,
+                    enderecoMAC,
+                    pacotesEnviados,
+                    pacotesRecebidos,
+                    nomeHost,
+                    fkCodHardware,
+                    fkMaquina);
+        } else {
+            con.update("INSERT INTO Rede (enderecoIPV4, enderecoMAC, pacotesEnviados, pacotesRecebidos, " +
+                            "nomeHost, tempoCapturas, fkCodHardware, fkMaquina) values (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)",
+                    null, null, null, null, null, null, null);
+        }
     }
 
     public Integer getIdRede() {
