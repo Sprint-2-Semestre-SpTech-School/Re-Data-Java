@@ -26,6 +26,7 @@ if [ $? == 0 ]; #Aqui ele vai perguntar o valor de retorno do comando de cima (q
 	fi
 fi
 
+
 mysql --version
 
 if [ $? == 0 ];
@@ -40,12 +41,9 @@ if [ $? == 0 ];
 	then
         	sudo apt install -y mysql-server
         	sudo system start mysql.service
-
-        	# mudar a senha do user por meio do comando: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'urubu100';
-
+        	sudo mysql
+        	# ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'urubu100';
+        	mysql -u root -p < "Script BD Sprint.sql"
 	fi
 
 fi
-
-
-
