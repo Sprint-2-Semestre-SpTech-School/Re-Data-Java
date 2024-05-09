@@ -22,8 +22,8 @@ public class Conexao {
                 jdbc:sqlserver://localhost:1433;database=mydb <- EXEMPLO PARA SQL SERVER
         */
         dataSource.setUrl("jdbc:mysql://localhost:3306/ReData");
-        dataSource.setUsername("root");
-        dataSource.setPassword("@Leo17130202");
+        dataSource.setUsername("Re;Data");
+        dataSource.setPassword("UrubuAbutre100");
 
         conexaoDoBanco = new JdbcTemplate(dataSource);
 
