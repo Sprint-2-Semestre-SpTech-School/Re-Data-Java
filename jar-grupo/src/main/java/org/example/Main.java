@@ -1,10 +1,12 @@
 package org.example;
 
+import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.dispositivos.DispositivosUsbGrupo;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Main {
     public static void main(String[] args) {
+        Looca looca = new Looca();
         Empresa empresaDemo = new Empresa("ReData.INC",
                 "53719031000163",
                 "03325764",
