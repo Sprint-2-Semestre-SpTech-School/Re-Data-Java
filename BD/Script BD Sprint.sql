@@ -61,7 +61,7 @@ fkEmpresa int,
 )auto_increment = 10000;
 
 create table if not exists DispositivosUSB
-(deviceId char(50) primary key,
+(deviceId varchar(255) primary key,
 descricao varchar(45));
 
 create table if not exists Blacklist
