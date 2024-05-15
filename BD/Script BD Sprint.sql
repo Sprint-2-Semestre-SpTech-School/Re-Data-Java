@@ -68,7 +68,7 @@ create table if not exists Blacklist
 (idBlacklist int,
 statusBloqueio tinyint,
 motivoBloqueio varchar(250),
-fkDeviceId char(50),
+fkDeviceId int,
 fkMaquina int,
 fkProjeto int,
 fkEmpresa int,
