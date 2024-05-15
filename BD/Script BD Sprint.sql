@@ -61,9 +61,9 @@ fkEmpresa int,
 )auto_increment = 10000;
 
 create table if not exists DispositivosUSB
-(deviceId varchar(255) primary key,
+(deviceId int primary key auto_increment,
 descricao varchar(45));
-
+	
 create table if not exists Blacklist
 (idBlacklist int,
 statusBloqueio tinyint,
@@ -89,7 +89,7 @@ fkMaquina int,
 	constraint fkMaquinaHardware foreign key (fkMaquina) references Maquina (idMaquina));
     
 create table if not exists `Cpu`
-(idCpu char(45) primary key,
+(idCpu int primary key auto_increment,
 frequencia double,
 numeroCpuFisica int,
 numeroCpuLogica int,
