@@ -1,4 +1,4 @@
-package codigoLogin;
+package org.example.codigoLogin;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 

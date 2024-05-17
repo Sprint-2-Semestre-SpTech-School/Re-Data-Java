@@ -1,4 +1,4 @@
-package codigoLogin;
+package org.example.codigoLogin;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

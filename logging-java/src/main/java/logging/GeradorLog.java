@@ -1,3 +1,5 @@
+package logging;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -5,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GeradorLog {
-    private static final String LOG_FILE = "logs.txt";
+    private static final String LOG_FILE = "src/main/java/logging/logs.txt";
 
     public static void log(String message){
         try {
@@ -14,10 +16,11 @@ public class GeradorLog {
 
             PrintWriter out = new PrintWriter(new FileWriter(LOG_FILE, true));
 
-            out.println(currentDateTime + " hello");
+            out.println(currentDateTime + " - " + message);
 
             out.close();
         } catch (IOException e){
+            System.out.println("Houve um erro ao registrar o log!");
             e.printStackTrace();
         }
     }

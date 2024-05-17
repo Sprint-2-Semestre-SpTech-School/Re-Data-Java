@@ -56,6 +56,7 @@ public class Main {
 
         Cpu cpuDemo = new Cpu(fkCodHardware, fkMaquina);
         cpuDemo.capturarDadosCpu();
+        logging.GeradorLog.log("Teste de Log de CPU");
         System.out.println(cpuDemo);
 
         Ram ramDemo = new Ram(fkCodHardware, fkMaquina);
