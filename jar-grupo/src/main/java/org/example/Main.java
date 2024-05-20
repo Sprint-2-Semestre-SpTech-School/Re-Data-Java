@@ -2,6 +2,7 @@ package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.dispositivos.DispositivosUsbGrupo;
+import org.example.logging.GeradorLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Main {
@@ -56,7 +57,6 @@ public class Main {
 
         Cpu cpuDemo = new Cpu(fkCodHardware, fkMaquina);
         cpuDemo.capturarDadosCpu();
-        logging.GeradorLog.log("Teste de Log de CPU");
         System.out.println(cpuDemo);
 
         Ram ramDemo = new Ram(fkCodHardware, fkMaquina);
