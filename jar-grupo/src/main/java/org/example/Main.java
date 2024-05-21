@@ -55,29 +55,6 @@ public class Main {
         infoHardwareDemo.capturarDadosInfoHardware();
         Integer fkCodHardware = infoHardwareDemo.consultarId();
 
-        Cpu cpuDemo = new Cpu(fkCodHardware, fkMaquina);
-        cpuDemo.capturarDadosCpu();
-        System.out.println(cpuDemo);
 
-        Ram ramDemo = new Ram(fkCodHardware, fkMaquina);
-        ramDemo.capturarDadosRam();
-        System.out.println(ramDemo);
-
-        Rede redeDemo = new Rede(fkCodHardware, fkMaquina);
-        redeDemo.capturarDadosRede();
-        System.out.println(redeDemo);
-
-        Disco discoDemo = new Disco(fkCodHardware, fkMaquina);
-        discoDemo.capturarDadosDisco();
-        Integer fkDisco = discoDemo.getIdDisco();
-        System.out.println(discoDemo);
-
-        Volume volumeDemo = new Volume(fkDisco, fkCodHardware, fkMaquina);
-        volumeDemo.capturarDadosVolume();
-        System.out.println(volumeDemo);
-
-        dispositivosUSB dispositivosUSBDemo = new dispositivosUSB();
-        dispositivosUSBDemo.listarUSB();
-        System.out.println(dispositivosUSBDemo);
     }
 }

@@ -1,6 +1,6 @@
 package org.example;
 
-public enum nomeHardware {
+public enum tipoHardware {
     CPU ("Cpu"),
     RAM ("Ram"),
     DISCO ("Disco"),
@@ -9,7 +9,7 @@ public enum nomeHardware {
 
     private final String nome;
 
-    nomeHardware(String nome) {
+    tipoHardware(String nome) {
         this.nome = nome;
     }
 

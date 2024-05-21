@@ -4,25 +4,35 @@ import com.github.britooo.looca.api.core.Looca;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public abstract class Hardware {
-    protected Looca looca = new Looca();
-    protected Integer idHardware;
-    protected String nome;
+    protected tipoHardware tipoHardware;
+    protected String nomeHardware;
     protected String unidadeCaptacao;
     protected Double valorTotal;
     protected Integer fkMaquina;
+    protected Looca looca = new Looca();
     protected Conexao conexao = new Conexao();
     protected JdbcTemplate con = conexao.getConexaoBanco();
 
-    public Hardware(Integer idHardware, String nome, String unidadeCaptacao, Double valorTotal, Integer fkMaquina) {
-        this.idHardware = idHardware;
-        this.nome = nome;
+    public Hardware(org.example.tipoHardware tipoHardware,
+                    String nomeHardware,
+                    String unidadeCaptacao,
+                    Double valorTotal,
+                    Integer fkMaquina,
+                    Looca looca,
+                    Conexao conexao,
+                    JdbcTemplate con) {
+        this.tipoHardware = tipoHardware;
+        this.nomeHardware = nomeHardware;
         this.unidadeCaptacao = unidadeCaptacao;
         this.valorTotal = valorTotal;
         this.fkMaquina = fkMaquina;
+        this.looca = looca;
+        this.conexao = conexao;
+        this.con = con;
     }
 
     public Hardware() {
     }
 
-    public abstract capturarDados(){}
+    public abstract void capturarDados();
 }

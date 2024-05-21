@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `localizacaoEmpresa` (
 
 CREATE TABLE IF NOT EXISTS `infoHardware` (
   `idHardware` INT NOT NULL,
+  `tipoHardware` VARCHAR(45) NULL,
   `nomeHardware` VARCHAR(150) NULL,
   `unidadeCaptacao` VARCHAR(45) NULL,
   `valorTotal` DECIMAL(10,2) NULL,
