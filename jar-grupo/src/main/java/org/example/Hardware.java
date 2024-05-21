@@ -23,4 +23,6 @@ public abstract class Hardware {
 
     public Hardware() {
     }
+
+    public abstract capturarDados(){}
 }
