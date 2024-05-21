@@ -9,7 +9,6 @@ public class Maquina {
     Looca looca = new Looca();
     private Integer idMaquina;
     private String usuario;
-    private String destino;
     private String sistemaOperacional;
     private Double temperatura;
     private Long tempoAtividade;
@@ -19,7 +18,6 @@ public class Maquina {
     private JdbcTemplate con = conexao.getConexaoBanco();
 
     public Maquina(String usuario,
-                   String destino,
                    String sistemaOperacional,
                    Double temperatura,
                    Long tempoAtividade,
@@ -28,7 +26,6 @@ public class Maquina {
         this.looca = looca;
         this.idMaquina = idMaquina;
         this.usuario = usuario;
-        this.destino = destino;
         this.sistemaOperacional = sistemaOperacional;
         this.temperatura = temperatura;
         this.tempoAtividade = tempoAtividade;
@@ -44,14 +41,13 @@ public class Maquina {
 
     public void capturarDadosMaquina(){
         usuario = System.getProperty("user.name");
-        destino = "Extract";
         sistemaOperacional = looca.getSistema().getSistemaOperacional();
         temperatura = looca.getTemperatura().getTemperatura();
         tempoAtividade = looca.getSistema().getTempoDeAtividade() / 3600; // Valor em horas
     }
     public void inserirDadosMaquina(){
-        con.update("INSERT INTO Maquina (usuario, destino, sistemaOperacional, temperatura, tempoAtividade, " +
-                "fkProjeto, fkEmpresa) values (?, ?, ?, ?, ?, ?, ?)", usuario, destino, sistemaOperacional,
+        con.update("INSERT INTO Maquina (usuario, sistemaOperacional, temperatura, tempoAtividade, " +
+                "fkProjeto, fkEmpresa) values (?, ?, ?, ?, ?, ?)", usuario, sistemaOperacional,
                 temperatura, tempoAtividade, fkProjeto, fkEmpresa);
     }
     public Integer consultarId(){
@@ -84,14 +80,6 @@ public class Maquina {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
     }
 
     public String getSistemaOperacional() {
@@ -139,14 +127,12 @@ public class Maquina {
         return """
             idMaquina: %d
             usuario: '%s'
-            destino: '%s'
             sistemaOperacional: '%s'
             temperatura: %.2f
             tempoAtividade: %d
             fkProjeto: %d
             fkEmpresa: %d""".formatted(idMaquina,
                 usuario,
-                destino,
                 sistemaOperacional,
                 temperatura,
                 tempoAtividade,

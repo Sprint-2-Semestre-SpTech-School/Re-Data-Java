@@ -14,8 +14,8 @@ public class Cpu {
    private String tempoCapturas;
    private Integer fkCodHardware;
    private Integer fkMaquina;
-   private Conexao conexao = new Conexao();
-   private JdbcTemplate con = conexao.getConexaoBanco();
+   private final Conexao conexao = new Conexao();
+   private final JdbcTemplate con = conexao.getConexaoBanco();
 
     public Cpu(String idCpu,
                Long frequencia,
