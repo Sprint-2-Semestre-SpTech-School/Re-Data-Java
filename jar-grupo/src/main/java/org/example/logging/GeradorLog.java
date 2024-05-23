@@ -9,7 +9,7 @@ import java.util.Date;
 public class GeradorLog {
     private static final String LOG_FILE = "src/main/java/org/example/logging/logs.txt";
 
-    public static void log(String message){
+    public static void log(String message, TagNiveisLog tag){
         try {
             SimpleDateFormat formatoData = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
             String currentDateTime = formatoData.format(new Date());
@@ -17,7 +17,8 @@ public class GeradorLog {
 
             PrintWriter out = new PrintWriter(new FileWriter(LOG_FILE, true));
 
-            out.println(currentDateTime + " - " + userName + " - " + message);
+            out.println(currentDateTime + " - " + tag.getDescricao() + " - " + userName + " - " + message);
+            System.out.println("Log gerado com sucesso na raiz do seu projeto! :)");
 
             out.close();
         } catch (IOException e){
