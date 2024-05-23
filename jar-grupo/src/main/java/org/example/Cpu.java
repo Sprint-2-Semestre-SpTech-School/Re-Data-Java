@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.swing.*;
 
-public class Cpu extends Hardware{
+public class Cpu extends Hardware {
     public Cpu(org.example.tipoHardware tipoHardware,
                String nomeHardware,
                String unidadeCaptacao,
@@ -22,18 +22,20 @@ public class Cpu extends Hardware{
 
     @Override
     public void capturarDados() {
+        tipoHardware = org.example.tipoHardware.CPU;
         nomeHardware = looca.getProcessador().getNome();
+        unidadeCaptacao = "%";
         valorTotal = Double.valueOf(looca.getProcessador().getFrequencia());
 
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
-                "VALUES (?, ?, ?, ? ,?)";
+                "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
 
         String queryIdHardware = "SELECT LAST_INSERT_ID()";
-        Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja int
+        Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
 
         String queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
                 "VALUES (?, CURRENT_TIMESTAMP, ?)";
-            con.update(queryRegistro, looca.getProcessador().getUso(), fkHardware);
-}
+        con.update(queryRegistro, looca.getProcessador().getUso(), fkHardware);
+    }
 }
