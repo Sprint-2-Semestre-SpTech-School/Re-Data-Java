@@ -4,6 +4,7 @@ import com.github.britooo.looca.api.core.Looca;
 import com.mysql.cj.log.Log;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+
 public class Ram extends Hardware {
     public Ram(org.example.tipoHardware tipoHardware,
                String nomeHardware,

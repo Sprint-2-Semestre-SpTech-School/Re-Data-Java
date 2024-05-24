@@ -13,7 +13,7 @@ public class Rede extends Hardware {
                 Looca looca,
                 Conexao conexao,
                 JdbcTemplate con) {
-        super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, con);
+        super(org.example.tipoHardware.REDE, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, con);
     }
 
     public Rede() {
@@ -21,8 +21,8 @@ public class Rede extends Hardware {
 
     @Override
     public void capturarDados() {
-        tipoHardware = org.example.tipoHardware.CPU;
-        nomeHardware = looca.getProcessador().getNome();
+        tipoHardware = org.example.tipoHardware.REDE;
+        nomeHardware = looca.getRede().getParametros().getHostName();
         unidadeCaptacao = "%";
         valorTotal = Double.valueOf(looca.getProcessador().getFrequencia());
 

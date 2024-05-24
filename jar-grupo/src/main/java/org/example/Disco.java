@@ -51,6 +51,5 @@ public class Disco extends Hardware{
         queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
                 "VALUES (?, CURRENT_TIMESTAMP, ?)";
         con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getEscritas(), fkHardware);
-
     }
 }

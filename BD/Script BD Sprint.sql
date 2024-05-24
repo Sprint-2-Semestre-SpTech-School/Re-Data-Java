@@ -1,4 +1,4 @@
-drop database redata;
+drop database if exists redata;
 CREATE DATABASE IF NOT EXISTS redata;
 USE redata;
 
@@ -8,7 +8,46 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `CNPJ` CHAR(14) NOT NULL UNIQUE,
   PRIMARY KEY (`idEmpresa`)
   );
+  
+CREATE TABLE IF NOT EXISTS `conta` (
+  `idConta` INT NOT NULL,
+  `login` VARCHAR(45) NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
+  `siglaConta` CHAR(3) NOT NULL,
+  `dataCriacao` DATETIME NOT NULL,
+  `fkEmpresa` INT NOT NULL,
+  PRIMARY KEY (`idConta`, `fkEmpresa`),
+  CONSTRAINT `fk_Conta_Empresa1`
+    FOREIGN KEY (`fkEmpresa`)
+    REFERENCES `empresa` (`idEmpresa`)
+  );
 
+  CREATE TABLE IF NOT EXISTS `localizacaoEmpresa` (
+  `idLocalizacaoEmpresa` INT NOT NULL,
+  `CEP` INT(8) NOT NULL UNIQUE,
+  `estado` VARCHAR(45) NULL,
+  `logradouro` VARCHAR(150) NULL,
+  `numero` VARCHAR(4) NULL,
+  `bairro` VARCHAR(50) NULL,
+  `complemento` VARCHAR(20) NULL,
+  `fkEmpresa` INT NOT NULL,
+  PRIMARY KEY (`idLocalizacaoEmpresa`, `fkEmpresa`),
+  CONSTRAINT `fk_LocalizaçãoEmpresa_Empresa1`
+    FOREIGN KEY (`fkEmpresa`)
+    REFERENCES `empresa` (`idEmpresa`)
+  );
+  
+  CREATE TABLE IF NOT EXISTS `contato` (
+  `idContato` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `telefone` INT(11) NOT NULL UNIQUE,
+  `fkEmpresa` INT NOT NULL,
+  PRIMARY KEY (`idContato`),
+  CONSTRAINT `fk_Contato_Empresa1`
+    FOREIGN KEY (`fkEmpresa`)
+    REFERENCES `empresa` (`idEmpresa`)
+    );
 
 CREATE TABLE IF NOT EXISTS `projeto` (
   `idProjeto` INT NOT NULL,
@@ -24,7 +63,6 @@ CREATE TABLE IF NOT EXISTS `projeto` (
     REFERENCES `empresa` (`idEmpresa`)
     );
 
-
 CREATE TABLE IF NOT EXISTS `maquina` (
   `idMaquina` INT NOT NULL,
   `usuario` VARCHAR(45) NOT NULL,
@@ -39,57 +77,12 @@ CREATE TABLE IF NOT EXISTS `maquina` (
     FOREIGN KEY (`fkProjeto` , `fkEmpresa`)
     REFERENCES `projeto` (`idProjeto` , `fkEmpresa`)
     );
-
-
-CREATE TABLE IF NOT EXISTS `contato` (
-  `idContato` INT NOT NULL,
-  `nome` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `telefone` INT(11) NOT NULL UNIQUE,
-  `fkEmpresa` INT NOT NULL,
-  PRIMARY KEY (`idContato`),
-  CONSTRAINT `fk_Contato_Empresa1`
-    FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `empresa` (`idEmpresa`)
-    );
-
-
-CREATE TABLE IF NOT EXISTS `localizacaoEmpresa` (
-  `idLocalizacaoEmpresa` INT NOT NULL,
-  `CEP` INT(8) NOT NULL UNIQUE,
-  `estado` VARCHAR(45) NULL,
-  `logradouro` VARCHAR(150) NULL,
-  `numero` VARCHAR(4) NULL,
-  `bairro` VARCHAR(50) NULL,
-  `complemento` VARCHAR(20) NULL,
-  `fkEmpresa` INT NOT NULL,
-  PRIMARY KEY (`idLocalizacaoEmpresa`, `fkEmpresa`),
-  CONSTRAINT `fk_LocalizaçãoEmpresa_Empresa1`
-    FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `empresa` (`idEmpresa`)
-  );
-
-
-CREATE TABLE IF NOT EXISTS `infoHardware` (
-  `idHardware` INT NOT NULL,
-  `tipoHardware` VARCHAR(45) NULL,
-  `nomeHardware` VARCHAR(150) NULL,
-  `unidadeCaptacao` VARCHAR(45) NULL,
-  `valorTotal` DECIMAL(10,2) NULL,
-  `fkMaquina` INT NOT NULL,
-  PRIMARY KEY (`idHardware`),
-	CONSTRAINT `fk_InfoHardware_Maquina1`
-    FOREIGN KEY (`fkMaquina`)
-    REFERENCES `maquina` (`idMaquina`)
-    );
-
-
-CREATE TABLE IF NOT EXISTS `dispositivoUsb` (
+    
+    CREATE TABLE IF NOT EXISTS `dispositivoUsb` (
 	idDispositivo INT PRIMARY KEY AUTO_INCREMENT,
 	idDevice CHAR(50) NOT NULL UNIQUE,
   `descricao` VARCHAR(45) NULL
 	);
-
 
 CREATE TABLE IF NOT EXISTS `blackList` (
   `idBlackList` INT NOT NULL,
@@ -106,20 +99,18 @@ CREATE TABLE IF NOT EXISTS `blackList` (
     REFERENCES `maquina` (`idMaquina`)
     );
 
-
-CREATE TABLE IF NOT EXISTS `conta` (
-  `idConta` INT NOT NULL,
-  `login` VARCHAR(45) NOT NULL,
-  `senha` VARCHAR(45) NOT NULL,
-  `siglaConta` CHAR(3) NOT NULL,
-  `dataCriacao` DATETIME NOT NULL,
-  `fkEmpresa` INT NOT NULL,
-  PRIMARY KEY (`idConta`, `fkEmpresa`),
-  CONSTRAINT `fk_Conta_Empresa1`
-    FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `empresa` (`idEmpresa`)
-  );
-
+CREATE TABLE IF NOT EXISTS `infoHardware` (
+  `idHardware` INT NOT NULL,
+  `tipoHardware` VARCHAR(45) NULL,
+  `nomeHardware` VARCHAR(150) NULL,
+  `unidadeCaptacao` VARCHAR(45) NULL,
+  `valorTotal` DECIMAL(10,2) NULL,
+  `fkMaquina` INT NOT NULL,
+  PRIMARY KEY (`idHardware`),
+	CONSTRAINT `fk_InfoHardware_Maquina1`
+    FOREIGN KEY (`fkMaquina`)
+    REFERENCES `maquina` (`idMaquina`)
+    );
 
 CREATE TABLE IF NOT EXISTS `registro` (
   `idRegistro` INT NOT NULL,
@@ -132,6 +123,7 @@ CREATE TABLE IF NOT EXISTS `registro` (
     REFERENCES `infoHardware` (`idHardware`)
     );
     
+    select last_insert_id();	
     select * from registro;
     select * from maquina;
     select * from infoHardware;
