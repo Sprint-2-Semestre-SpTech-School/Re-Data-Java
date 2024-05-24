@@ -7,12 +7,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GeradorLog {
-    private static final String LOG_FILE = "src/main/java/org/example/logging/logs.txt";
+    private final static SimpleDateFormat formatDateTime = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+    private final static SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+    private final static String currentDateTime = formatDateTime.format(new Date());
+    private final static String currentDate = formatDate.format(new Date());
+    static String logFileName = "log" + currentDate + ".txt";
+    private static final String LOG_FILE = "src/main/java/org/example/logging/" + logFileName;
 
     public static void log(String message, TagNiveisLog tag){
         try {
-            SimpleDateFormat formatoData = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-            String currentDateTime = formatoData.format(new Date());
             String userName = System.getProperty("user.name");
 
             PrintWriter out = new PrintWriter(new FileWriter(LOG_FILE, true));
