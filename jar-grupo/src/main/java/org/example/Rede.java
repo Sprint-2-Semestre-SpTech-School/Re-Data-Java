@@ -22,14 +22,18 @@ public class Rede extends Hardware {
     @Override
     public void capturarDados() {
         tipoHardware = org.example.tipoHardware.REDE;
-        nomeHardware = looca.getRede().getParametros().getHostName();
+        nomeHardware = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getNomeExibicao();
         unidadeCaptacao = "%";
-        valorTotal = Double.valueOf(looca.getProcessador().getFrequencia());
+        valorTotal = null;
+        fkMaquina = 500;
 
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+    }
 
+    @Override
+    public void inserirDados() {
         String queryIdHardware = "SELECT LAST_INSERT_ID()";
         Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
 

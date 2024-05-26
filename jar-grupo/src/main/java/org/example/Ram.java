@@ -22,14 +22,19 @@ public class Ram extends Hardware {
 
     @Override
     public void capturarDados() {
+        tipoHardware = org.example.tipoHardware.RAM;
         nomeHardware = null;
         unidadeCaptacao = "Gb";
-        valorTotal = Double.valueOf(looca.getMemoria().getTotal());
+        valorTotal = (double) Math.round(looca.getMemoria().getTotal() / 1e9);
+        fkMaquina = 500;
 
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+    }
 
+    @Override
+    public void inserirDados() {
         String queryIdHardware = "SELECT LAST_INSERT_ID()";
         Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class);
 

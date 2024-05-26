@@ -38,23 +38,29 @@ public class Main {
         System.out.println("\n");
 
         Projeto projetoDemo = new Projeto("Venda de Coca-Cola",
-                5,
                 "Aumentar vendas de Coca-Cola na Zona Norte",
                 "Julia", fkEmpresa);
         projetoDemo.inserirDadosProjeto();
         Integer fkProjeto = projetoDemo.consultarId();
         System.out.println(projetoDemo);
 
-        Maquina maquinaDemo = new Maquina(fkEmpresa, fkProjeto);
+        Maquina maquinaDemo = new Maquina(fkProjeto, fkEmpresa);
         maquinaDemo.capturarDadosMaquina();
         maquinaDemo.inserirDadosMaquina();
         Integer fkMaquina = maquinaDemo.consultarId();
+        System.out.println("fkMaquina: " + fkMaquina);
         System.out.println(maquinaDemo);
 
-        infoHardware infoHardwareDemo = new infoHardware(fkMaquina);
-        infoHardwareDemo.capturarDadosInfoHardware();
-        Integer fkCodHardware = infoHardwareDemo.consultarId();
+        Cpu cpu = new Cpu();
+        cpu.capturarDados();
 
+        Ram ram = new Ram();
+        ram.capturarDados();
 
+        Disco disco = new Disco();
+        disco.capturarDados();
+
+        Rede rede = new Rede();
+        rede.capturarDados();
     }
 }

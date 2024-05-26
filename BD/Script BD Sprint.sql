@@ -3,14 +3,14 @@ CREATE DATABASE IF NOT EXISTS redata;
 USE redata;
 
 CREATE TABLE IF NOT EXISTS `empresa` (
-  `idEmpresa` INT NOT NULL,
+  `idEmpresa` INT NOT NULL auto_increment,
   `nomeEmpresa` VARCHAR(45) NOT NULL,
   `CNPJ` CHAR(14) NOT NULL UNIQUE,
   PRIMARY KEY (`idEmpresa`)
   );
   
 CREATE TABLE IF NOT EXISTS `conta` (
-  `idConta` INT NOT NULL,
+  `idConta` INT NOT NULL auto_increment,
   `login` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
   `siglaConta` CHAR(3) NOT NULL,
@@ -20,10 +20,10 @@ CREATE TABLE IF NOT EXISTS `conta` (
   CONSTRAINT `fk_Conta_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
     REFERENCES `empresa` (`idEmpresa`)
-  );
+  ) auto_increment = 100;
 
   CREATE TABLE IF NOT EXISTS `localizacaoEmpresa` (
-  `idLocalizacaoEmpresa` INT NOT NULL,
+  `idLocalizacaoEmpresa` INT NOT NULL auto_increment,
   `CEP` INT(8) NOT NULL UNIQUE,
   `estado` VARCHAR(45) NULL,
   `logradouro` VARCHAR(150) NULL,
@@ -35,22 +35,22 @@ CREATE TABLE IF NOT EXISTS `conta` (
   CONSTRAINT `fk_LocalizaçãoEmpresa_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
     REFERENCES `empresa` (`idEmpresa`)
-  );
+  ) auto_increment = 200;
   
   CREATE TABLE IF NOT EXISTS `contato` (
-  `idContato` INT NOT NULL,
+  `idContato` INT NOT NULL auto_increment,
   `nome` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `telefone` INT(11) NOT NULL UNIQUE,
+  `telefone` VARCHAR(11) NOT NULL UNIQUE,
   `fkEmpresa` INT NOT NULL,
   PRIMARY KEY (`idContato`),
   CONSTRAINT `fk_Contato_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
     REFERENCES `empresa` (`idEmpresa`)
-    );
+    ) auto_increment = 300;
 
 CREATE TABLE IF NOT EXISTS `projeto` (
-  `idProjeto` INT NOT NULL,
+  `idProjeto` INT NOT NULL auto_increment,
   `nomeDemanda` VARCHAR(45) NULL,
   `dataInicio` DATETIME NULL,
   `dataTermino` DATETIME NULL,
@@ -61,31 +61,31 @@ CREATE TABLE IF NOT EXISTS `projeto` (
   CONSTRAINT `fk_Projeto_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
     REFERENCES `empresa` (`idEmpresa`)
-    );
+    ) auto_increment = 400;
 
 CREATE TABLE IF NOT EXISTS `maquina` (
-  `idMaquina` INT NOT NULL,
+  `idMaquina` INT NOT NULL auto_increment,
   `usuario` VARCHAR(45) NOT NULL,
   `sistemaOperacional` VARCHAR(45) NOT NULL,
   `temperatura` DOUBLE NULL,
   `tempoAtividade` INT NULL,
   `fkProjeto` INT NOT NULL,
   `fkEmpresa` INT NOT NULL,
-  PRIMARY KEY (`idMaquina`, `fkProjeto`, `fkEmpresa`),
+  PRIMARY KEY (`idMaquina`),
   INDEX `fk_Maquina_Projeto1_idx` (`fkProjeto` ASC, `fkEmpresa` ASC) VISIBLE,
   CONSTRAINT `fk_Maquina_Projeto1`
     FOREIGN KEY (`fkProjeto` , `fkEmpresa`)
     REFERENCES `projeto` (`idProjeto` , `fkEmpresa`)
-    );
+    ) auto_increment = 500;
     
     CREATE TABLE IF NOT EXISTS `dispositivoUsb` (
 	idDispositivo INT PRIMARY KEY AUTO_INCREMENT,
 	idDevice CHAR(50) NOT NULL UNIQUE,
   `descricao` VARCHAR(45) NULL
-	);
+	)auto_increment = 600;
 
 CREATE TABLE IF NOT EXISTS `blackList` (
-  `idBlackList` INT NOT NULL,
+  `idBlackList` INT NOT NULL auto_increment,
   `statusBloqueio` TINYINT NOT NULL,
   `motivoBloqueio` VARCHAR(250) NULL,
   `fkDeviceId` INT NOT NULL,
@@ -97,10 +97,10 @@ CREATE TABLE IF NOT EXISTS `blackList` (
   CONSTRAINT `fk_Blacklist_Maquina1`
     FOREIGN KEY (`fkMaquina`)
     REFERENCES `maquina` (`idMaquina`)
-    );
+    ) auto_increment = 700;
 
 CREATE TABLE IF NOT EXISTS `infoHardware` (
-  `idHardware` INT NOT NULL,
+  `idHardware` INT NOT NULL auto_increment,
   `tipoHardware` VARCHAR(45) NULL,
   `nomeHardware` VARCHAR(150) NULL,
   `unidadeCaptacao` VARCHAR(45) NULL,
@@ -110,10 +110,10 @@ CREATE TABLE IF NOT EXISTS `infoHardware` (
 	CONSTRAINT `fk_InfoHardware_Maquina1`
     FOREIGN KEY (`fkMaquina`)
     REFERENCES `maquina` (`idMaquina`)
-    );
+    )auto_increment = 1000;
 
 CREATE TABLE IF NOT EXISTS `registro` (
-  `idRegistro` INT NOT NULL,
+  `idRegistro` INT NOT NULL auto_increment,
   `valorRegistro` DECIMAL(10,2) NULL,
   `tempoCapturas` DATETIME NULL,
   `fkHardware` INT NOT NULL,
@@ -121,11 +121,16 @@ CREATE TABLE IF NOT EXISTS `registro` (
   CONSTRAINT `fk_registro_InfoHardware1`
     FOREIGN KEY (`fkHardware`)
     REFERENCES `infoHardware` (`idHardware`)
-    );
+    )auto_increment = 10000;
     
     select last_insert_id();	
     select * from registro;
     select * from maquina;
     select * from infoHardware;
+    select * from empresa;
     select * from registro;
     select * from projeto;
+    select * from contato;
+    select * from conta;
+    select idEmpresa from Empresa;
+    SELECT * FROM projeto WHERE idProjeto = ? AND fkEmpresa = ?;

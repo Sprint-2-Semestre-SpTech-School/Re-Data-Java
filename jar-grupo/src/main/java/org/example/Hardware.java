@@ -35,4 +35,5 @@ public abstract class Hardware {
     }
 
     public abstract void capturarDados();
+    public abstract void inserirDados();
 }

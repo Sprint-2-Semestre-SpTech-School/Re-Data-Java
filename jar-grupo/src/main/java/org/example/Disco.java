@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Disco extends Hardware{
+public class Disco extends Hardware {
     public Disco(org.example.tipoHardware tipoHardware,
                  String nomeHardware,
                  String unidadeCaptacao,
@@ -27,12 +27,16 @@ public class Disco extends Hardware{
         tipoHardware = org.example.tipoHardware.DISCO;
         nomeHardware = looca.getGrupoDeDiscos().getDiscos().get(0).getModelo();
         unidadeCaptacao = "Gb";
-        valorTotal = Double.valueOf(looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho());
+        valorTotal = (double) Math.round(looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho() / 1e9);
+        fkMaquina = 500;
 
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+    }
 
+    @Override
+    public void inserirDados() {
         String queryIdHardware = "SELECT LAST_INSERT_ID()";
         Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class);
 
@@ -51,5 +55,13 @@ public class Disco extends Hardware{
         queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
                 "VALUES (?, CURRENT_TIMESTAMP, ?)";
         con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getEscritas(), fkHardware);
+
+        queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
+                "VALUES (?, CURRENT_TIMESTAMP, ?)";
+        con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getTempoDeTransferencia(), fkHardware);
+
+        queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
+                "VALUES (?, CURRENT_TIMESTAMP, ?)";
+        con.update(queryRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel(), fkHardware);
     }
 }

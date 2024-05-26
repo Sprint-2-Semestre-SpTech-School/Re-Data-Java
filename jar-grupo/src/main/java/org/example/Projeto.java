@@ -8,7 +8,6 @@ import java.util.List;
 public class Projeto {
     private Integer idProjeto;
     private String nomeDemanda;
-    private Integer quantidadeDeMaquinas;
     private String dataInicio;
     private String dataTermino;
     private String descricao;
@@ -18,12 +17,10 @@ public class Projeto {
     private JdbcTemplate con = conexao.getConexaoBanco();
 
     public Projeto(String nomeDemanda,
-                   Integer quantidadeDeMaquinas,
                    String descricao,
                    String responsavel,
                    Integer fkEmpresa) {
         this.nomeDemanda = nomeDemanda;
-        this.quantidadeDeMaquinas = quantidadeDeMaquinas;
         this.descricao = descricao;
         this.responsavel = responsavel;
         this.fkEmpresa = fkEmpresa;
@@ -32,11 +29,10 @@ public class Projeto {
     }
 
     public void inserirDadosProjeto(){
-        con.update("INSERT INTO Projeto (nomeDemanda, quantidadeDeMaquinas, dataInicio, dataTermino," +
+        con.update("INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino," +
                 "descricao, responsavel, fkEmpresa)" +
-                        "values (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?)",
+                        "values (?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?)",
                 nomeDemanda,
-                quantidadeDeMaquinas,
                 descricao,
                 responsavel,
                 fkEmpresa);
@@ -44,7 +40,7 @@ public class Projeto {
     public Integer consultarId(){
         List<Integer> idsProjeto;
 
-        String comandoSql = ("SELECT idEmpresa from Empresa");
+        String comandoSql = ("SELECT idProjeto from Projeto");
         idsProjeto = con.queryForList(comandoSql, Integer.class);
         return idsProjeto.get(idsProjeto.size() - 1);
     }
@@ -61,14 +57,6 @@ public class Projeto {
 
     public void setNomeDemanda(String nomeDemanda) {
         this.nomeDemanda = nomeDemanda;
-    }
-
-    public Integer getQuantidadeDeMaquinas() {
-        return quantidadeDeMaquinas;
-    }
-
-    public void setQuantidadeDeMaquinas(Integer quantidadeDeMaquinas) {
-        this.quantidadeDeMaquinas = quantidadeDeMaquinas;
     }
 
     public String getDataInicio() {
@@ -108,7 +96,6 @@ public class Projeto {
         return """
                 idProjeto: %d
                 Nome da demanda: %s
-                Quantidade de máquinas: %d
                 Data de início: %s
                 Data de término: %s
                 descricão: %s
@@ -116,7 +103,6 @@ public class Projeto {
                 fkEmpresa: %d""".formatted(
                         idProjeto,
                 nomeDemanda,
-                quantidadeDeMaquinas,
                 dataInicio,
                 dataTermino,
                 descricao,
