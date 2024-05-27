@@ -53,14 +53,18 @@ public class Main {
 
         Cpu cpu = new Cpu();
         cpu.capturarDados();
+        cpu.inserirDados();
 
         Ram ram = new Ram();
         ram.capturarDados();
+        ram.inserirDados();
 
         Disco disco = new Disco();
         disco.capturarDados();
+        disco.inserirDados();
 
         Rede rede = new Rede();
         rede.capturarDados();
+        rede.inserirDados();
     }
 }
