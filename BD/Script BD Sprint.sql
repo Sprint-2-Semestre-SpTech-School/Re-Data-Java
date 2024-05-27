@@ -2,14 +2,14 @@ drop database if exists redata;
 CREATE DATABASE IF NOT EXISTS redata;
 USE redata;
 
-CREATE TABLE IF NOT EXISTS `empresa` (
+CREATE TABLE IF NOT EXISTS `Empresa` (
   `idEmpresa` INT NOT NULL auto_increment,
   `nomeEmpresa` VARCHAR(45) NOT NULL,
   `CNPJ` CHAR(14) NOT NULL UNIQUE,
   PRIMARY KEY (`idEmpresa`)
   );
   
-CREATE TABLE IF NOT EXISTS `conta` (
+CREATE TABLE IF NOT EXISTS `Conta` (
   `idConta` INT NOT NULL auto_increment,
   `login` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `conta` (
   PRIMARY KEY (`idConta`, `fkEmpresa`),
   CONSTRAINT `fk_Conta_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `empresa` (`idEmpresa`)
+    REFERENCES `Empresa` (`idEmpresa`)
   ) auto_increment = 100;
 
   CREATE TABLE IF NOT EXISTS `localizacaoEmpresa` (
@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS `conta` (
   PRIMARY KEY (`idLocalizacaoEmpresa`, `fkEmpresa`),
   CONSTRAINT `fk_LocalizaçãoEmpresa_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `empresa` (`idEmpresa`)
+    REFERENCES `Empresa` (`idEmpresa`)
   ) auto_increment = 200;
   
-  CREATE TABLE IF NOT EXISTS `contato` (
+  CREATE TABLE IF NOT EXISTS `Contato` (
   `idContato` INT NOT NULL auto_increment,
   `nome` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
@@ -46,10 +46,10 @@ CREATE TABLE IF NOT EXISTS `conta` (
   PRIMARY KEY (`idContato`),
   CONSTRAINT `fk_Contato_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `empresa` (`idEmpresa`)
+    REFERENCES `Empresa` (`idEmpresa`)
     ) auto_increment = 300;
 
-CREATE TABLE IF NOT EXISTS `projeto` (
+CREATE TABLE IF NOT EXISTS `Projeto` (
   `idProjeto` INT NOT NULL auto_increment,
   `nomeDemanda` VARCHAR(45) NULL,
   `dataInicio` DATETIME NULL,
@@ -60,10 +60,10 @@ CREATE TABLE IF NOT EXISTS `projeto` (
   PRIMARY KEY (`idProjeto`, `fkEmpresa`),
   CONSTRAINT `fk_Projeto_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `empresa` (`idEmpresa`)
+    REFERENCES `Empresa` (`idEmpresa`)
     ) auto_increment = 400;
 
-CREATE TABLE IF NOT EXISTS `maquina` (
+CREATE TABLE IF NOT EXISTS `Maquina` (
   `idMaquina` INT NOT NULL auto_increment,
   `usuario` VARCHAR(45) NOT NULL,
   `sistemaOperacional` VARCHAR(45) NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `maquina` (
   INDEX `fk_Maquina_Projeto1_idx` (`fkProjeto` ASC, `fkEmpresa` ASC) VISIBLE,
   CONSTRAINT `fk_Maquina_Projeto1`
     FOREIGN KEY (`fkProjeto` , `fkEmpresa`)
-    REFERENCES `projeto` (`idProjeto` , `fkEmpresa`)
+    REFERENCES `Projeto` (`idProjeto` , `fkEmpresa`)
     ) auto_increment = 500;
     
     CREATE TABLE IF NOT EXISTS `dispositivoUsb` (
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `blackList` (
     REFERENCES `dispositivoUsb` (`idDispositivo`),
   CONSTRAINT `fk_Blacklist_Maquina1`
     FOREIGN KEY (`fkMaquina`)
-    REFERENCES `maquina` (`idMaquina`)
+    REFERENCES `Maquina` (`idMaquina`)
     ) auto_increment = 700;
 
 CREATE TABLE IF NOT EXISTS `infoHardware` (
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `infoHardware` (
   PRIMARY KEY (`idHardware`),
 	CONSTRAINT `fk_InfoHardware_Maquina1`
     FOREIGN KEY (`fkMaquina`)
-    REFERENCES `maquina` (`idMaquina`)
+    REFERENCES `Maquina` (`idMaquina`)
     )auto_increment = 1000;
 
 CREATE TABLE IF NOT EXISTS `registro` (
