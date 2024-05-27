@@ -37,7 +37,6 @@ public class Cpu extends Hardware {
 
     @Override
     public void inserirDados() {
-
         String queryIdHardware = "SELECT LAST_INSERT_ID()";
         Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
 
@@ -50,7 +49,7 @@ public class Cpu extends Hardware {
                 con.update(queryRegistro, looca.getProcessador().getUso(), fkHardware);
             }
         };
-        timer.schedule(tarefa, 1000, 2000);
+        timer.schedule(tarefa, 3000, 4000);
     }
 }
 

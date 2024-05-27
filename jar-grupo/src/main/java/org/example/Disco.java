@@ -5,6 +5,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Disco extends Hardware {
     public Disco(org.example.tipoHardware tipoHardware,
@@ -40,28 +42,35 @@ public class Disco extends Hardware {
         String queryIdHardware = "SELECT LAST_INSERT_ID()";
         Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class);
 
-        String queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
-                "VALUES (?, CURRENT_TIMESTAMP, ?)";
-        con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura(), fkHardware);
+        Timer timer = new Timer();
+        TimerTask tarefa = new TimerTask() {
+            @Override
+            public void run() {
+                String queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
+                        "VALUES (?, CURRENT_TIMESTAMP, ?)";
+                con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura(), fkHardware);
 
-        queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
-                "VALUES (?, CURRENT_TIMESTAMP, ?)";
-        con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas(), fkHardware);
+                queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
+                        "VALUES (?, CURRENT_TIMESTAMP, ?)";
+                con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas(), fkHardware);
 
-        queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
-                "VALUES (?, CURRENT_TIMESTAMP, ?)";
-        con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getLeituras(), fkHardware);
+                queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
+                        "VALUES (?, CURRENT_TIMESTAMP, ?)";
+                con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getLeituras(), fkHardware);
 
-        queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
-                "VALUES (?, CURRENT_TIMESTAMP, ?)";
-        con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getEscritas(), fkHardware);
+                queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
+                        "VALUES (?, CURRENT_TIMESTAMP, ?)";
+                con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getEscritas(), fkHardware);
 
-        queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
-                "VALUES (?, CURRENT_TIMESTAMP, ?)";
-        con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getTempoDeTransferencia(), fkHardware);
+                queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
+                        "VALUES (?, CURRENT_TIMESTAMP, ?)";
+                con.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getTempoDeTransferencia(), fkHardware);
 
-        queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
-                "VALUES (?, CURRENT_TIMESTAMP, ?)";
-        con.update(queryRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel(), fkHardware);
+                queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
+                        "VALUES (?, CURRENT_TIMESTAMP, ?)";
+                con.update(queryRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel(), fkHardware);
+            }
+        };
+        timer.schedule(tarefa, 3000, 4000);
     }
 }

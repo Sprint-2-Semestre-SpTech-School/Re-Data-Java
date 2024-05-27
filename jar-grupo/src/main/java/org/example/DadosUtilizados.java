@@ -52,7 +52,7 @@ public class DadosUtilizados {
         // ======================================== Dados DE MEMÓRIA =====================================//
         System.out.println("DADOS DE MEMÓRIA");
         System.out.println("Memória disponível: " + memoria01.getDisponivel() / (1024 * 1024) + "Mb");
-        System.out.println("Memória em uso: " + memoria01.getEmUso() / (1024 * 1024) + "Mb");
+        System.out.println("Memória em uso: " + memoria01.getEmUso() / 1e9);
         System.out.println("Memória total: " + memoria01.getTotal() / (1024 * 1024) + "Mb");
         // O que iremos fazer com isso? Colocar eles em % em relação um ao outro se baseando na aula de KPI.
         // Ex: (Dado meio vaidade) Sua empresa ainda tem x de pool de ram para aplicar em geral.
@@ -91,6 +91,7 @@ public class DadosUtilizados {
         System.out.println("Nome exibicação " + redeInterface.getNomeExibicao()); // Nome da rede que eles estão conectados
         System.out.println("Pacotes enviados " + redeInterface.getPacotesEnviados()); // Mais dados de pacote
         System.out.println("Pacotes recebidos " + redeInterface.getPacotesRecebidos()); // Mais dados de pacote
+        System.out.println("Interfaces: " + looca.getRede().getGrupoDeInterfaces());
         // System.out.println("Rede DNS " + redeParam01.getServidoresDns());
         System.out.println("Nome do host " + redeParam01.getHostName());
         // System.out.println(redeInterface);

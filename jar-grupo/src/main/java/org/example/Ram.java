@@ -4,6 +4,9 @@ import com.github.britooo.looca.api.core.Looca;
 import com.mysql.cj.log.Log;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class Ram extends Hardware {
     public Ram(org.example.tipoHardware tipoHardware,
@@ -38,8 +41,15 @@ public class Ram extends Hardware {
         String queryIdHardware = "SELECT LAST_INSERT_ID()";
         Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class);
 
-        String queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
-                "VALUES (?, CURRENT_TIMESTAMP, ?)";
-        con.update(queryRegistro, looca.getMemoria().getEmUso(), fkHardware);
+        Timer timer = new Timer();
+        TimerTask tarefa = new TimerTask() {
+            @Override
+            public void run() {
+                String queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
+                        "VALUES (?, CURRENT_TIMESTAMP, ?)";
+                con.update(queryRegistro, (looca.getMemoria().getEmUso() / 1e9), fkHardware);
+            }
+        };
+        timer.schedule(tarefa, 3000, 4000);
     }
 }
