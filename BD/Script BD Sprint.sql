@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `infoHardware` (
 
 CREATE TABLE IF NOT EXISTS `registro` (
   `idRegistro` INT NOT NULL auto_increment,
-  `valorRegistro` DECIMAL(10,2) NULL,
+  `valorRegistro` DECIMAL(20,2) NULL,
   `tempoCapturas` DATETIME NULL,
   `fkHardware` INT NOT NULL,
   PRIMARY KEY (`idRegistro`, `fkHardware`),
