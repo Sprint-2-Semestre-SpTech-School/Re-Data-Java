@@ -17,8 +17,10 @@ public class Rede extends Hardware {
                 Integer fkMaquina,
                 Looca looca,
                 Conexao conexao,
-                JdbcTemplate con) {
-        super(org.example.tipoHardware.REDE, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, con);
+                ConexaoServer conexao02,
+                JdbcTemplate con,
+                JdbcTemplate con02) {
+        super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
     public Rede() {
@@ -35,6 +37,7 @@ public class Rede extends Hardware {
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+        con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
     }
 
     @Override
@@ -60,10 +63,12 @@ public class Rede extends Hardware {
                 String queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
                         "VALUES (?, CURRENT_TIMESTAMP, ?)";
                 con.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
+                con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
 
                 queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
                         "VALUES (?, CURRENT_TIMESTAMP, ?)";
                 con.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesRecebidos(), fkHardware);
+                con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesRecebidos(), fkHardware);
             }
         };
         timer.schedule(tarefa, 1000, 2000);

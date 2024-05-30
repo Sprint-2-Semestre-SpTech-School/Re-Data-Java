@@ -15,7 +15,10 @@ public class Volume {
     private Integer fkCodHardware;
     private Integer fkMaquina;
     private Conexao conexao = new Conexao();
+//    private Conexao02 conexao02 = new Conexao02();
     private JdbcTemplate con = conexao.getConexaoBanco();
+//    private JdbcTemplate con02 = conexao02.getConexaoBanco();
+
     public Volume(String pontoMontagem,
                   String sistemaArmazenamento,
                   Long volumeDisponivel,

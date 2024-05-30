@@ -11,7 +11,9 @@ public abstract class Hardware {
     protected Integer fkMaquina;
     protected Looca looca = new Looca();
     protected Conexao conexao = new Conexao();
+    protected ConexaoServer conexao02 = new ConexaoServer();
     protected JdbcTemplate con = conexao.getConexaoBanco();
+    protected JdbcTemplate con02 = conexao02.getConexaoBanco();
 
     public Hardware(org.example.tipoHardware tipoHardware,
                     String nomeHardware,
@@ -20,7 +22,9 @@ public abstract class Hardware {
                     Integer fkMaquina,
                     Looca looca,
                     Conexao conexao,
-                    JdbcTemplate con) {
+                    ConexaoServer conexao02,
+                    JdbcTemplate con,
+                    JdbcTemplate con02) {
         this.tipoHardware = tipoHardware;
         this.nomeHardware = nomeHardware;
         this.unidadeCaptacao = unidadeCaptacao;
@@ -28,7 +32,9 @@ public abstract class Hardware {
         this.fkMaquina = fkMaquina;
         this.looca = looca;
         this.conexao = conexao;
+        this.conexao02 = conexao02;
         this.con = con;
+        this.con02 = con02;
     }
 
     public Hardware() {

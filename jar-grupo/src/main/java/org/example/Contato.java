@@ -9,7 +9,9 @@ public class Contato {
     private String telefone;
     private Integer fkEmpresa;
     private Conexao conexao = new Conexao();
+    private ConexaoServer conexao02 = new ConexaoServer();
     private JdbcTemplate con = conexao.getConexaoBanco();
+    private JdbcTemplate con02 = conexao02.getConexaoBanco();
 
     public Contato(String nome, String email, String telefone, Integer fkEmpresa) {
         this.nome = nome;
@@ -22,8 +24,15 @@ public class Contato {
     }
 
     public void inserirDadosContato(){
-        con.update("INSERT INTO Contato (nome, email, telefone, fkEmpresa) values (?, ?, ?, ?)",
-                nome, email, telefone, fkEmpresa);
+        try{
+            con.update("INSERT INTO Contato (nome, email, telefone, fkEmpresa) values (?, ?, ?, ?)",
+                    nome, email, telefone, fkEmpresa);
+            con02.update("INSERT INTO Contato (nome, email, telefone, fkEmpresa) values (?, ?, ?, ?)",
+                    nome, email, telefone, fkEmpresa);
+
+        }catch (RuntimeException e){
+            System.out.println("erro de conexão 'Contato' mysql" + e.getMessage());
+        }
     }
     public Integer getIdContato() {
         return idContato;

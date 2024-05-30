@@ -9,6 +9,7 @@ import java.util.TimerTask;
 
 
 public class Ram extends Hardware {
+
     public Ram(org.example.tipoHardware tipoHardware,
                String nomeHardware,
                String unidadeCaptacao,
@@ -16,8 +17,10 @@ public class Ram extends Hardware {
                Integer fkMaquina,
                Looca looca,
                Conexao conexao,
-               JdbcTemplate con) {
-        super(org.example.tipoHardware.RAM, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, con);
+               ConexaoServer conexao02,
+               JdbcTemplate con,
+               JdbcTemplate con02) {
+        super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
     public Ram() {
@@ -31,9 +34,11 @@ public class Ram extends Hardware {
         valorTotal = (double) Math.round(looca.getMemoria().getTotal() / 1e9);
         fkMaquina = 500;
 
+
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+        con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
     }
 
     @Override
@@ -48,6 +53,7 @@ public class Ram extends Hardware {
                 String queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
                         "VALUES (?, CURRENT_TIMESTAMP, ?)";
                 con.update(queryRegistro, (looca.getMemoria().getEmUso() / 1e9), fkHardware);
+                con02.update(queryRegistro, (looca.getMemoria().getEmUso() / 1e9), fkHardware);
             }
         };
         timer.schedule(tarefa, 3000, 4000);

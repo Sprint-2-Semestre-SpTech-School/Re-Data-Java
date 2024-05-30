@@ -15,20 +15,32 @@ public class infoHardware {
     private String nomeRede;
     private Integer fkMaquina;
     private Conexao conexao = new Conexao();
+    private ConexaoServer conexao02 = new ConexaoServer();
     private JdbcTemplate con = conexao.getConexaoBanco();
+    private JdbcTemplate con02 = conexao.getConexaoBanco();
 
-    public infoHardware(Integer codHardware,
+    public infoHardware(Looca looca,
+                        Integer codHardware,
                         String nomeCpu,
                         Long memoriaTotalRam,
                         String nomeDisco,
                         String nomeRede,
-                        Integer fkMaquina) {
+                        Integer fkMaquina,
+                        Conexao conexao,
+                        ConexaoServer conexao02,
+                        JdbcTemplate con,
+                        JdbcTemplate con02) {
+        this.looca = looca;
         this.codHardware = codHardware;
         this.nomeCpu = nomeCpu;
         this.memoriaTotalRam = memoriaTotalRam;
         this.nomeDisco = nomeDisco;
         this.nomeRede = nomeRede;
         this.fkMaquina = fkMaquina;
+        this.conexao = conexao;
+        this.conexao02 = conexao02;
+        this.con = con;
+        this.con02 = con02;
     }
 
     public infoHardware(Integer fkMaquina) {
@@ -37,13 +49,21 @@ public class infoHardware {
 
     public infoHardware() {
     }
-    public void capturarDadosInfoHardware(){
+    public void capturarDadosInfoHardware() {
         nomeCpu = looca.getProcessador().getNome();
         memoriaTotalRam = looca.getMemoria().getTotal() / (1024 * 1024);
         nomeDisco = looca.getGrupoDeDiscos().getDiscos().get(0).getNome();
 //        nomeRede = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(2).getNomeExibicao();
-        con.update("INSERT INTO infoHardware (nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina)" +
-                "values (?, ?, ?, ?, ?)", nomeCpu, memoriaTotalRam, nomeDisco, null, fkMaquina);
+
+        try {
+            con.update("INSERT INTO infoHardware (nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina)" +
+                    "values (?, ?, ?, ?, ?)", nomeCpu, memoriaTotalRam, nomeDisco, null, fkMaquina);
+            con02.update("INSERT INTO infoHardware (nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina)" +
+                    "values (?, ?, ?, ?, ?)", nomeCpu, memoriaTotalRam, nomeDisco, null, fkMaquina);
+        }catch (RuntimeException e){
+            System.out.println("Erro de conexão 'infoHardware' sql" + e.getMessage());
+        }
+
     }
     public Integer consultarId(){
         List<Integer> codsHardware;

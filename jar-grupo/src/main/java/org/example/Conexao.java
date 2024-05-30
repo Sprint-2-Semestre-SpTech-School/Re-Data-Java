@@ -21,7 +21,7 @@ public class Conexao {
         } else {
             // A conexão do MySql deve ser essa
             dataSource.setUsername("root");
-            dataSource.setPassword("urubu100");
+            dataSource.setPassword("Root#23#Sp");
             conexaoBanco = new JdbcTemplate(dataSource);
         }
     }

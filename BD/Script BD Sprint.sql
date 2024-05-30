@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `infoHardware` (
 
 CREATE TABLE IF NOT EXISTS `registro` (
   `idRegistro` INT NOT NULL auto_increment,
-  `valorRegistro` DECIMAL(10,2) NULL,
+  `valorRegistro` DECIMAL(20,2) NULL,
   `tempoCapturas` DATETIME NULL,
   `fkHardware` INT NOT NULL,
   PRIMARY KEY (`idRegistro`, `fkHardware`),
@@ -123,14 +123,14 @@ CREATE TABLE IF NOT EXISTS `registro` (
     REFERENCES `infoHardware` (`idHardware`)
     )auto_increment = 10000;
     
-    select last_insert_id();	
-    select * from registro;
-    select * from maquina;
+--     select last_insert_id();	
+--     select * from registro;
+	select * from Maquina;
     select * from infoHardware;
-    select * from empresa;
+	select * from Empresa;
     select * from registro;
-    select * from projeto;
-    select * from contato;
-    select * from conta;
-    select idEmpresa from Empresa;
-    SELECT * FROM projeto WHERE idProjeto = ? AND fkEmpresa = ?;
+--     select * from projeto;
+--     select * from contato;
+--     select * from conta;
+--     select idEmpresa from Empresa;
+--     SELECT * FROM projeto WHERE idProjeto = ? AND fkEmpresa = ?;

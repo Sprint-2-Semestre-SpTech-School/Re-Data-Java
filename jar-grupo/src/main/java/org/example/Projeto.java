@@ -14,7 +14,8 @@ public class Projeto {
     private String responsavel;
     private Integer fkEmpresa;
     private Conexao conexao = new Conexao();
-    private JdbcTemplate con = conexao.getConexaoBanco();
+    private ConexaoServer conexao02 = new ConexaoServer();
+
 
     public Projeto(String nomeDemanda,
                    String descricao,
@@ -25,28 +26,42 @@ public class Projeto {
         this.responsavel = responsavel;
         this.fkEmpresa = fkEmpresa;
     }
+
     public Projeto() {
     }
 
     public void inserirDadosProjeto(){
-        con.update("INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino," +
-                "descricao, responsavel, fkEmpresa)" +
-                        "values (?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?)",
-                nomeDemanda,
-                descricao,
-                responsavel,
-                fkEmpresa);
+        try {
+            JdbcTemplate con = conexao.getConexaoBanco();
+            JdbcTemplate con02 = conexao02.getConexaoBanco();
+
+            con.update("INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino," +
+                            "descricao, responsavel, fkEmpresa)" +
+                            "values (?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?)",
+                    nomeDemanda, descricao, responsavel, fkEmpresa);
+
+            con02.update("INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino," +
+                            "descricao, responsavel, fkEmpresa)" +
+                            "values (?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?)",
+                    nomeDemanda, descricao, responsavel, fkEmpresa);
+        }catch (RuntimeException e){
+            System.out.println("Erro de conexão 'Maquina' sql" + e.getMessage());
+        }
     }
+
     public Integer consultarId(){
+        JdbcTemplate con = conexao.getConexaoBanco();
         List<Integer> idsProjeto;
 
         String comandoSql = ("SELECT idProjeto from Projeto");
         idsProjeto = con.queryForList(comandoSql, Integer.class);
         return idsProjeto.get(idsProjeto.size() - 1);
     }
+
     public Integer getIdProjeto() {
         return idProjeto;
     }
+
     public Integer getFkEmpresa() {
         return fkEmpresa;
     }

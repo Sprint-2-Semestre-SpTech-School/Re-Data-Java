@@ -15,8 +15,10 @@ public class Cpu extends Hardware {
                Integer fkMaquina,
                Looca looca,
                Conexao conexao,
-               JdbcTemplate con) {
-        super(org.example.tipoHardware.CPU, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, con);
+               ConexaoServer conexao02,
+               JdbcTemplate con,
+               JdbcTemplate con02) {
+        super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
     public Cpu() {
@@ -30,26 +32,37 @@ public class Cpu extends Hardware {
         valorTotal = (double) looca.getProcessador().getFrequencia() / 1e9;
         fkMaquina = 500;
 
+    try {
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+        con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+    }catch (RuntimeException e){
+        System.out.println("Erro de conexão 'Cpu' sql" + e.getMessage());
+    }
     }
 
     @Override
     public void inserirDados() {
-        String queryIdHardware = "SELECT LAST_INSERT_ID()";
-        Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
+        try {
+            String queryIdHardware = "SELECT LAST_INSERT_ID()";
+            Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
+            Integer fkHardware02 = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
 
-        Timer timer = new Timer();
-        TimerTask tarefa = new TimerTask() {
-            @Override
-            public void run() {
-                String queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
-                        "VALUES (?, CURRENT_TIMESTAMP, ?)";
-                con.update(queryRegistro, looca.getProcessador().getUso(), fkHardware);
-            }
-        };
-        timer.schedule(tarefa, 3000, 4000);
+            Timer timer = new Timer();
+            TimerTask tarefa = new TimerTask() {
+                @Override
+                public void run() {
+                    String queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
+                            "VALUES (?, CURRENT_TIMESTAMP, ?)";
+                    con.update(queryRegistro, looca.getProcessador().getUso(), fkHardware);
+                    con02.update(queryRegistro, looca.getProcessador().getUso(), fkHardware02);
+                }
+            };
+            timer.schedule(tarefa, 3000, 4000);
+        }catch (RuntimeException e){
+            System.out.println("Erro de conexão 'Cpu' mysql" + e.getMessage());
+        }
     }
 }
 

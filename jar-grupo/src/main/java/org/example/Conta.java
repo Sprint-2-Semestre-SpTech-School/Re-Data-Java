@@ -10,20 +10,37 @@ public class Conta {
     private String dataCriacao;
     private Integer fkEmpresa;
     private Conexao conexao = new Conexao();
+    private ConexaoServer conexao02 = new ConexaoServer();
     private JdbcTemplate con = conexao.getConexaoBanco();
+    private JdbcTemplate con02 = conexao02.getConexaoBanco();
+
+
     public Conta(String login, String senha, String siglaConta, Integer fkEmpresa) {
         this.login = login;
         this.senha = senha;
         this.siglaConta = siglaConta;
         this.fkEmpresa = fkEmpresa;
     }
+
     public Conta() {
     }
+
     public void inserirDadosConta(){
-        con.update("INSERT INTO Conta (login, senha, siglaConta, dataCriacao, fkEmpresa)" +
-                        "values (?, ?, ?, CURRENT_TIMESTAMP, ?)",
-                login, senha, siglaConta, fkEmpresa);
+        try {
+            con.update("INSERT INTO Conta (login, senha, siglaConta, dataCriacao, fkEmpresa)" +
+                            "values (?, ?, ?, CURRENT_TIMESTAMP, ?)",
+                    login, senha, siglaConta, fkEmpresa);
+
+            con02.update("INSERT INTO Conta (login, senha, siglaConta, dataCriacao, fkEmpresa)" +
+                            "values (?, ?, ?, CURRENT_TIMESTAMP, ?)",
+                    login, senha, siglaConta, fkEmpresa);
+
+        }catch (RuntimeException e){
+            System.out.println("erro de conexão 'Conta' sql " + e.getMessage());
+        }
     }
+
+
     public Integer getIdConta() {
         return idConta;
     }
