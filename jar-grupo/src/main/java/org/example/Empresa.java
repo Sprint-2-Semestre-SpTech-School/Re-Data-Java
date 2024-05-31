@@ -16,7 +16,7 @@ public class Empresa {
     private Conexao conexao = new Conexao();
     private ConexaoServer conexao02 = new ConexaoServer();
     private JdbcTemplate con = conexao.getConexaoBanco();
-    private JdbcTemplate con02 = conexao02.getConexaoBanco();
+    // private JdbcTemplate con02 = conexao02.getConexaoBanco();
 
     public Empresa(String nomeEmpresa,
                    String CNPJ,
@@ -41,9 +41,8 @@ public class Empresa {
 
     private void adicionarEmpresa(){
         try{
-
         con.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
-        con02.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
+        // con02.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
         consultarId();
 
         }catch (RuntimeException e){
@@ -74,19 +73,19 @@ public class Empresa {
                     complemento,
                     idsEmpresa.get(idsEmpresa.size() - 1));
 
-            con02.update("INSERT INTO localizacaoEmpresa (CEP," +
-                            "estado," +
-                            "logradouro," +
-                            "numero," +
-                            "bairro," +
-                            "complemento," +
-                            "fkEmpresa) values (?, ?, ?, ?, ?, ?, ?)", CEP,
-                    estado,
-                    logradouro,
-                    numero,
-                    bairro,
-                    complemento,
-                    idsEmpresa.get(idsEmpresa.size() - 1));
+//            con02.update("INSERT INTO localizacaoEmpresa (CEP," +
+//                            "estado," +
+//                            "logradouro," +
+//                            "numero," +
+//                            "bairro," +
+//                            "complemento," +
+//                            "fkEmpresa) values (?, ?, ?, ?, ?, ?, ?)", CEP,
+//                    estado,
+//                    logradouro,
+//                    numero,
+//                    bairro,
+//                    complemento,
+//                    idsEmpresa.get(idsEmpresa.size() - 1));
 
     }catch (RuntimeException e){
         System.out.println("Erro de conexão 'Empresa' sql " + e.getMessage());
