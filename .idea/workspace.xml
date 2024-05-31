@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46434b28-432a-4725-ab1b-71c57707faec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/jar-grupo/src/main/java/org/example/logging/GeradorLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jar-grupo/src/main/java/org/example/logging/TesteLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jar-grupo/src/main/java/org/example/logging/logs.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logging-java/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logging-java/src/main/java/logging/logs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logging-java/logs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logging-java/src/main/java/GeradorLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/logging-java/src/main/java/logging/GeradorLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logging-java/src/main/java/TesteLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/logging-java/src/main/java/logging/TesteLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login-projeto-sprint1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/login-projeto-sprint1/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login-projeto-sprint1/src/main/java/codigoLogin/Conexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/jar-grupo/src/main/java/org/example/codigoLogin/Conexao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login-projeto-sprint1/src/main/java/codigoLogin/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/jar-grupo/src/main/java/org/example/codigoLogin/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login-projeto-sprint1/src/main/java/codigoLogin/Metodos.java" beforeDir="false" afterPath="$PROJECT_DIR$/jar-grupo/src/main/java/org/example/codigoLogin/Metodos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login-projeto-sprint1/src/main/java/org/example/Main.java" beforeDir="false" />
-    </list>
+    <list default="true" id="46434b28-432a-4725-ab1b-71c57707faec" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

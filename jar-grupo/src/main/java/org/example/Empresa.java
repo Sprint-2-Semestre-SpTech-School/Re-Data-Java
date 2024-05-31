@@ -19,7 +19,7 @@ public class Empresa {
     private Conexao conexao = new Conexao();
     private ConexaoServer conexao02 = new ConexaoServer();
     private JdbcTemplate con = conexao.getConexaoBanco();
-    private JdbcTemplate con02 = conexao02.getConexaoBanco();
+    // private JdbcTemplate con02 = conexao02.getConexaoBanco();
 
     public Empresa(String nomeEmpresa,
                    String CNPJ,
@@ -44,14 +44,17 @@ public class Empresa {
 
     private void adicionarEmpresa(){
         try{
-
         con.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
+<<<<<<< HEAD
 
             GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data Local/MySQL DB:", Modulo.ENVIO_DADOS);
             GeradorLog.log(TagNiveisLog.INFO, "SQL column new value - Nome: %s for ID.Empresa.redata: %d".formatted(nomeEmpresa, consultarId()), Modulo.ENVIO_DADOS);
             GeradorLog.log(TagNiveisLog.INFO, "SQL column new value - CNPJ: %s for ID.Empresa.redata: %s".formatted(CNPJ, consultarId()), Modulo.ENVIO_DADOS);
 
         con02.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
+=======
+        // con02.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
+>>>>>>> a76cc749a0eda1e3b0f61342362acabb8e03e1fc
         consultarId();
 
             GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data SQL Server DB:", Modulo.ENVIO_DADOS);
@@ -87,19 +90,19 @@ public class Empresa {
                     complemento,
                     idsEmpresa.get(idsEmpresa.size() - 1));
 
-            con02.update("INSERT INTO localizacaoEmpresa (CEP," +
-                            "estado," +
-                            "logradouro," +
-                            "numero," +
-                            "bairro," +
-                            "complemento," +
-                            "fkEmpresa) values (?, ?, ?, ?, ?, ?, ?)", CEP,
-                    estado,
-                    logradouro,
-                    numero,
-                    bairro,
-                    complemento,
-                    idsEmpresa.get(idsEmpresa.size() - 1));
+//            con02.update("INSERT INTO localizacaoEmpresa (CEP," +
+//                            "estado," +
+//                            "logradouro," +
+//                            "numero," +
+//                            "bairro," +
+//                            "complemento," +
+//                            "fkEmpresa) values (?, ?, ?, ?, ?, ?, ?)", CEP,
+//                    estado,
+//                    logradouro,
+//                    numero,
+//                    bairro,
+//                    complemento,
+//                    idsEmpresa.get(idsEmpresa.size() - 1));
 
     }catch (RuntimeException e){
         System.out.println("Erro de conexão 'Empresa' sql " + e.getMessage());

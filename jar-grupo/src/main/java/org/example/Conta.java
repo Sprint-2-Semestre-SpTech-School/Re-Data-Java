@@ -12,7 +12,7 @@ public class Conta {
     private Conexao conexao = new Conexao();
     private ConexaoServer conexao02 = new ConexaoServer();
     private JdbcTemplate con = conexao.getConexaoBanco();
-    private JdbcTemplate con02 = conexao02.getConexaoBanco();
+    // private JdbcTemplate con02 = conexao02.getConexaoBanco();
 
 
     public Conta(String login, String senha, String siglaConta, Integer fkEmpresa) {
@@ -31,9 +31,9 @@ public class Conta {
                             "values (?, ?, ?, CURRENT_TIMESTAMP, ?)",
                     login, senha, siglaConta, fkEmpresa);
 
-            con02.update("INSERT INTO Conta (login, senha, siglaConta, dataCriacao, fkEmpresa)" +
-                            "values (?, ?, ?, CURRENT_TIMESTAMP, ?)",
-                    login, senha, siglaConta, fkEmpresa);
+//            con02.update("INSERT INTO Conta (login, senha, siglaConta, dataCriacao, fkEmpresa)" +
+//                            "values (?, ?, ?, CURRENT_TIMESTAMP, ?)",
+//                    login, senha, siglaConta, fkEmpresa);
 
         }catch (RuntimeException e){
             System.out.println("erro de conexão 'Conta' sql " + e.getMessage());

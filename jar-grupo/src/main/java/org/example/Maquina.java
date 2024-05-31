@@ -63,9 +63,9 @@ public class Maquina {
             con.update("INSERT INTO Maquina (usuario, sistemaOperacional, temperatura, tempoAtividade, " +
                             "fkProjeto, fkEmpresa) values (?, ?, ?, ?, ?, ?)", usuario, sistemaOperacional,
                     temperatura, tempoAtividade, fkProjeto, fkEmpresa);
-            con02.update("INSERT INTO Maquina (usuario, sistemaOperacional, temperatura, tempoAtividade, " +
-                            "fkProjeto, fkEmpresa) values (?, ?, ?, ?, ?, ?)", usuario, sistemaOperacional,
-                    temperatura, tempoAtividade, fkProjeto, fkEmpresa);
+//            con02.update("INSERT INTO Maquina (usuario, sistemaOperacional, temperatura, tempoAtividade, " +
+//                            "fkProjeto, fkEmpresa) values (?, ?, ?, ?, ?, ?)", usuario, sistemaOperacional,
+//                    temperatura, tempoAtividade, fkProjeto, fkEmpresa);
         } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'Maquina' sql" + e.getMessage());
         }

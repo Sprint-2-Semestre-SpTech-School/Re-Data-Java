@@ -38,7 +38,7 @@ public class Ram extends Hardware {
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-        con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+        // con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
     }
 
     @Override
@@ -46,14 +46,16 @@ public class Ram extends Hardware {
         String queryIdHardware = "SELECT LAST_INSERT_ID()";
         Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class);
 
+        String nomeRegistro = "usoRam";
+
         Timer timer = new Timer();
         TimerTask tarefa = new TimerTask() {
             @Override
             public void run() {
-                String queryRegistro = "INSERT INTO registro (valorRegistro, tempoCapturas, fkHardware) " +
-                        "VALUES (?, CURRENT_TIMESTAMP, ?)";
-                con.update(queryRegistro, (looca.getMemoria().getEmUso() / 1e9), fkHardware);
-                con02.update(queryRegistro, (looca.getMemoria().getEmUso() / 1e9), fkHardware);
+                String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                        "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
+                con.update(queryRegistro, nomeRegistro, looca.getMemoria().getEmUso() / 1e9, fkHardware);
+                // con02.update(queryRegistro, (looca.getMemoria().getEmUso() / 1e9), fkHardware);
             }
         };
         timer.schedule(tarefa, 3000, 4000);

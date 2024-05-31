@@ -40,10 +40,10 @@ public class Projeto {
                             "values (?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?)",
                     nomeDemanda, descricao, responsavel, fkEmpresa);
 
-            con02.update("INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino," +
-                            "descricao, responsavel, fkEmpresa)" +
-                            "values (?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?)",
-                    nomeDemanda, descricao, responsavel, fkEmpresa);
+//            con02.update("INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino," +
+//                            "descricao, responsavel, fkEmpresa)" +
+//                            "values (?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?)",
+//                    nomeDemanda, descricao, responsavel, fkEmpresa);
         }catch (RuntimeException e){
             System.out.println("Erro de conexão 'Maquina' sql" + e.getMessage());
         }
