@@ -9,6 +9,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Disco extends Hardware {
+    private Double bytesLeituraAnterior = 0.0;
+    private Double bytesEscritaAnterior = 0.0;
+    private Double leituraAnterior = 0.0;
+    private Double escritaAnterior = 0.0;
+    private Boolean primeiraCaptura = true; // A primeira captura não pegará o momento
     public Disco(org.example.tipoHardware tipoHardware,
                  String nomeHardware,
                  String unidadeCaptacao,
@@ -44,34 +49,36 @@ public class Disco extends Hardware {
             System.out.println("Erro de conexão 'Disco' sql" + e.getMessage());
         }
     }
-
     @Override
     public void inserirDados() {
         String queryIdHardware = "SELECT LAST_INSERT_ID()";
         Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class);
 
-        Double final bytesLeituraAnterior = 0.0;
-        Double final bytesEscritaAnterior = 0.0;
-
         try {
             Timer timer = new Timer();
             TimerTask tarefa = new TimerTask() {
+
                 @Override
                 public void run() {
-
                     Double bytesLeituraMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getLeituras();
                     Double bytesEscritaMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas();
 
-                    Double bytesTransferenciaLeitura = bytesLeituraMomento - bytesLeituraAnterior;
-                    Double bytesTransferenciaEscrita = bytesEscritaMomento - bytesEscritaAnterior;
+                    if (primeiraCaptura) {
+                        bytesLeituraAnterior = bytesLeituraMomento;
+                        bytesEscritaAnterior = bytesEscritaMomento;
+                        leituraAnterior = bytesLeituraMomento;
+                        escritaAnterior = bytesEscritaAnterior;
+                        primeiraCaptura = false;
+                        return;
+                    }
+
+                    double bytesTransferenciaLeitura = bytesLeituraMomento - bytesLeituraAnterior;
+                    double bytesTransferenciaEscrita = bytesEscritaMomento - bytesEscritaAnterior;
 
                     bytesLeituraAnterior = bytesLeituraMomento;
                     bytesEscritaAnterior = bytesEscritaMomento;
 
                     // QUANTIDADE
-
-                    Double leituraAnterior = 0.0;
-                    Double escritaAnterior = 0.0;
 
                     Double leituraMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getLeituras();
                     Double escritaMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas();
@@ -86,7 +93,7 @@ public class Disco extends Hardware {
 
                     String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
-                    con.update(queryRegistro, nomeRegistro, bytesTransferenciaLeitura / 1e9, fkHardware);
+                    con.update(queryRegistro, nomeRegistro, bytesTransferenciaLeitura / 1e6, fkHardware);
                     // con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura(), fkHardware);
                     System.out.println(bytesTransferenciaLeitura / 1e9);
 
@@ -94,7 +101,7 @@ public class Disco extends Hardware {
 
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
-                    con.update(queryRegistro, nomeRegistro, bytesTransferenciaEscrita / 1e9, fkHardware);
+                    con.update(queryRegistro, nomeRegistro, bytesTransferenciaEscrita / 1e6, fkHardware);
                     // con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas(), fkHardware);
 
                     nomeRegistro = "leituras";
@@ -122,11 +129,11 @@ public class Disco extends Hardware {
 
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
-                    con.update(queryRegistro, nomeRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel(), fkHardware);
+                    con.update(queryRegistro, nomeRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1e9, fkHardware);
                     // con02.update(queryRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel(), fkHardware);
                 }
             };
-            timer.schedule(tarefa, 3000, 4000);
+            timer.schedule(tarefa, 3000, 30000);
         } catch (RuntimeException e){
             System.out.println("Erro de conexão 'Disco' sql" + e.getMessage());
         }
