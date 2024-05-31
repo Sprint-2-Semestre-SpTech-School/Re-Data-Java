@@ -21,7 +21,7 @@ public class Conexao {
                 jdbc:mysql://localhost:3306/mydb <- EXEMPLO PARA MYSQL
                 jdbc:sqlserver://localhost:1433;database=mydb <- EXEMPLO PARA SQL SERVER
         */
-        dataSource.setUrl("jdbc:mysql://localhost:3306/ReData");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/redata");
         dataSource.setUsername("Re;Data");
         dataSource.setPassword("UrubuAbutre100");
 

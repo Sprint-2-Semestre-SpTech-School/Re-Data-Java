@@ -1,5 +1,8 @@
 package org.example.codigoLogin;
 
+import org.example.logging.GeradorLog;
+import org.example.logging.Modulo;
+import org.example.logging.TagNiveisLog;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -42,6 +45,7 @@ public class Metodos {
     }
 
     public void validacaoLogin() {
+        GeradorLog.log(TagNiveisLog.INFO, "Iniciando o processo de autenticação da aplicação...", Modulo.GERAL);
 
         Conexao conexaoLogin = new Conexao();
         JdbcTemplate conLogin = conexaoLogin.getConexaoDoBanco();
@@ -94,11 +98,13 @@ public class Metodos {
             Metodos senhaDaVez = loginDoBanco.get(i);
             if (senhaDaVez.getSenha().equals(senhaInserida) && indiceLogin.equals(i)) {
                 System.out.println("Senha verificada com sucesso");
+                GeradorLog.log(TagNiveisLog.INFO, "Login bem-sucedido para o usuário %s.".formatted(usuarioInserido), Modulo.AUTENTICACAO);
                 break;
             } else {
                 if (i.equals(loginDoBanco.size() - 1)) {
 
                     System.out.println("Senha incorreta, tente novamente");
+                    GeradorLog.log(TagNiveisLog.ERROR, "Senha incorreta. Falha ao realizar login para o usuário %s.".formatted(usuarioInserido), Modulo.AUTENTICACAO);
                     System.out.println("Insira aqui sua senha:");
                     senhaInserida = inputLine.nextLine();
 

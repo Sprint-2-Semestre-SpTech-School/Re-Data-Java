@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.logging.GeradorLog;
+import org.example.logging.Modulo;
+import org.example.logging.TagNiveisLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
@@ -43,11 +46,21 @@ public class Empresa {
         try{
 
         con.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
+
+            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data Local/MySQL DB:", Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new value - Nome: %s for ID.Empresa.redata: %d".formatted(nomeEmpresa, consultarId()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new value - CNPJ: %s for ID.Empresa.redata: %s".formatted(CNPJ, consultarId()), Modulo.ENVIO_DADOS);
+
         con02.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
         consultarId();
 
+            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data SQL Server DB:", Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new value - Nome: %s for ID.Empresa.redata: %d".formatted(nomeEmpresa, consultarId()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new value - CNPJ: %s for ID.Empresa.redata: %s".formatted(CNPJ, consultarId()), Modulo.ENVIO_DADOS);
+
         }catch (RuntimeException e){
             System.out.println("Erro de conexão 'Empresa' sql " + e.getMessage());
+            GeradorLog.log(TagNiveisLog.ERROR, "Erro de conexão SQL.", Modulo.ALERTA);
         }
 
     }
@@ -90,6 +103,7 @@ public class Empresa {
 
     }catch (RuntimeException e){
         System.out.println("Erro de conexão 'Empresa' sql " + e.getMessage());
+        GeradorLog.log(TagNiveisLog.ERROR, "Erro de conexão SQL: localizacao.redata", Modulo.ALERTA);
         }
     }
     public void inserirDadosEmpresa(){

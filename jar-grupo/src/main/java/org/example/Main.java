@@ -1,13 +1,21 @@
 package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.dispositivos.DispositivosUsbGrupo;
 import org.example.logging.GeradorLog;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.example.logging.Modulo;
+import org.example.logging.TagNiveisLog;
+
+import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) {
         Looca looca = new Looca();
+        Locale defaultLocale = Locale.getDefault();
+        GeradorLog.log(TagNiveisLog.INFO, "Language: " + defaultLocale.getDisplayLanguage(), Modulo.GERAL);
+        GeradorLog.log(TagNiveisLog.INFO, "OS name: " + looca.getSistema().getSistemaOperacional(), Modulo.GERAL);
+        GeradorLog.log(TagNiveisLog.INFO, "Arch: " + looca.getSistema().getArquitetura() + "x bits", Modulo.GERAL);
+        GeradorLog.log(TagNiveisLog.INFO, "Iniciando a aplicação...", Modulo.GERAL);
+
         Empresa empresaDemo = new Empresa("ReData.INC",
                 "53719031000163",
                 "03325764",
