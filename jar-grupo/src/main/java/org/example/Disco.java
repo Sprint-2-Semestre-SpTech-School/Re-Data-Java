@@ -81,7 +81,7 @@ public class Disco extends Hardware {
                     // QUANTIDADE
 
                     Double leituraMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getLeituras();
-                    Double escritaMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas();
+                    Double escritaMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getEscritas();
 
                     Double transferenciaLeitura = leituraMomento - leituraAnterior;
                     Double transferenciaEscrita = escritaMomento - escritaAnterior;
@@ -133,7 +133,7 @@ public class Disco extends Hardware {
                     // con02.update(queryRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel(), fkHardware);
                 }
             };
-            timer.schedule(tarefa, 3000, 30000);
+            timer.schedule(tarefa, 0, 30000);
         } catch (RuntimeException e){
             System.out.println("Erro de conexão 'Disco' sql" + e.getMessage());
         }
