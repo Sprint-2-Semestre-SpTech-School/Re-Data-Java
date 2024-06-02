@@ -1,6 +1,10 @@
 package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
+import org.example.logging.GeradorLog;
+import org.example.logging.Modulo;
+import org.example.logging.Tabelas;
+import org.example.logging.TagNiveisLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -56,6 +60,12 @@ public class Maquina {
         sistemaOperacional = looca.getSistema().getSistemaOperacional();
         temperatura = looca.getTemperatura().getTemperatura();
         tempoAtividade = looca.getSistema().getTempoDeAtividade() / 3600; // Valor em horas
+        GeradorLog.log(TagNiveisLog.INFO, "Iniciando captura de dados da máquina: %d...".formatted(idMaquina), Modulo.CAPTURA_HARDWARE);
+        GeradorLog.log(TagNiveisLog.INFO, "User: %s".formatted(usuario), Modulo.CAPTURA_HARDWARE);
+        GeradorLog.log(TagNiveisLog.INFO, "OS: %s".formatted(sistemaOperacional), Modulo.CAPTURA_HARDWARE);
+        GeradorLog.log(TagNiveisLog.INFO, "Temperature: %.2f".formatted(temperatura), Modulo.CAPTURA_HARDWARE);
+        GeradorLog.log(TagNiveisLog.INFO, "Uptime: " + tempoAtividade + "hours", Modulo.CAPTURA_HARDWARE);
+        GeradorLog.log(TagNiveisLog.INFO, "Process finished..", Modulo.CAPTURA_HARDWARE);
     }
 
     public void inserirDadosMaquina() {
@@ -63,11 +73,18 @@ public class Maquina {
             con.update("INSERT INTO Maquina (usuario, sistemaOperacional, temperatura, tempoAtividade, " +
                             "fkProjeto, fkEmpresa) values (?, ?, ?, ?, ?, ?)", usuario, sistemaOperacional,
                     temperatura, tempoAtividade, fkProjeto, fkEmpresa);
+
+            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.MAQUINA.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+
 //            con02.update("INSERT INTO Maquina (usuario, sistemaOperacional, temperatura, tempoAtividade, " +
 //                            "fkProjeto, fkEmpresa) values (?, ?, ?, ?, ?, ?)", usuario, sistemaOperacional,
 //                    temperatura, tempoAtividade, fkProjeto, fkEmpresa);
+
+//            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data SQL Server DB: Table: %s".formatted(Tabelas.MAQUINA.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+
         } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'Maquina' sql" + e.getMessage());
+            GeradorLog.log(TagNiveisLog.ERROR, "Erro de conexão SQL: %s".formatted(Tabelas.MAQUINA.getDescricaoTabela()), Modulo.ALERTA);
         }
     }
 

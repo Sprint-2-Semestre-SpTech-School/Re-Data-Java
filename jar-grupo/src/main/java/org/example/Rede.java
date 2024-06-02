@@ -2,6 +2,10 @@ package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
+import org.example.logging.GeradorLog;
+import org.example.logging.Modulo;
+import org.example.logging.Tabelas;
+import org.example.logging.TagNiveisLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
@@ -37,6 +41,15 @@ public class Rede extends Hardware {
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+
+        GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados ...", Modulo.CAPTURA_HARDWARE);
+
+        GeradorLog.log(TagNiveisLog.INFO, "Type: %s".formatted(tipoHardware), Modulo.CAPTURA_HARDWARE);
+        GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeHardware), Modulo.CAPTURA_HARDWARE);
+        GeradorLog.log(TagNiveisLog.INFO, "Capture unit: %s".formatted(unidadeCaptacao), Modulo.CAPTURA_HARDWARE);
+        GeradorLog.log(TagNiveisLog.INFO, "Total value: %.2f".formatted(valorTotal), Modulo.CAPTURA_HARDWARE);
+        GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+
         // con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
     }
 
@@ -63,11 +76,23 @@ public class Rede extends Hardware {
                 String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                         "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                 con.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
+
+                GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados: Máquina: %d...".formatted(fkMaquina), Modulo.CAPTURA_HARDWARE);
+                GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(interfaceCorreta), Modulo.CAPTURA_HARDWARE);
+                GeradorLog.log(TagNiveisLog.INFO, "sent packets: %s".formatted(interfaces.get(interfaceCorreta).getBytesEnviados()), Modulo.CAPTURA_HARDWARE);
+                GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.REGISTRO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+
                 // con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
 
                 queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                         "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                 con.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesRecebidos(), fkHardware);
+
+                GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados: Máquina: %d...".formatted(fkMaquina), Modulo.CAPTURA_HARDWARE);
+                GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(interfaceCorreta), Modulo.CAPTURA_HARDWARE);
+                GeradorLog.log(TagNiveisLog.INFO, "received packets: %s".formatted(interfaces.get(interfaceCorreta).getBytesRecebidos()), Modulo.CAPTURA_HARDWARE);
+                GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.REGISTRO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+
                 // con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesRecebidos(), fkHardware);
             }
         };

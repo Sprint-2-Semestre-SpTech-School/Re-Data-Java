@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.logging.GeradorLog;
+import org.example.logging.Modulo;
+import org.example.logging.Tabelas;
+import org.example.logging.TagNiveisLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Conta {
@@ -31,12 +35,18 @@ public class Conta {
                             "values (?, ?, ?, CURRENT_TIMESTAMP, ?)",
                     login, senha, siglaConta, fkEmpresa);
 
+            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.CONTA.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values for login: %s / siglaConta: %s for ID.%s.redata: %d".formatted(login, siglaConta, Tabelas.CONTA.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
+
 //            con02.update("INSERT INTO Conta (login, senha, siglaConta, dataCriacao, fkEmpresa)" +
 //                            "values (?, ?, ?, CURRENT_TIMESTAMP, ?)",
 //                    login, senha, siglaConta, fkEmpresa);
 
+//            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data SQL Server DB: Table: %s".formatted(Tabelas.CONTA.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+
         }catch (RuntimeException e){
             System.out.println("erro de conexão 'Conta' sql " + e.getMessage());
+            GeradorLog.log(TagNiveisLog.ERROR, "Erro de conexão SQL: %s".formatted(Tabelas.CONTA.getDescricaoTabela()), Modulo.ALERTA);
         }
     }
 
