@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.logging.GeradorLog;
 import org.example.logging.Modulo;
+import org.example.logging.Tabelas;
 import org.example.logging.TagNiveisLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
@@ -45,21 +46,17 @@ public class Empresa {
     private void adicionarEmpresa(){
         try{
         con.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
-<<<<<<< HEAD
 
-            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data Local/MySQL DB:", Modulo.ENVIO_DADOS);
-            GeradorLog.log(TagNiveisLog.INFO, "SQL column new value - Nome: %s for ID.Empresa.redata: %d".formatted(nomeEmpresa, consultarId()), Modulo.ENVIO_DADOS);
-            GeradorLog.log(TagNiveisLog.INFO, "SQL column new value - CNPJ: %s for ID.Empresa.redata: %s".formatted(CNPJ, consultarId()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.EMPRESA.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - Nome: %s for ID.%s.redata: %d".formatted(nomeEmpresa, Tabelas.EMPRESA.getDescricaoTabela(), consultarId()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - CNPJ: %s for ID.%s.redata: %s".formatted(CNPJ, Tabelas.EMPRESA.getDescricaoTabela(), consultarId()), Modulo.ENVIO_DADOS);
 
-        con02.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
-=======
         // con02.update("INSERT INTO Empresa (nomeEmpresa, CNPJ) values (?, ?)", nomeEmpresa, CNPJ);
->>>>>>> a76cc749a0eda1e3b0f61342362acabb8e03e1fc
         consultarId();
 
-            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data SQL Server DB:", Modulo.ENVIO_DADOS);
-            GeradorLog.log(TagNiveisLog.INFO, "SQL column new value - Nome: %s for ID.Empresa.redata: %d".formatted(nomeEmpresa, consultarId()), Modulo.ENVIO_DADOS);
-            GeradorLog.log(TagNiveisLog.INFO, "SQL column new value - CNPJ: %s for ID.Empresa.redata: %s".formatted(CNPJ, consultarId()), Modulo.ENVIO_DADOS);
+//            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data SQL Server DB: Table: Empresa", Modulo.ENVIO_DADOS);
+//            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - Nome: %s for ID.Empresa.redata: %d".formatted(nomeEmpresa, consultarId()), Modulo.ENVIO_DADOS);
+//            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - CNPJ: %s for ID.Empresa.redata: %s".formatted(CNPJ, consultarId()), Modulo.ENVIO_DADOS);
 
         }catch (RuntimeException e){
             System.out.println("Erro de conexão 'Empresa' sql " + e.getMessage());
@@ -90,6 +87,14 @@ public class Empresa {
                     complemento,
                     idsEmpresa.get(idsEmpresa.size() - 1));
 
+            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.LOCALIZACAO_EMPRESA.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - CEP: %s for ID.%s.redata: %d".formatted(CEP, Tabelas.LOCALIZACAO_EMPRESA.getDescricaoTabela(), consultarId()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - estado: %s for ID.%s.redata: %d".formatted(estado, Tabelas.LOCALIZACAO_EMPRESA.getDescricaoTabela(), consultarId()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - logradouro: %s for ID.%s.redata: %d".formatted(logradouro, Tabelas.LOCALIZACAO_EMPRESA.getDescricaoTabela(), consultarId()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - numero: %s for ID.%s.redata: %d".formatted(numero, Tabelas.LOCALIZACAO_EMPRESA.getDescricaoTabela(), consultarId()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - bairro: %s for ID.%s.redata: %d".formatted(bairro, Tabelas.LOCALIZACAO_EMPRESA.getDescricaoTabela(), consultarId()), Modulo.ENVIO_DADOS);
+            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - complemento: %s for ID.%s.redata: %d".formatted(complemento, Tabelas.LOCALIZACAO_EMPRESA.getDescricaoTabela(), consultarId()), Modulo.ENVIO_DADOS);
+
 //            con02.update("INSERT INTO localizacaoEmpresa (CEP," +
 //                            "estado," +
 //                            "logradouro," +
@@ -104,9 +109,11 @@ public class Empresa {
 //                    complemento,
 //                    idsEmpresa.get(idsEmpresa.size() - 1));
 
+//          GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data SQL Server DB: Table: %s".formatted(Tabelas.LOCALIZACAO_EMPRESA.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+
     }catch (RuntimeException e){
-        System.out.println("Erro de conexão 'Empresa' sql " + e.getMessage());
-        GeradorLog.log(TagNiveisLog.ERROR, "Erro de conexão SQL: localizacao.redata", Modulo.ALERTA);
+        System.out.println("Erro de conexão '%s' SQL".formatted(Tabelas.LOCALIZACAO_EMPRESA.getDescricaoTabela()) + e.getMessage());
+        GeradorLog.log(TagNiveisLog.ERROR, "Erro de conexão SQL: %s".formatted(Tabelas.LOCALIZACAO_EMPRESA.getDescricaoTabela()), Modulo.ALERTA);
         }
     }
     public void inserirDadosEmpresa(){

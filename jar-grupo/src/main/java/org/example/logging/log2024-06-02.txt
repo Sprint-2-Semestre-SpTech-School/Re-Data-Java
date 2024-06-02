@@ -1,0 +1,28 @@
+20240602 15:25:36 - info - M006 - sabrina-IdeaPad-3-15ALC6 - Language: português
+20240602 15:25:36 - info - M006 - sabrina-IdeaPad-3-15ALC6 - OS name: Linux Mint
+20240602 15:25:36 - info - M006 - sabrina-IdeaPad-3-15ALC6 - Arch: 64x bits
+20240602 15:25:36 - info - M006 - sabrina-IdeaPad-3-15ALC6 - Iniciando a aplicação...
+20240602 15:25:36 - info - M003 - sabrina-IdeaPad-3-15ALC6 - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 15:25:36 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 15:25:36 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 15:25:36 - info - M003 - sabrina-IdeaPad-3-15ALC6 - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 15:25:36 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 15:25:36 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 15:25:36 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 15:25:36 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 15:25:36 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 15:25:36 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 15:39:24 - info - M006 - sabrina-IdeaPad-3-15ALC6 - Language: português
+20240602 15:39:24 - info - M006 - sabrina-IdeaPad-3-15ALC6 - OS name: Linux Mint
+20240602 15:39:24 - info - M006 - sabrina-IdeaPad-3-15ALC6 - Arch: 64x bits
+20240602 15:39:24 - info - M006 - sabrina-IdeaPad-3-15ALC6 - Iniciando a aplicação...
+20240602 15:39:24 - info - M003 - sabrina-IdeaPad-3-15ALC6 - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 15:39:24 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 15:39:24 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 15:39:24 - info - M003 - sabrina-IdeaPad-3-15ALC6 - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 15:39:24 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 15:39:24 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 15:39:24 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 15:39:24 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 15:39:24 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 15:39:24 - info - M003 - sabrina-IdeaPad-3-15ALC6 - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1

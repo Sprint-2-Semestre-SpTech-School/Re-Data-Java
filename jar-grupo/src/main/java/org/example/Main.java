@@ -3,6 +3,7 @@ package org.example;
 import com.github.britooo.looca.api.core.Looca;
 import org.example.logging.GeradorLog;
 import org.example.logging.Modulo;
+import org.example.logging.Tabelas;
 import org.example.logging.TagNiveisLog;
 
 import java.util.Locale;
