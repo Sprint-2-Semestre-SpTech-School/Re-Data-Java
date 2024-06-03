@@ -408,3 +408,803 @@
 20240602 21:32:17 - info - M006 - Tullin - Iniciando a aplicação...
 20240602 21:32:17 - error - M005 - Tullin - Erro de conexão SQL.
 20240602 21:32:17 - error - M005 - Tullin - Erro de conexão SQL: localizacaoEmpresa
+20240602 22:59:44 - info - M006 - LuisGustavo - Language: português
+20240602 22:59:44 - info - M006 - LuisGustavo - OS name: Windows
+20240602 22:59:44 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 22:59:44 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 22:59:44 - error - M005 - LuisGustavo - Erro de conexão SQL.
+20240602 22:59:44 - error - M005 - LuisGustavo - Erro de conexão SQL: localizacaoEmpresa
+20240602 23:05:12 - info - M006 - LuisGustavo - Language: português
+20240602 23:05:12 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:05:12 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:05:12 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:05:12 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:05:12 - info - M001 - LuisGustavo - User: luisg
+20240602 23:05:12 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:05:12 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:05:12 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:05:12 - info - M001 - LuisGustavo - Process finished..
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados...
+20240602 23:05:12 - info - M001 - LuisGustavo - Type: Nome: Cpu
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: 11th Gen Intel(R) Core(TM) i5-11300H @ 3.10GHz
+20240602 23:05:12 - info - M001 - LuisGustavo - Capture unit: %
+20240602 23:05:12 - info - M001 - LuisGustavo - Total value: 3,11
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: infoHardware
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados ...
+20240602 23:05:12 - info - M001 - LuisGustavo - Type: Nome: Ram
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: null
+20240602 23:05:12 - info - M001 - LuisGustavo - Capture unit: Gb
+20240602 23:05:12 - info - M001 - LuisGustavo - Total value: 26,00
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: infoHardware
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados ...
+20240602 23:05:12 - info - M001 - LuisGustavo - Type: Nome: Rede
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: Microsoft Wi-Fi Direct Virtual Adapter
+20240602 23:05:12 - info - M001 - LuisGustavo - Capture unit: pacotes
+20240602 23:05:12 - info - M001 - LuisGustavo - Total value: nu
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: infoHardware
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 13141364736
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 6.66424330546468
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 6.66424330546468
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 13086146560
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 6.66424330546468
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12865208320
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 0.7394835737665172
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12982472704
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12959875072
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 9.648484848484848
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12949532672
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 0.9312320916905444
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12967911424
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 1.6600979338349457
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12896571392
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 1.5269025690741638
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12899254272
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12899532800
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 1.8624641833810889
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12901629952
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 1.6769743101807801
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12982681600
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 19.507759456838023
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12988219392
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 2.4471767936015283
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12929540096
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12928901120
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoCpu
+20240602 23:05:12 - info - M001 - LuisGustavo - CPU usage: 1.8779904306220094
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:05:12 - info - M001 - LuisGustavo - Iniciando captura de dados: Máquina: 500...
+20240602 23:05:12 - info - M001 - LuisGustavo - Name: usoRam
+20240602 23:05:12 - info - M001 - LuisGustavo - RAM usage: 12942647296
+20240602 23:05:12 - info - M003 - LuisGustavo - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 23:06:42 - info - M006 - LuisGustavo - Language: português
+20240602 23:06:42 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:06:42 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:06:42 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:06:42 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:06:42 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:06:42 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:06:42 - info - M001 - LuisGustavo - User: luisg
+20240602 23:06:42 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:06:42 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:06:42 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:06:42 - info - M001 - LuisGustavo - Process finished..
+20240602 23:06:42 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:13:45 - info - M006 - LuisGustavo - Language: português
+20240602 23:13:45 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:13:45 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:13:45 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:13:45 - error - M005 - LuisGustavo - Erro de conexão SQL.
+20240602 23:13:45 - error - M005 - LuisGustavo - Erro de conexão SQL: localizacaoEmpresa
+20240602 23:13:45 - error - M005 - LuisGustavo - Erro de conexão SQL: Contato
+20240602 23:13:45 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:13:45 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:13:45 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:13:45 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:13:45 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:13:45 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:13:45 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:13:45 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:13:45 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:13:45 - info - M001 - LuisGustavo - User: luisg
+20240602 23:13:45 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:13:45 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:13:45 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:13:45 - info - M001 - LuisGustavo - Process finished..
+20240602 23:13:45 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:13:47 - info - M006 - LuisGustavo - Language: português
+20240602 23:13:47 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:13:47 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:13:47 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:13:47 - error - M005 - LuisGustavo - Erro de conexão SQL.
+20240602 23:13:47 - error - M005 - LuisGustavo - Erro de conexão SQL: localizacaoEmpresa
+20240602 23:13:47 - error - M005 - LuisGustavo - Erro de conexão SQL: Contato
+20240602 23:13:47 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:13:47 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:13:47 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:13:47 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:13:47 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:13:47 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:13:47 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:13:47 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:13:47 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:13:47 - info - M001 - LuisGustavo - User: luisg
+20240602 23:13:47 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:13:47 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:13:47 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:13:47 - info - M001 - LuisGustavo - Process finished..
+20240602 23:13:47 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:16:00 - info - M006 - LuisGustavo - Language: português
+20240602 23:16:00 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:16:00 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:16:00 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:16:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:16:00 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:16:00 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:16:00 - info - M001 - LuisGustavo - User: luisg
+20240602 23:16:00 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:16:00 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:16:00 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:16:00 - info - M001 - LuisGustavo - Process finished..
+20240602 23:16:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:19:09 - info - M006 - LuisGustavo - Language: português
+20240602 23:19:09 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:19:09 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:19:09 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:19:09 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:19:09 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:19:09 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:19:09 - info - M001 - LuisGustavo - User: luisg
+20240602 23:19:09 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:19:09 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:19:09 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:19:09 - info - M001 - LuisGustavo - Process finished..
+20240602 23:19:09 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:22:00 - info - M006 - LuisGustavo - Language: português
+20240602 23:22:00 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:22:00 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:22:00 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:22:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:22:00 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:22:00 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:22:00 - info - M001 - LuisGustavo - User: luisg
+20240602 23:22:00 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:22:00 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:22:00 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:22:00 - info - M001 - LuisGustavo - Process finished..
+20240602 23:22:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:22:49 - info - M006 - LuisGustavo - Language: português
+20240602 23:22:49 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:22:49 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:22:49 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:22:49 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:22:49 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:22:49 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:22:49 - info - M001 - LuisGustavo - User: luisg
+20240602 23:22:49 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:22:49 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:22:49 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:22:49 - info - M001 - LuisGustavo - Process finished..
+20240602 23:22:49 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:23:19 - info - M006 - LuisGustavo - Language: português
+20240602 23:23:19 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:23:19 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:23:19 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:23:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:23:19 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:23:19 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:23:19 - info - M001 - LuisGustavo - User: luisg
+20240602 23:23:19 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:23:19 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:23:19 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:23:19 - info - M001 - LuisGustavo - Process finished..
+20240602 23:23:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:25:41 - info - M006 - LuisGustavo - Language: português
+20240602 23:25:41 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:25:41 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:25:41 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:25:41 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:25:41 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:25:41 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:25:41 - info - M001 - LuisGustavo - User: luisg
+20240602 23:25:41 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:25:41 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:25:41 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:25:41 - info - M001 - LuisGustavo - Process finished..
+20240602 23:25:41 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:31:44 - info - M006 - LuisGustavo - Language: português
+20240602 23:31:44 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:31:44 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:31:44 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:31:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:31:44 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:31:44 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:31:44 - info - M001 - LuisGustavo - User: luisg
+20240602 23:31:44 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:31:44 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:31:44 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:31:44 - info - M001 - LuisGustavo - Process finished..
+20240602 23:31:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:34:14 - info - M006 - LuisGustavo - Language: português
+20240602 23:34:14 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:34:14 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:34:14 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:34:14 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:34:14 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:34:14 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:34:14 - info - M001 - LuisGustavo - User: luisg
+20240602 23:34:14 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:34:14 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:34:14 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:34:14 - info - M001 - LuisGustavo - Process finished..
+20240602 23:34:14 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:35:26 - info - M006 - LuisGustavo - Language: português
+20240602 23:35:26 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:35:26 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:35:26 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:35:26 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:35:26 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:35:26 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:35:26 - info - M001 - LuisGustavo - User: luisg
+20240602 23:35:26 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:35:26 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:35:26 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:35:26 - info - M001 - LuisGustavo - Process finished..
+20240602 23:35:26 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:36:02 - info - M006 - LuisGustavo - Language: português
+20240602 23:36:02 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:36:02 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:36:02 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:36:02 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:36:02 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:36:02 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:36:02 - info - M001 - LuisGustavo - User: luisg
+20240602 23:36:02 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:36:02 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:36:02 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:36:02 - info - M001 - LuisGustavo - Process finished..
+20240602 23:36:02 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:36:38 - info - M006 - LuisGustavo - Language: português
+20240602 23:36:38 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:36:38 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:36:38 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:36:38 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:36:38 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:36:38 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:36:38 - info - M001 - LuisGustavo - User: luisg
+20240602 23:36:38 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:36:38 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:36:38 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:36:38 - info - M001 - LuisGustavo - Process finished..
+20240602 23:36:38 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:37:27 - info - M006 - LuisGustavo - Language: português
+20240602 23:37:27 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:37:27 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:37:27 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:37:27 - error - M005 - LuisGustavo - Erro de conexão SQL.
+20240602 23:37:27 - error - M005 - LuisGustavo - Erro de conexão SQL: localizacaoEmpresa
+20240602 23:37:27 - error - M005 - LuisGustavo - Erro de conexão SQL: Contato
+20240602 23:37:27 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:37:27 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:37:27 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:37:27 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:37:27 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:37:27 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:37:27 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:37:27 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:37:27 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:37:27 - info - M001 - LuisGustavo - User: luisg
+20240602 23:37:27 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:37:27 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:37:27 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:37:27 - info - M001 - LuisGustavo - Process finished..
+20240602 23:37:27 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:37:43 - info - M006 - LuisGustavo - Language: português
+20240602 23:37:43 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:37:43 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:37:43 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:37:43 - error - M005 - LuisGustavo - Erro de conexão SQL.
+20240602 23:37:43 - error - M005 - LuisGustavo - Erro de conexão SQL: localizacaoEmpresa
+20240602 23:37:43 - error - M005 - LuisGustavo - Erro de conexão SQL: Contato
+20240602 23:37:43 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:37:43 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:37:43 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:37:43 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:37:43 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:37:43 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:37:43 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:37:43 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:37:43 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:37:43 - info - M001 - LuisGustavo - User: luisg
+20240602 23:37:43 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:37:43 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:37:43 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:37:43 - info - M001 - LuisGustavo - Process finished..
+20240602 23:37:43 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:39:03 - info - M006 - LuisGustavo - Language: português
+20240602 23:39:03 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:39:03 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:39:03 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:39:03 - error - M005 - LuisGustavo - Erro de conexão SQL.
+20240602 23:39:03 - error - M005 - LuisGustavo - Erro de conexão SQL: localizacaoEmpresa
+20240602 23:39:03 - error - M005 - LuisGustavo - Erro de conexão SQL: Contato
+20240602 23:39:03 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:39:03 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:39:03 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:39:03 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:39:03 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:39:03 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:39:03 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:39:03 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:39:03 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:39:03 - info - M001 - LuisGustavo - User: luisg
+20240602 23:39:03 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:39:03 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:39:03 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:39:03 - info - M001 - LuisGustavo - Process finished..
+20240602 23:39:03 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:42:56 - info - M006 - LuisGustavo - Language: português
+20240602 23:42:56 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:42:56 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:42:56 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:42:56 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:42:56 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:42:56 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:42:56 - info - M001 - LuisGustavo - User: luisg
+20240602 23:42:56 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:42:56 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:42:56 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:42:56 - info - M001 - LuisGustavo - Process finished..
+20240602 23:42:56 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:43:00 - info - M006 - LuisGustavo - Language: português
+20240602 23:43:00 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:43:00 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:43:00 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:43:00 - error - M005 - LuisGustavo - Erro de conexão SQL.
+20240602 23:43:00 - error - M005 - LuisGustavo - Erro de conexão SQL: localizacaoEmpresa
+20240602 23:43:00 - error - M005 - LuisGustavo - Erro de conexão SQL: Contato
+20240602 23:43:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:43:00 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:43:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:43:00 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:43:00 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:43:00 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:43:00 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:43:00 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:43:00 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:43:00 - info - M001 - LuisGustavo - User: luisg
+20240602 23:43:00 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:43:00 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:43:00 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:43:00 - info - M001 - LuisGustavo - Process finished..
+20240602 23:43:00 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:44:19 - info - M006 - LuisGustavo - Language: português
+20240602 23:44:19 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:44:19 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:44:19 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:44:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:44:19 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:44:19 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:44:19 - info - M001 - LuisGustavo - User: luisg
+20240602 23:44:19 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:44:19 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:44:19 - info - M001 - LuisGustavo - Uptime: 0hours
+20240602 23:44:19 - info - M001 - LuisGustavo - Process finished..
+20240602 23:44:19 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina
+20240602 23:45:44 - info - M006 - LuisGustavo - Language: português
+20240602 23:45:44 - info - M006 - LuisGustavo - OS name: Windows
+20240602 23:45:44 - info - M006 - LuisGustavo - Arch: 64x bits
+20240602 23:45:44 - info - M006 - LuisGustavo - Iniciando a aplicação...
+20240602 23:45:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Empresa
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - Nome: ReData.INC for ID.Empresa.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - CNPJ: 53719031000163 for ID.Empresa.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: localizacaoEmpresa
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - CEP: 03325764 for ID.localizacaoEmpresa.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - estado: São Paulo for ID.localizacaoEmpresa.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - logradouro: Rua Database for ID.localizacaoEmpresa.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - numero: 777 for ID.localizacaoEmpresa.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - bairro: DataLake for ID.localizacaoEmpresa.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - complemento: Camada de Load for ID.localizacaoEmpresa.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Contato
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - nome: James Heat Field for ID.Contato.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - email: James@gmail.com for ID.Contato.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - telefone: 11974216702 for ID.Contato.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Conta
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values for login: ReData2024 / siglaConta: ADM for ID.Conta.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Projeto
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - nomeDemanda: Venda de Coca-Cola for ID.Projeto.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - dataInicio: null for ID.Projeto.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - dataTermino: null for ID.Projeto.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - descricao: Aumentar vendas de Coca-Cola na Zona Norte for ID.Projeto.redata: 1
+20240602 23:45:44 - info - M003 - LuisGustavo - SQL column new values - responsavel: Julia for ID.Projeto.redata: 1
+20240602 23:45:44 - info - M001 - LuisGustavo - Iniciando captura de dados da máquina: null...
+20240602 23:45:44 - info - M001 - LuisGustavo - User: luisg
+20240602 23:45:44 - info - M001 - LuisGustavo - OS: Windows
+20240602 23:45:44 - info - M001 - LuisGustavo - Temperature: 0,00
+20240602 23:45:44 - info - M001 - LuisGustavo - Uptime: 1hours
+20240602 23:45:44 - info - M001 - LuisGustavo - Process finished..
+20240602 23:45:44 - info - M003 - LuisGustavo - Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: Máquina

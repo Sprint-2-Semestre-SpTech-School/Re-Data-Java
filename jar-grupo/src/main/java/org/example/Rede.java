@@ -2,10 +2,6 @@ package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
-import org.example.logging.GeradorLog;
-import org.example.logging.Modulo;
-import org.example.logging.Tabelas;
-import org.example.logging.TagNiveisLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
@@ -14,6 +10,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Rede extends Hardware {
+    private Double pacotesEnviadosAnterior = 0.0;
+    private Double pacotesRecebidosAnterior = 0.0;
+    private Integer contadorTeste = 0;
+    private Boolean primeiraCaptura = true;
+
     public Rede(org.example.tipoHardware tipoHardware,
                 String nomeHardware,
                 String unidadeCaptacao,
@@ -38,19 +39,15 @@ public class Rede extends Hardware {
         valorTotal = null;
         fkMaquina = 500;
 
-        String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
-                "VALUES (?, ?, ?, ? , ?)";
-        con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+        try {
 
-        GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados ...", Modulo.CAPTURA_HARDWARE);
-
-        GeradorLog.log(TagNiveisLog.INFO, "Type: %s".formatted(tipoHardware), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeHardware), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Capture unit: %s".formatted(unidadeCaptacao), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Total value: %.2f".formatted(valorTotal), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ENVIO_DADOS);
-
-        // con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+            String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
+                    "VALUES (?, ?, ?, ? , ?)";
+            con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+            // con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+        } catch (RuntimeException e) {
+            System.out.println("Erro de conexão 'Rede' sql" + e.getMessage());
+        }
     }
 
     @Override
@@ -58,44 +55,73 @@ public class Rede extends Hardware {
         String queryIdHardware = "SELECT LAST_INSERT_ID()";
         Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
 
-        Integer indiceInterfaceComIpv4 = null;
-        List<RedeInterface> interfaces = looca.getRede().getGrupoDeInterfaces().getInterfaces();
+        try {
 
-        for (int i = 0; i < interfaces.size(); i++) {
-            if (!interfaces.get(i).getEnderecoIpv4().isEmpty()) {
-                indiceInterfaceComIpv4 = i;
-                break;
-            }
+
+            Timer timer = new Timer();
+            TimerTask tarefa = new TimerTask() {
+                @Override
+                public void run() {
+
+                    Integer indiceInterfaceComIpv4 = null;
+                    List<RedeInterface> interfaces = looca.getRede().getGrupoDeInterfaces().getInterfaces();
+
+                    for (int i = 0; i < interfaces.size(); i++) {
+                        if (!interfaces.get(i).getEnderecoIpv4().isEmpty() && interfaces.get(i).getPacotesEnviados() > 0) {
+                            indiceInterfaceComIpv4 = i;
+                            break;
+                        }
+                    }
+                    Integer interfaceCorreta = indiceInterfaceComIpv4;
+
+                    Double pacotesEnviadosMomento = (double) interfaces.get(interfaceCorreta).getPacotesEnviados();
+                    Double pacotesRecebidosMomento = (double) interfaces.get(interfaceCorreta).getPacotesRecebidos();
+
+                    System.out.println("Endereço IPv4: " + interfaces.get(interfaceCorreta).getEnderecoIpv4());
+                    System.out.println("Pacotes Enviados no Momento: " + pacotesEnviadosMomento);
+                    System.out.println("Pacotes Recebidos no Momento: " + pacotesRecebidosMomento);
+
+                    if (primeiraCaptura) {
+                        pacotesEnviadosAnterior = pacotesEnviadosMomento;
+                        pacotesRecebidosAnterior = pacotesRecebidosMomento;
+                        primeiraCaptura = false;
+                        return;
+                    }
+
+                    System.out.println("Pacotes Enviados Anterior: " + pacotesEnviadosAnterior);
+                    System.out.println("Pacotes Recebidos Anterior: " + pacotesRecebidosAnterior);
+
+                    double pacotesEnviados = pacotesEnviadosMomento - pacotesEnviadosAnterior;
+                    double pacotesRecebidos = pacotesRecebidosMomento - pacotesRecebidosAnterior;
+
+                    System.out.println("Pacotes Enviados variável de captura: " + pacotesEnviados);
+                    System.out.println("Pacotes Recebidos variável de captura: " + pacotesRecebidos);
+
+                    pacotesEnviadosAnterior = pacotesEnviadosMomento;
+                    pacotesRecebidosAnterior = pacotesRecebidosMomento;
+
+                    String nomeRegistro = "Pacotes Enviados";
+
+                    String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                            "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
+                    con.update(queryRegistro, nomeRegistro, pacotesEnviados, fkHardware);
+                    // con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
+
+                    nomeRegistro = "Pacotes Recebidos";
+
+                    queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                            "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
+                    con.update(queryRegistro, nomeRegistro, pacotesRecebidos, fkHardware);
+                    // con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesRecebidos(), fkHardware);
+                    contadorTeste++;
+                    System.out.println();
+                    System.out.println();
+                    System.out.println("CONTADOR: " + contadorTeste);
+                }
+            };
+            timer.schedule(tarefa, 1000, 5000);
+        } catch (RuntimeException e) {
+            System.out.println("Erro de conexão 'Rede' sql" + e.getMessage());
         }
-
-        Timer timer = new Timer();
-        Integer interfaceCorreta = indiceInterfaceComIpv4;
-        TimerTask tarefa = new TimerTask() {
-            @Override
-            public void run() {
-                String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
-                        "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
-                con.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
-
-                GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados: Máquina: %d...".formatted(fkMaquina), Modulo.CAPTURA_HARDWARE);
-                GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(interfaceCorreta), Modulo.CAPTURA_HARDWARE);
-                GeradorLog.log(TagNiveisLog.INFO, "sent packets: %s".formatted(interfaces.get(interfaceCorreta).getBytesEnviados()), Modulo.CAPTURA_HARDWARE);
-                GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.REGISTRO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
-
-                // con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
-
-                queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
-                        "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
-                con.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesRecebidos(), fkHardware);
-
-                GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados: Máquina: %d...".formatted(fkMaquina), Modulo.CAPTURA_HARDWARE);
-                GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(interfaceCorreta), Modulo.CAPTURA_HARDWARE);
-                GeradorLog.log(TagNiveisLog.INFO, "received packets: %s".formatted(interfaces.get(interfaceCorreta).getBytesRecebidos()), Modulo.CAPTURA_HARDWARE);
-                GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.REGISTRO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
-
-                // con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesRecebidos(), fkHardware);
-            }
-        };
-        timer.schedule(tarefa, 1000, 2000);
     }
 }

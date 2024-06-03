@@ -76,6 +76,6 @@ public class Ram extends Hardware {
                 // con02.update(queryRegistro, (looca.getMemoria().getEmUso() / 1e9), fkHardware);
             }
         };
-        timer.schedule(tarefa, 3000, 4000);
+        timer.schedule(tarefa, 1000, 10000);
     }
 }

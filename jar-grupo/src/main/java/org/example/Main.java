@@ -62,21 +62,21 @@ public class Main {
         System.out.println("fkMaquina: " + fkMaquina);
         System.out.println(maquinaDemo);
 
-//        Cpu cpu = new Cpu();
-//        cpu.capturarDados();
-//        cpu.inserirDados();
-//
-//        Ram ram = new Ram();
-//        ram.capturarDados();
-//        ram.inserirDados();
+        Cpu cpu = new Cpu();
+        cpu.capturarDados();
+        cpu.inserirDados();
+
+        Ram ram = new Ram();
+        ram.capturarDados();
+        ram.inserirDados();
 
         Disco disco = new Disco();
         disco.capturarDados();
         disco.inserirDados();
 
-//       Rede rede = new Rede();
-//       rede.capturarDados();
-//       rede.inserirDados();
+       Rede rede = new Rede();
+       rede.capturarDados();
+       rede.inserirDados();
 
 
         // METODO PARA INSTANCIA, CRIAR E PLOTAR O ALERTA NO SLACK:
