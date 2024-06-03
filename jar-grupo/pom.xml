@@ -16,10 +16,11 @@
 
     <dependencies>
 
+<!--        https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
-            <groupId>com.github.seratch</groupId>
-            <artifactId>jSlack</artifactId>
-            <version>3.4.2</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
         </dependency>
 
         <!-- dependências do spring jdbc -->

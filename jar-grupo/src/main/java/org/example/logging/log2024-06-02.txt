@@ -402,4 +402,9 @@
 20240602 17:34:15 - info - M001 - sabrina-IdeaPad-3-15ALC6 - Iniciando captura de dados: Máquina: 500...
 20240602 17:34:15 - info - M001 - sabrina-IdeaPad-3-15ALC6 - Name: usoRam
 20240602 17:34:15 - info - M001 - sabrina-IdeaPad-3-15ALC6 - RAM usage: 6256279552
-20240602 17:34:15 - info - M003 - sabrina-IdeaPad-3-15ALC6 - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240602 17:34:15 - info - M003 - sabrina-IdeaPad-3-15ALC6 - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro20240602 21:32:17 - info - M006 - Tullin - Language: English
+20240602 21:32:17 - info - M006 - Tullin - OS name: Ubuntu
+20240602 21:32:17 - info - M006 - Tullin - Arch: 64x bits
+20240602 21:32:17 - info - M006 - Tullin - Iniciando a aplicação...
+20240602 21:32:17 - error - M005 - Tullin - Erro de conexão SQL.
+20240602 21:32:17 - error - M005 - Tullin - Erro de conexão SQL: localizacaoEmpresa

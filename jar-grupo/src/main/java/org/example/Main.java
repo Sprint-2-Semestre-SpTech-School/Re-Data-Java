@@ -5,11 +5,13 @@ import org.example.logging.GeradorLog;
 import org.example.logging.Modulo;
 import org.example.logging.Tabelas;
 import org.example.logging.TagNiveisLog;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Locale;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Looca looca = new Looca();
         Locale defaultLocale = Locale.getDefault();
         GeradorLog.log(TagNiveisLog.INFO, "Language: " + defaultLocale.getDisplayLanguage(), Modulo.GERAL);
@@ -68,12 +70,24 @@ public class Main {
 //        ram.capturarDados();
 //        ram.inserirDados();
 
-       Disco disco = new Disco();
-       disco.capturarDados();
-       disco.inserirDados();
+        Disco disco = new Disco();
+        disco.capturarDados();
+        disco.inserirDados();
 
 //       Rede rede = new Rede();
 //       rede.capturarDados();
 //       rede.inserirDados();
+
+
+        // METODO PARA INSTANCIA, CRIAR E PLOTAR O ALERTA NO SLACK:
+//        if(temperatura > metrica) {
+        try {
+            JSONObject json = new JSONObject();
+            json.put("text", "Aqui colocaremos os alertas!!");
+            Slack.sendMessage(json);
+        } catch (IOException e) {
+            System.out.println("Deu ruim no slack" + e);
+        }
+//    } É SOBRE ISSO
     }
 }
