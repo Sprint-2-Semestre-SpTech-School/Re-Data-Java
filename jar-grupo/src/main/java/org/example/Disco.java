@@ -134,7 +134,7 @@ public class Disco extends Hardware {
 
                 }
             };
-            timer.schedule(tarefa, 1000, 10000);
+            timer.schedule(tarefa, 1000, 5000);
         } catch (RuntimeException e){
             System.out.println("Erro de conexão 'Disco' sql" + e.getMessage());
         }
