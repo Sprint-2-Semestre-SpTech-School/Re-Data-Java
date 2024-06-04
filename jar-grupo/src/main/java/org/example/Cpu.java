@@ -82,7 +82,7 @@ public class Cpu extends Hardware {
                     // con02.update(queryRegistro, looca.getProcessador().getUso(), fkHardware02);
                 }
             };
-            timer.schedule(tarefa, 2000, 10000);
+            timer.schedule(tarefa, 1000, 10000);
         }catch (RuntimeException e){
             System.out.println("Erro de conexão 'Cpu' mysql" + e.getMessage());
         }

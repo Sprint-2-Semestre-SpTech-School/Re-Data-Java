@@ -139,3 +139,51 @@ CREATE TABLE IF NOT EXISTS `registro` (
     select * from localizacaoEmpresa;
     select idEmpresa from Empresa;
     SELECT * FROM projeto WHERE idProjeto = ? AND fkEmpresa = ?;
+    
+    select idRegistro, nomeRegistro, valorRegistro, tempoCapturas, idProjeto, idMaquina from registro 
+		join infoHardware on fkHardware = idHardware
+        join maquina on fkMaquina = idMaquina
+        join projeto on fkProjeto = idProjeto
+        where idProjeto = 400 and nomeRegistro = "usoRam" and valorRegistro >= 15;
+        
+SELECT idRegistro, nomeRegistro, tempoCapturas, idProjeto, idMaquina, AVG(valorRegistro) AS mediaDados
+FROM registro 
+JOIN infoHardware ON fkHardware = idHardware
+JOIN maquina ON fkMaquina = idMaquina
+JOIN projeto ON fkProjeto = idProjeto
+WHERE idProjeto = 400 
+GROUP BY idRegistro, nomeRegistro, tempoCapturas, idProjeto, idMaquina;
+
+ SELECT idMaquina, COUNT(idRegistro) as totalCapturas from registro
+ join infoHardware on fkHardware = idHardware
+ join maquina on fkMaquina = idMaquina
+ where nomeHardware = 'Ram' and valorRegistro > 4 group by idMaquina order by registro desc limit 1;
+ 
+ select idMaquina, count(idRegistro) as totalCapturas from registro
+ join infoHardware on fkHardware = idHardware
+ join maquina on fkMaquina = idMaquina 
+ where tipoHardware = 'Cpu' or 'Ram' and valorRegistro >= 70 and fkProjeto = 400
+ group by idMaquina order by totalCapturas desc limit 1;
+ 
+ 
+ SELECT
+    idMaquina,
+    SUM(CASE WHEN tipoHardware = 'Cpu' AND valorRegistro >= 5 THEN 1 ELSE 0 END) AS totalCapturasCpu,
+    SUM(CASE WHEN tipoHardware = 'Ram' AND valorRegistro >= 1 THEN 1 ELSE 0 END) AS totalCapturasRam,
+    SUM(CASE WHEN tipoHardware = 'Disco' AND valorRegistro >= 1 THEN 1 ELSE 0 END) AS totalCapturasDisco,
+    SUM(CASE WHEN tipoHardware = 'Rede' AND valorRegistro >= 1 THEN 1 ELSE 0 END) AS totalCapturasRede
+FROM
+    registro
+JOIN infoHardware ON fkHardware = idHardware
+JOIN maquina ON fkMaquina = idMaquina
+GROUP BY
+    idMaquina
+ORDER BY
+    totalCapturasCpu DESC,
+    totalCapturasRam DESC,
+    totalCapturasDisco DESC,
+    totalCapturasRede DESC
+LIMIT 1;
+
+
+ 
