@@ -13,6 +13,7 @@ public class Disco extends Hardware {
     private Double bytesEscritaAnterior = 0.0;
     private Double leituraAnterior = 0.0;
     private Double escritaAnterior = 0.0;
+    private Double tempoTransferenciaAnterior = 0.0;
     private Boolean primeiraCaptura = true; // A primeira captura não pegará o momento
     public Disco(org.example.tipoHardware tipoHardware,
                  String nomeHardware,
@@ -60,14 +61,22 @@ public class Disco extends Hardware {
 
                 @Override
                 public void run() {
-                    Double bytesLeituraMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getLeituras();
+                    Double bytesLeituraMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura();
                     Double bytesEscritaMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas();
+
+                    Double leituraMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getLeituras();
+                    Double escritaMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getEscritas();
+
+                    Double tempoTransferenciaMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getTempoDeTransferencia();
 
                     if (primeiraCaptura) {
                         bytesLeituraAnterior = bytesLeituraMomento;
                         bytesEscritaAnterior = bytesEscritaMomento;
-                        leituraAnterior = bytesLeituraMomento;
-                        escritaAnterior = bytesEscritaAnterior;
+
+                        leituraAnterior = leituraMomento;
+                        escritaAnterior = escritaMomento;
+
+                        tempoTransferenciaAnterior = tempoTransferenciaMomento;
                         primeiraCaptura = false;
                         return;
                     }
@@ -80,14 +89,17 @@ public class Disco extends Hardware {
 
                     // QUANTIDADE
 
-                    Double leituraMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getLeituras();
-                    Double escritaMomento = (double) looca.getGrupoDeDiscos().getDiscos().get(0).getEscritas();
-
                     Double transferenciaLeitura = leituraMomento - leituraAnterior;
                     Double transferenciaEscrita = escritaMomento - escritaAnterior;
 
                     leituraAnterior = leituraMomento;
                     escritaAnterior = escritaMomento;
+
+                    // Tempo Transferência
+
+                    Double tempoTransferencia = tempoTransferenciaMomento - tempoTransferenciaAnterior;
+
+                    tempoTransferenciaAnterior = tempoTransferenciaMomento;
 
                     String nomeRegistro = "bytesLeitura";
 
@@ -97,7 +109,7 @@ public class Disco extends Hardware {
                     // con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura(), fkHardware);
                     System.out.println(bytesTransferenciaLeitura / 1e9);
 
-                    nomeRegistro = "BytesEscrita";
+                    nomeRegistro = "bytesEscrita";
 
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
@@ -122,7 +134,7 @@ public class Disco extends Hardware {
 
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
-                    con.update(queryRegistro, nomeRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getTempoDeTransferencia() / 1000, fkHardware);
+                    con.update(queryRegistro, nomeRegistro, tempoTransferencia / 1000, fkHardware);
                     //con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getTempoDeTransferencia(), fkHardware);
 
                     nomeRegistro = "memoriaDisponivel";

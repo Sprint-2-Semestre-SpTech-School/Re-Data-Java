@@ -21,28 +21,28 @@ public class Main {
         GeradorLog.log(TagNiveisLog.INFO, "Arch: " + looca.getSistema().getArquitetura() + "x bits", Modulo.GERAL);
         GeradorLog.log(TagNiveisLog.INFO, "Iniciando a aplicação...", Modulo.GERAL);
 
-//        Empresa empresaDemo = new Empresa("ReData.INC",
-//                "53719031000123",
-//                "03325764",
-//                "São Paulo",
-//                "Rua Database",
-//                "777",
-//                "DataLake",
-//                "Camada de Load");
-//        empresaDemo.inserirDadosEmpresa(); // Inserindo dados no MySql
+        Empresa empresaDemo = new Empresa("ReData.INC",
+                "53719031000123",
+                "03325764",
+                "São Paulo",
+                "Rua Database",
+                "777",
+                "DataLake",
+                "Camada de Load");
+        empresaDemo.inserirDadosEmpresa(); // Inserindo dados no MySql
 
 
 
-//        System.out.println(empresaDemo.consultarId()); // Consultar o Id Atual
-//        Integer fkEmpresa = empresaDemo.consultarId(); // Definindo o Id para as futuras operações
-//
-//        System.out.println(empresaDemo);
-//        System.out.println("\n");
+        System.out.println(empresaDemo.consultarId()); // Consultar o Id Atual
+        Integer fkEmpresa = empresaDemo.consultarId(); // Definindo o Id para as futuras operações
 
-//        Contato contatoDemo = new Contato("James Heat Field",
-//                "James@gmail.com",
-//                "1197421670");
-//        contatoDemo.inserirDadosContato();
+        System.out.println(empresaDemo);
+        System.out.println("\n");
+
+        Contato contatoDemo = new Contato("James Heat Field",
+                "James@gmail.com",
+                "1197421670", fkEmpresa);
+        contatoDemo.inserirDadosContato();
 
         Login validarLogin = new Login();
         validarLogin.validacaoLogin();
