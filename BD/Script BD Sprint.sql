@@ -186,4 +186,37 @@ ORDER BY
 LIMIT 1;
 
 
- 
+select idMaquina, count(idRegistro) as totalCapturas from registro
+        join infoHardware on fkHardware = idHardware
+        join maquina on fkMaquina = idMaquina 
+        where tipoHardware = 'Cpu' and valorRegistro >= 5 and fkProjeto = 400
+        group by idMaquina order by totalCapturas desc limit 1;
+        
+        
+select count(idRegistro) as eventos_criticos,
+DATE_FORMAT(tempoCapturas, '%Y-%m-%d: %H:%i:%s') AS intervalo_tempo,
+max(valorRegistro) as maior_valor
+from registro 
+join infoHardware on fkHardware = idHardware
+JOIN maquina ON fkMaquina = idMaquina
+join projeto on fkProjeto = idProjeto
+where tempoCapturas >= NOW() - interval 20 second and valorRegistro >= 1 and tipoHardware = "Cpu" and nomeRegistro = "usoCpu" and fkProjeto = 400
+group by DATE_FORMAT(tempoCapturas, '%Y-%m-%d: %H:%i:%s') order by maior_valor desc limit 1;
+
+select * from registro WHERE nomeRegistro = "bytesEscrita" and valorRegistro <= 1;
+
+
+SELECT COUNT(*) AS eventos_criticos,
+max(valorRegistro) as maior_valor
+FROM registro
+JOIN infoHardware ON fkHardware = idHardware
+JOIN maquina ON fkMaquina = idMaquina
+JOIN projeto ON fkProjeto = idProjeto
+WHERE tempoCapturas >= NOW() - INTERVAL 20 SECOND
+  AND valorRegistro >= 5
+  AND tipoHardware = "Cpu"
+  AND nomeRegistro = "usoCpu"
+  AND fkProjeto = 400;
+  
+  
+  
