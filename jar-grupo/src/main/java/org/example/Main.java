@@ -13,6 +13,7 @@ import java.util.Locale;
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         Looca looca = new Looca();
+
         Locale defaultLocale = Locale.getDefault();
         GeradorLog.log(TagNiveisLog.INFO, "Language: " + defaultLocale.getDisplayLanguage(), Modulo.GERAL);
         GeradorLog.log(TagNiveisLog.INFO, "OS name: " + looca.getSistema().getSistemaOperacional(), Modulo.GERAL);
@@ -29,6 +30,8 @@ public class Main {
                 "Camada de Load");
         empresaDemo.inserirDadosEmpresa(); // Inserindo dados no MySql
 
+
+
         System.out.println(empresaDemo.consultarId()); // Consultar o Id Atual
         Integer fkEmpresa = empresaDemo.consultarId(); // Definindo o Id para as futuras operações
 
@@ -41,9 +44,9 @@ public class Main {
                 fkEmpresa);
         contatoDemo.inserirDadosContato();
 
-        Conta contaDemo = new Conta("ReData2024", "ReData100", "ADM", fkEmpresa);
-        contaDemo.inserirDadosConta();
-        System.out.println(contaDemo);
+        Login validarLogin = new Login();
+        validarLogin.validacaoLogin();
+        System.out.println(validarLogin);
 
         System.out.println(contatoDemo);
         System.out.println("\n");

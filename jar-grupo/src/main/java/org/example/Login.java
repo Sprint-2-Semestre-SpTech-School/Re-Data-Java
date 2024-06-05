@@ -1,5 +1,6 @@
-package org.example.codigoLogin;
+package org.example;
 
+//import org.example.codigoLogin.Conexao;
 import org.example.logging.GeradorLog;
 import org.example.logging.Modulo;
 import org.example.logging.TagNiveisLog;
@@ -10,8 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class Metodos {
-
+public class Login {
     private Integer idConta;
     protected String login;
     protected String senha;
@@ -19,15 +19,13 @@ public class Metodos {
     private Date dataCriacao;
     private Integer fkEmpresa;
 
-    private Scanner inputLine = new Scanner(System.in);
 
-
-    public Metodos(Integer idConta,
-                   String login,
-                   String senha,
-                   String siglaConta,
-                   Date dataCriacao,
-                   Integer fkEmpresa) {
+    public Login(Integer idConta,
+                 String login,
+                 String senha,
+                 String siglaConta,
+                 Date dataCriacao,
+                 Integer fkEmpresa) {
         this.idConta = idConta;
         this.login = login;
         this.senha = senha;
@@ -36,25 +34,22 @@ public class Metodos {
         this.fkEmpresa = fkEmpresa;
     }
 
-//    public Metodos(String nomeUsuario, String senha) {
-//        this.nomeUsuario = "fernanda.caramico";
-//        this.senha = "SPtechPI";
-//    }
-
-    public Metodos() {
+    public Login() {
     }
+
+    private Scanner inputLine = new Scanner(System.in);
 
     public void validacaoLogin() {
         GeradorLog.log(TagNiveisLog.INFO, "Iniciando o processo de autenticação da aplicação...", Modulo.GERAL);
 
-        Conexao conexaoLogin = new Conexao();
-        JdbcTemplate conLogin = conexaoLogin.getConexaoDoBanco();
+        org.example.Conexao conexaoLogin = new Conexao();
+        JdbcTemplate conLogin = conexaoLogin.getConexaoBanco();
 
-        //      conLogin.update("INSERT INTO Conta (login, senha, siglaConta) VALUES ('fernanda.caramico', 'SPtechPI', 'FCM')");
-//      conLogin.update("INSERT INTO Conta (login, senha, siglaConta) VALUES ('julia.inada', 'SPtechADS', 'JIF')");
+              conLogin.update("INSERT INTO Conta (login, senha, siglaConta, dataCriacao ,fkEmpresa) VALUES ('fernanda.caramico', 'SPtechPI', 'FCM', current_timestamp, 1)");
+      conLogin.update("INSERT INTO Conta (login, senha, siglaConta, dataCriacao, fkEmpresa) VALUES ('julia.inada', 'SPtechADS', 'JIF', current_timestamp, 1)");
 
-        List<Metodos> loginDoBanco = conLogin.query("SELECT * FROM Conta",
-                new BeanPropertyRowMapper<>(Metodos.class));
+        List<Login> loginDoBanco = conLogin.query("SELECT * FROM Conta",
+                new BeanPropertyRowMapper<>(Login.class));
 
         List<String> loginUsuario = conLogin.queryForList("SELECT login FROM Conta", String.class);
 
@@ -72,7 +67,7 @@ public class Metodos {
         Integer indiceLogin = 0;
 
         for (Integer i = 0; i < loginDoBanco.size(); i ++) {
-            Metodos loginDaVez = loginDoBanco.get(i);
+            Login loginDaVez = loginDoBanco.get(i);
             if (loginDaVez.getLogin().equals(usuarioInserido)) {
                 System.out.println("Usuário encontrado");
                 indiceLogin = i;
@@ -95,7 +90,7 @@ public class Metodos {
         String senhaInserida = inputLine.nextLine();
 
         for (Integer i = 0; i < loginDoBanco.size(); i ++) {
-            Metodos senhaDaVez = loginDoBanco.get(i);
+            Login senhaDaVez = loginDoBanco.get(i);
             if (senhaDaVez.getSenha().equals(senhaInserida) && indiceLogin.equals(i)) {
                 System.out.println("Senha verificada com sucesso");
                 GeradorLog.log(TagNiveisLog.INFO, "Login bem-sucedido para o usuário %s.".formatted(usuarioInserido), Modulo.AUTENTICACAO);
