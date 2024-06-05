@@ -1,6 +1,5 @@
 package org.example;
 
-//import org.example.codigoLogin.Conexao;
 import org.example.logging.GeradorLog;
 import org.example.logging.Modulo;
 import org.example.logging.TagNiveisLog;
@@ -40,74 +39,77 @@ public class Login {
     private Scanner inputLine = new Scanner(System.in);
 
     public void validacaoLogin() {
-        GeradorLog.log(TagNiveisLog.INFO, "Iniciando o processo de autenticação da aplicação...", Modulo.GERAL);
 
-        org.example.Conexao conexaoLogin = new Conexao();
-        JdbcTemplate conLogin = conexaoLogin.getConexaoBanco();
+        try {
+            GeradorLog.log(TagNiveisLog.INFO, "Iniciando o processo de autenticação da aplicação...", Modulo.GERAL);
 
-              conLogin.update("INSERT INTO Conta (login, senha, siglaConta, dataCriacao ,fkEmpresa) VALUES ('fernanda.caramico', 'SPtechPI', 'FCM', current_timestamp, 1)");
-      conLogin.update("INSERT INTO Conta (login, senha, siglaConta, dataCriacao, fkEmpresa) VALUES ('julia.inada', 'SPtechADS', 'JIF', current_timestamp, 1)");
+            org.example.Conexao conexaoLogin = new Conexao();
+            JdbcTemplate conLogin = conexaoLogin.getConexaoBanco();
 
-        List<Login> loginDoBanco = conLogin.query("SELECT * FROM Conta",
-                new BeanPropertyRowMapper<>(Login.class));
+            conLogin.update(" INSERT INTO Conta (login, senha, siglaConta, dataCriacao ,fkEmpresa) VALUES ((select nomeEmpresa from Empresa where idEmpresa = (select max(idEmpresa) from Empresa)), 'SPtechPI', 'FCM', current_timestamp, 1)");
 
-        List<String> loginUsuario = conLogin.queryForList("SELECT login FROM Conta", String.class);
+            List<Login> loginDoBanco = conLogin.query("SELECT * FROM Conta",
+                    new BeanPropertyRowMapper<>(Login.class));
 
-        List<String> senhaUsuario = conLogin.queryForList("SELECT senha FROM Conta", String.class);
+            List<String> loginUsuario = conLogin.queryForList("SELECT login FROM Conta", String.class);
+
+            List<String> senhaUsuario = conLogin.queryForList("SELECT senha FROM Conta", String.class);
 
 //      List<Metodos> loginTeste = conLogin.query("SELECT idConta as id, login, senha FROM Conta WHERE login = ?  AND senha = ?",
 //                new BeanPropertyRowMapper<>(Metodos.class),login,senha);
 
 //      MÉTODO
-        System.out.println("Quer acessar sua página de usuário e acompanhar o monitoramento?");
+            System.out.println("Quer acessar sua página de usuário e acompanhar o monitoramento?");
 
-        System.out.println("Insira aqui seu nome de usuário:");
-        String usuarioInserido = inputLine.nextLine();
+            System.out.println("Insira aqui seu nome de usuário:");
+            String usuarioInserido = inputLine.nextLine();
 
-        Integer indiceLogin = 0;
+            Integer indiceLogin = 0;
 
-        for (Integer i = 0; i < loginDoBanco.size(); i ++) {
-            Login loginDaVez = loginDoBanco.get(i);
-            if (loginDaVez.getLogin().equals(usuarioInserido)) {
-                System.out.println("Usuário encontrado");
-                indiceLogin = i;
-                login = usuarioInserido;
-                break;
-            } else {
+            for (Integer i = 0; i < loginDoBanco.size(); i++) {
+                Login loginDaVez = loginDoBanco.get(i);
+                if (loginDaVez.getLogin().equals(usuarioInserido)) {
+                    System.out.println("Usuário encontrado");
+                    indiceLogin = i;
+                    login = usuarioInserido;
+                    break;
+                } else {
 
-                if (i.equals(loginDoBanco.size() - 1)) {
+                    if (i.equals(loginDoBanco.size() - 1)) {
 
-                    System.out.println("Usuário não encontrado, tente novamente");
-                    System.out.println("Insira aqui seu nome de usuário:");
-                    usuarioInserido = inputLine.nextLine();
+                        System.out.println("Usuário não encontrado, tente novamente");
+                        System.out.println("Insira aqui seu nome de usuário:");
+                        usuarioInserido = inputLine.nextLine();
 
-                    i = -1;
+                        i = -1;
+                    }
                 }
             }
-        }
 
-        System.out.println("Insira aqui sua senha:");
-        String senhaInserida = inputLine.nextLine();
+            System.out.println("Insira aqui sua senha:");
+            String senhaInserida = inputLine.nextLine();
 
-        for (Integer i = 0; i < loginDoBanco.size(); i ++) {
-            Login senhaDaVez = loginDoBanco.get(i);
-            if (senhaDaVez.getSenha().equals(senhaInserida) && indiceLogin.equals(i)) {
-                System.out.println("Senha verificada com sucesso");
-                GeradorLog.log(TagNiveisLog.INFO, "Login bem-sucedido para o usuário %s.".formatted(usuarioInserido), Modulo.AUTENTICACAO);
-                break;
-            } else {
-                if (i.equals(loginDoBanco.size() - 1)) {
+            for (Integer i = 0; i < loginDoBanco.size(); i++) {
+                Login senhaDaVez = loginDoBanco.get(i);
+                if (senhaDaVez.getSenha().equals(senhaInserida) && indiceLogin.equals(i)) {
+                    System.out.println("Senha verificada com sucesso");
+                    GeradorLog.log(TagNiveisLog.INFO, "Login bem-sucedido para o usuário %s.".formatted(usuarioInserido), Modulo.AUTENTICACAO);
+                    break;
+                } else {
+                    if (i.equals(loginDoBanco.size() - 1)) {
 
-                    System.out.println("Senha incorreta, tente novamente");
-                    GeradorLog.log(TagNiveisLog.ERROR, "Senha incorreta. Falha ao realizar login para o usuário %s.".formatted(usuarioInserido), Modulo.AUTENTICACAO);
-                    System.out.println("Insira aqui sua senha:");
-                    senhaInserida = inputLine.nextLine();
+                        System.out.println("Senha incorreta, tente novamente");
+                        GeradorLog.log(TagNiveisLog.ERROR, "Senha incorreta. Falha ao realizar login para o usuário %s.".formatted(usuarioInserido), Modulo.AUTENTICACAO);
+                        System.out.println("Insira aqui sua senha:");
+                        senhaInserida = inputLine.nextLine();
 
-                    i = -1;
+                        i = -1;
+                    }
                 }
             }
+        }catch (RuntimeException e){
+            System.out.println("Erro no login" + e.getMessage());
         }
-
     }
 
     public Integer getIdConta() {

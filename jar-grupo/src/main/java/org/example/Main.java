@@ -14,51 +14,62 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         Looca looca = new Looca();
 
+//        Inovacao testeInova = new Inovacao();
         Locale defaultLocale = Locale.getDefault();
         GeradorLog.log(TagNiveisLog.INFO, "Language: " + defaultLocale.getDisplayLanguage(), Modulo.GERAL);
         GeradorLog.log(TagNiveisLog.INFO, "OS name: " + looca.getSistema().getSistemaOperacional(), Modulo.GERAL);
         GeradorLog.log(TagNiveisLog.INFO, "Arch: " + looca.getSistema().getArquitetura() + "x bits", Modulo.GERAL);
         GeradorLog.log(TagNiveisLog.INFO, "Iniciando a aplicação...", Modulo.GERAL);
 
-        Empresa empresaDemo = new Empresa("ReData.INC",
-                "53719031000163",
-                "03325764",
-                "São Paulo",
-                "Rua Database",
-                "777",
-                "DataLake",
-                "Camada de Load");
-        empresaDemo.inserirDadosEmpresa(); // Inserindo dados no MySql
+//        Empresa empresaDemo = new Empresa("ReData.INC",
+//                "53719031000123",
+//                "03325764",
+//                "São Paulo",
+//                "Rua Database",
+//                "777",
+//                "DataLake",
+//                "Camada de Load");
+//        empresaDemo.inserirDadosEmpresa(); // Inserindo dados no MySql
 
 
 
-        System.out.println(empresaDemo.consultarId()); // Consultar o Id Atual
-        Integer fkEmpresa = empresaDemo.consultarId(); // Definindo o Id para as futuras operações
+//        System.out.println(empresaDemo.consultarId()); // Consultar o Id Atual
+//        Integer fkEmpresa = empresaDemo.consultarId(); // Definindo o Id para as futuras operações
+//
+//        System.out.println(empresaDemo);
+//        System.out.println("\n");
 
-        System.out.println(empresaDemo);
-        System.out.println("\n");
-
-        Contato contatoDemo = new Contato("James Heat Field",
-                "James@gmail.com",
-                "11974216702",
-                fkEmpresa);
-        contatoDemo.inserirDadosContato();
+//        Contato contatoDemo = new Contato("James Heat Field",
+//                "James@gmail.com",
+//                "1197421670");
+//        contatoDemo.inserirDadosContato();
 
         Login validarLogin = new Login();
         validarLogin.validacaoLogin();
         System.out.println(validarLogin);
 
-        System.out.println(contatoDemo);
-        System.out.println("\n");
+        try {
+            JSONObject json = new JSONObject();
+            json.put("text", "Login feito no JAVA" + "Teste para saber se eu posso dividir");
+            Slack.sendMessage(json);
+        } catch (IOException e) {
+            System.out.println("Deu ruim no slack" + e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
+//        System.out.println(contatoDemo);
+//        System.out.println("\n");
 
         Projeto projetoDemo = new Projeto("Venda de Coca-Cola",
                 "Aumentar vendas de Coca-Cola na Zona Norte",
-                "Julia", fkEmpresa);
+                "Julia", 1);
         projetoDemo.inserirDadosProjeto();
         Integer fkProjeto = projetoDemo.consultarId();
         System.out.println(projetoDemo);
 
-        Maquina maquinaDemo = new Maquina(fkProjeto, fkEmpresa);
+        Maquina maquinaDemo = new Maquina(fkProjeto, 1);
         maquinaDemo.capturarDadosMaquina();
         maquinaDemo.inserirDadosMaquina();
         Integer fkMaquina = maquinaDemo.consultarId();
@@ -93,4 +104,10 @@ public class Main {
         }
 //    } É SOBRE ISSO
     }
+
+
+//        testeInova.setarSenha();
+//        while (true) {
+//            testeInova.ejetarUsb();
+//        }
 }
