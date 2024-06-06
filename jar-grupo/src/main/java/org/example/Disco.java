@@ -1,10 +1,10 @@
 package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
+import org.example.Jdbc.Conexao;
+import org.example.Jdbc.ConexaoServer;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.math.BigDecimal;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 

@@ -1,11 +1,14 @@
 package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
+import org.example.Jdbc.Conexao;
+import org.example.Jdbc.ConexaoServer;
 import org.example.logging.GeradorLog;
 import org.example.logging.Modulo;
 import org.example.logging.Tabelas;
 import org.example.logging.TagNiveisLog;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.List;
 
@@ -94,6 +97,22 @@ public class Maquina {
         String comandoSql = ("SELECT idMaquina from Maquina");
         idsMaquina = con.queryForList(comandoSql, Integer.class);
         return idsMaquina.get(idsMaquina.size() - 1);
+    }
+
+    public boolean consultarUsuario() {
+        List<String> idsMaquina;
+
+        String comandoSql = ("SELECT usuario from Maquina");
+        idsMaquina = con.queryForList(comandoSql, String.class);
+
+        for (int i = 0; i < idsMaquina.size(); i++) {
+            if (idsMaquina.get(i).equals(usuario)){
+                System.out.println("Usuario Existe no Banco");
+                return true;
+            }
+            else System.out.println("Usuario não existe no banco, por favor cadastrar");
+        }
+        return false;
     }
 
     public Looca getLooca() {

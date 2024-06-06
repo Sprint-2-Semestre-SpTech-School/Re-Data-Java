@@ -1,10 +1,12 @@
 package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
+import org.example.Jdbc.Conexao;
+import org.example.Jdbc.ConexaoServer;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public abstract class Hardware {
-    protected tipoHardware tipoHardware;
+    protected org.example.tipoHardware tipoHardware;
     protected String nomeHardware;
     protected String unidadeCaptacao;
     protected Double valorTotal;

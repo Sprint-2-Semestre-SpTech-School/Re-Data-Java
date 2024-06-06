@@ -1,5 +1,7 @@
-package org.example;
+package org.example.Negocio;
 
+import org.example.Jdbc.Conexao;
+import org.example.Jdbc.ConexaoServer;
 import org.example.logging.GeradorLog;
 import org.example.logging.Modulo;
 import org.example.logging.Tabelas;

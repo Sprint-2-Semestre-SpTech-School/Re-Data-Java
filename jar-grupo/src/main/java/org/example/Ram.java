@@ -1,7 +1,8 @@
 package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
-import com.mysql.cj.log.Log;
+import org.example.Jdbc.Conexao;
+import org.example.Jdbc.ConexaoServer;
 import org.example.logging.GeradorLog;
 import org.example.logging.Modulo;
 import org.example.logging.Tabelas;

@@ -1,14 +1,14 @@
 package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
+import org.example.Jdbc.Conexao;
+import org.example.Jdbc.ConexaoServer;
 import org.example.logging.GeradorLog;
 import org.example.logging.Modulo;
 import org.example.logging.Tabelas;
 import org.example.logging.TagNiveisLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.swing.*;
-import java.math.BigDecimal;
 import java.util.Timer;
 import java.util.TimerTask;
 

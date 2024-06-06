@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Jdbc;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;

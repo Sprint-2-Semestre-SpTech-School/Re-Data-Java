@@ -1,21 +1,20 @@
 package org.example;
 
-import com.github.britooo.looca.api.core.Looca;
-import org.example.logging.GeradorLog;
-import org.example.logging.Modulo;
-import org.example.logging.Tabelas;
-import org.example.logging.TagNiveisLog;
+import org.example.Jdbc.Conexao;
+import org.example.Negocio.Projeto;
 import org.json.JSONObject;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        Conexao con = new Conexao();
+        Conexao conexao = new Conexao();
+        JdbcTemplate con = conexao.getConexaoBanco();
+
 
 //        Inovacao testeInova = new Inovacao();
 //        Locale defaultLocale = Locale.getDefault();
@@ -25,25 +24,22 @@ public class Main {
 //        GeradorLog.log(TagNiveisLog.INFO, "Arch: " + looca.getSistema().getArquitetura() + "x bits", Modulo.GERAL);
 //        GeradorLog.log(TagNiveisLog.INFO, "Iniciando a aplicação...", Modulo.GERAL);
 
-//        String comandoSql = ("SELECT idProjeto from Projeto");
-//        idsProjeto = con.queryForList(comandoSql, Integer.class);
-//        return idsProjeto.get(idsProjeto.size() - 1);
-
 
         Login validarLogin = new Login();
         validarLogin.validacaoLogin();
         System.out.println(validarLogin);
 
 
-//        try {
-//            JSONObject json = new JSONObject();
-//            json.put("text", "Login feito no JAVA " + "Teste para saber se eu posso dividir");
-//            Slack.sendMessage(json);
-//        } catch (IOException e) {
-//            System.out.println("Deu ruim no slack" + e);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
+
+        try {
+            JSONObject json = new JSONObject();
+            json.put("text", "Login feito no JAVA " + "Teste para saber se eu posso dividir");
+            Slack.sendMessage(json);
+        } catch (IOException e) {
+            System.out.println("Deu ruim no slack" + e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
 
         Projeto projetoDemo = new Projeto("Venda de Coca-Cola",
@@ -53,9 +49,16 @@ public class Main {
         Integer fkProjeto = projetoDemo.consultarId();
         System.out.println(projetoDemo);
 
-        Maquina maquinaDemo = new Maquina(fkProjeto, 1);
+        Maquina maquinaDemo = new Maquina(400, 1);
         maquinaDemo.capturarDadosMaquina();
         maquinaDemo.inserirDadosMaquina();
+
+        if (maquinaDemo.consultarUsuario() == false){
+            System.out.println("Necessário criar uma maquina na Dashboard");
+            System.exit(0);
+        }
+
+
         Integer fkMaquina = maquinaDemo.consultarId();
         System.out.println("fkMaquina: " + fkMaquina);
         System.out.println(maquinaDemo);
@@ -93,5 +96,5 @@ public class Main {
 //        testeInova.setarSenha();
 //        while (true) {
 //            testeInova.ejetarUsb();
-//        }
+
 }

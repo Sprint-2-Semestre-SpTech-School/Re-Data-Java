@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Jdbc;
 
 import com.github.britooo.looca.api.core.Looca;
 import org.apache.commons.dbcp2.BasicDataSource;

@@ -1,7 +1,8 @@
 package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.processador.Processador;
+import org.example.Jdbc.Conexao;
+import org.example.Jdbc.ConexaoServer;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;

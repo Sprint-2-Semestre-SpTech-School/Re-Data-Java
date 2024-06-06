@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.Jdbc.Conexao;
 import org.example.logging.GeradorLog;
 import org.example.logging.Modulo;
 import org.example.logging.TagNiveisLog;
@@ -43,7 +44,7 @@ public class Login {
         try {
             GeradorLog.log(TagNiveisLog.INFO, "Iniciando o processo de autenticação da aplicação...", Modulo.GERAL);
 
-            org.example.Conexao conexaoLogin = new Conexao();
+            Conexao conexaoLogin = new Conexao();
             JdbcTemplate conLogin = conexaoLogin.getConexaoBanco();
 
             conLogin.update(" INSERT INTO Conta (login, senha, siglaConta, dataCriacao ,fkEmpresa) VALUES ((select nomeEmpresa from Empresa where idEmpresa = (select max(idEmpresa) from Empresa)), 'SPtechPI', 'FCM', current_timestamp, 1)");
