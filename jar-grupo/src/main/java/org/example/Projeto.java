@@ -44,12 +44,12 @@ public class Projeto {
                             "values (?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?)",
                     nomeDemanda, descricao, responsavel, fkEmpresa);
 
-            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.PROJETO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
-            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - nomeDemanda: %s for ID.%s.redata: %d".formatted(nomeDemanda, Tabelas.PROJETO.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
-            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - dataInicio: %s for ID.%s.redata: %d".formatted(dataInicio, Tabelas.PROJETO.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
-            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - dataTermino: %s for ID.%s.redata: %d".formatted(dataTermino, Tabelas.PROJETO.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
-            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - descricao: %s for ID.%s.redata: %d".formatted(descricao, Tabelas.PROJETO.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
-            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - responsavel: %s for ID.%s.redata: %d".formatted(responsavel, Tabelas.PROJETO.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
+//            GeradorLog.log(TagNiveisLog.INFO, "Dados inseridos com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.PROJETO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+//            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - nomeDemanda: %s for ID.%s.redata: %d".formatted(nomeDemanda, Tabelas.PROJETO.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
+//            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - dataInicio: %s for ID.%s.redata: %d".formatted(dataInicio, Tabelas.PROJETO.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
+//            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - dataTermino: %s for ID.%s.redata: %d".formatted(dataTermino, Tabelas.PROJETO.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
+//            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - descricao: %s for ID.%s.redata: %d".formatted(descricao, Tabelas.PROJETO.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
+//            GeradorLog.log(TagNiveisLog.INFO, "SQL column new values - responsavel: %s for ID.%s.redata: %d".formatted(responsavel, Tabelas.PROJETO.getDescricaoTabela(), fkEmpresa), Modulo.ENVIO_DADOS);
 
 //            con02.update("INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino," +
 //                            "descricao, responsavel, fkEmpresa)" +

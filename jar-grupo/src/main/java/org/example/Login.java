@@ -59,7 +59,7 @@ public class Login {
 //                new BeanPropertyRowMapper<>(Metodos.class),login,senha);
 
 //      MÉTODO
-            System.out.println("Quer acessar sua página de usuário e acompanhar o monitoramento?");
+//            System.out.println("Quer acessar sua página de usuário e acompanhar o monitoramento?");
 
             System.out.println("Insira aqui seu nome de usuário:");
             String usuarioInserido = inputLine.nextLine();
