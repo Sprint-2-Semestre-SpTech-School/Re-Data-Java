@@ -1,0 +1,176 @@
+20240607 00:01:02 - info - M006 - Tullin - Iniciando o processo de autenticação da aplicação...
+20240607 00:01:02 - info - M004 - Tullin - Login bem-sucedido para o usuário ReData.INC.
+20240607 00:01:02 - error - M005 - Tullin - Erro de conexão SQL: Máquina
+20240607 00:01:02 - error - M005 - Tullin - Erro de conexão SQL: infoHardware
+20240607 00:01:02 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:01:02 - info - M001 - Tullin - Name: usoCpu
+20240607 00:01:02 - info - M001 - Tullin - CPU usage: 2.952503209242619
+20240607 00:01:02 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:01:02 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:01:02 - info - M001 - Tullin - Name: usoCpu
+20240607 00:01:02 - info - M001 - Tullin - CPU usage: 2.952503209242619
+20240607 00:01:02 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:01:02 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:01:02 - info - M001 - Tullin - Name: usoCpu
+20240607 00:01:02 - info - M001 - Tullin - CPU usage: 5.670103092783505
+20240607 00:01:02 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:01:02 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:01:02 - info - M001 - Tullin - Name: usoCpu
+20240607 00:01:02 - info - M001 - Tullin - CPU usage: 4.585987261146497
+20240607 00:01:02 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:01:02 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:01:02 - info - M001 - Tullin - Name: usoCpu
+20240607 00:01:02 - info - M001 - Tullin - CPU usage: 3.6616161616161618
+20240607 00:01:02 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:01:02 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:01:02 - info - M001 - Tullin - Name: usoCpu
+20240607 00:01:02 - info - M001 - Tullin - CPU usage: 5.35031847133758
+20240607 00:01:02 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:01:02 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:01:02 - info - M001 - Tullin - Name: usoCpu
+20240607 00:01:02 - info - M001 - Tullin - CPU usage: 7.3979591836734695
+20240607 00:01:02 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M006 - Tullin - Iniciando o processo de autenticação da aplicação...
+20240607 00:02:09 - info - M004 - Tullin - Login bem-sucedido para o usuário ReData.INC.
+20240607 00:02:09 - error - M005 - Tullin - Erro de conexão SQL: Máquina
+20240607 00:02:09 - error - M005 - Tullin - Erro de conexão SQL: infoHardware
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 15.69620253164557
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 15.69620253164557
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 20.358514724711906
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 2.1963824289405682
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 1.5424164524421593
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 0.8997429305912596
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 1.9255455712451863
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 1.2886597938144329
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 22.348484848484848
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 1.1292346298619824
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 6.033376123234917
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:02:09 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:02:09 - info - M001 - Tullin - Name: usoCpu
+20240607 00:02:09 - info - M001 - Tullin - CPU usage: 2.564102564102564
+20240607 00:02:09 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M006 - Tullin - Iniciando o processo de autenticação da aplicação...
+20240607 00:03:25 - error - M004 - Tullin - Senha incorreta. Falha ao realizar login para o usuário ReData.INC.
+20240607 00:03:25 - info - M004 - Tullin - Login bem-sucedido para o usuário ReData.INC.
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados ...
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 1.5018773466833542
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 1.5018773466833542
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 9.974424552429667
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 10.506329113924052
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 2.313624678663239
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 6.3938618925831205
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 1.153846153846154
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 1.0269576379974326
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 2.190721649484536
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 2.053915275994865
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 0.7537688442211055
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 1.6774193548387095
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 1.78343949044586
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 0.8928571428571428
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 1.4066496163682864
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 1.257861635220126
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 2.5031289111389237
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 1.9255455712451863
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 3.221649484536082
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 5.377720870678617
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 12.404092071611252
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro
+20240607 00:03:25 - info - M001 - Tullin - Iniciando captura de dados: Máquina: 500...
+20240607 00:03:25 - info - M001 - Tullin - Name: usoCpu
+20240607 00:03:25 - info - M001 - Tullin - CPU usage: 8.545918367346939
+20240607 00:03:25 - info - M003 - Tullin - Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: registro

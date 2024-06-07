@@ -28,11 +28,17 @@ public class Ram extends Hardware {
         super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
+    public Ram(Integer fkMaquina){
+        this.fkMaquina = fkMaquina;
+    }
+
     public Ram() {
     }
 
     @Override
     public void capturarDados() {
+        Maquina maquina = new Maquina();
+
         tipoHardware = org.example.tipoHardware.RAM;
         nomeHardware = null;
         unidadeCaptacao = "Gb";
@@ -42,14 +48,15 @@ public class Ram extends Hardware {
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+        con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
 
         GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados ...", Modulo.CAPTURA_HARDWARE);
 
-        GeradorLog.log(TagNiveisLog.INFO, "Type: %s".formatted(tipoHardware), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeHardware), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Capture unit: %s".formatted(unidadeCaptacao), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Total value: %.2f".formatted(valorTotal), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+//        GeradorLog.log(TagNiveisLog.INFO, "Type: %s".formatted(tipoHardware), Modulo.CAPTURA_HARDWARE);
+//        GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeHardware), Modulo.CAPTURA_HARDWARE);
+//        GeradorLog.log(TagNiveisLog.INFO, "Capture unit: %s".formatted(unidadeCaptacao), Modulo.CAPTURA_HARDWARE);
+//        GeradorLog.log(TagNiveisLog.INFO, "Total value: %.2f".formatted(valorTotal), Modulo.CAPTURA_HARDWARE);
+//        GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ENVIO_DADOS);
 
         // con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
     }
@@ -69,10 +76,10 @@ public class Ram extends Hardware {
                         "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                 con.update(queryRegistro, nomeRegistro, (looca.getMemoria().getEmUso() / 1e9) * 100 / valorTotal, fkHardware);
 
-                GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados: Máquina: %d...".formatted(fkMaquina), Modulo.CAPTURA_HARDWARE);
-                GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeRegistro), Modulo.CAPTURA_HARDWARE);
-                GeradorLog.log(TagNiveisLog.INFO, "RAM usage: %s".formatted(looca.getMemoria().getEmUso()), Modulo.CAPTURA_HARDWARE);
-                GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.REGISTRO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+//                GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados: Máquina: %d...".formatted(fkMaquina), Modulo.CAPTURA_HARDWARE);
+//                GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeRegistro), Modulo.CAPTURA_HARDWARE);
+//                GeradorLog.log(TagNiveisLog.INFO, "RAM usage: %s".formatted(looca.getMemoria().getEmUso()), Modulo.CAPTURA_HARDWARE);
+//                GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.REGISTRO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
 
                 // con02.update(queryRegistro, (looca.getMemoria().getEmUso() / 1e9), fkHardware);
             }

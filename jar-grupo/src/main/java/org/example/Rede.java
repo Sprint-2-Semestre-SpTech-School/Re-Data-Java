@@ -29,6 +29,10 @@ public class Rede extends Hardware {
         super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
+    public Rede(Integer fkMaquina){
+        this.fkMaquina = fkMaquina;
+    }
+
     public Rede() {
     }
 
@@ -45,7 +49,7 @@ public class Rede extends Hardware {
             String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                     "VALUES (?, ?, ?, ? , ?)";
             con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-            // con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+             con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
         } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'Rede' sql" + e.getMessage());
         }
@@ -57,8 +61,6 @@ public class Rede extends Hardware {
         Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
 
         try {
-
-
             Timer timer = new Timer();
             TimerTask tarefa = new TimerTask() {
                 @Override
@@ -106,14 +108,14 @@ public class Rede extends Hardware {
                     String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, pacotesEnviados, fkHardware);
-                    // con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
+                     con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
 
                     nomeRegistro = "Pacotes Recebidos";
 
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, pacotesRecebidos, fkHardware);
-                    // con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesRecebidos(), fkHardware);
+                     con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesRecebidos(), fkHardware);
                     contadorTeste++;
                     System.out.println();
                     System.out.println();

@@ -8,14 +8,14 @@ public class ConexaoServer{
 
     public ConexaoServer() {
         BasicDataSource dataSource = new BasicDataSource();
-        // dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        // dataSource.setUrl("jdbc:sqlserver://44.194.59.3:1433;databaseName=redata;encrypt=true;trustServerCertificate=true");
+         dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+         dataSource.setUrl("jdbc:sqlserver://44.194.59.3:1433;databaseName=redata;encrypt=true;trustServerCertificate=true");
 
         // Usuario e Senha usados por mim
         dataSource.setUsername("sa");
-        dataSource.setPassword("Moderna13?");
+        dataSource.setPassword("redata");
 
-        // conexaoBanco = new JdbcTemplate(dataSource);
+         conexaoBanco = new JdbcTemplate(dataSource);
     }
 
     public JdbcTemplate getConexaoBanco() {

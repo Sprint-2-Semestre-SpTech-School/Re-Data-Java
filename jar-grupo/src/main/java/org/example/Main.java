@@ -13,23 +13,16 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         Conexao conexao = new Conexao();
-        JdbcTemplate con = conexao.getConexaoBanco();
 
-
-//        Inovacao testeInova = new Inovacao();
 //        Locale defaultLocale = Locale.getDefault();
-
 //        GeradorLog.log(TagNiveisLog.INFO, "Language: " + defaultLocale.getDisplayLanguage(), Modulo.GERAL);
 //        GeradorLog.log(TagNiveisLog.INFO, "OS name: " + looca.getSistema().getSistemaOperacional(), Modulo.GERAL);
 //        GeradorLog.log(TagNiveisLog.INFO, "Arch: " + looca.getSistema().getArquitetura() + "x bits", Modulo.GERAL);
 //        GeradorLog.log(TagNiveisLog.INFO, "Iniciando a aplicação...", Modulo.GERAL);
 
-
         Login validarLogin = new Login();
         validarLogin.validacaoLogin();
         System.out.println(validarLogin);
-
-
 
         try {
             JSONObject json = new JSONObject();
@@ -41,43 +34,43 @@ public class Main {
             throw new RuntimeException(e);
         }
 
+        Maquina idMaquina = new Maquina();
 
-        Projeto projetoDemo = new Projeto("Venda de Coca-Cola",
-                "Aumentar vendas de Coca-Cola na Zona Norte",
-                "Julia", 1);
-        projetoDemo.inserirDadosProjeto();
-        Integer fkProjeto = projetoDemo.consultarId();
-        System.out.println(projetoDemo);
 
         Maquina maquinaDemo = new Maquina(400, 1);
         maquinaDemo.capturarDadosMaquina();
         maquinaDemo.inserirDadosMaquina();
+        Integer maquina = idMaquina.getIdMaquina();
+
 
         if (maquinaDemo.consultarUsuario() == false){
             System.out.println("Necessário criar uma maquina na Dashboard");
             System.exit(0);
         }
 
-
         Integer fkMaquina = maquinaDemo.consultarId();
         System.out.println("fkMaquina: " + fkMaquina);
         System.out.println(maquinaDemo);
 
-        Cpu cpu = new Cpu();
+        Cpu cpu = new Cpu(maquina);
         cpu.capturarDados();
         cpu.inserirDados();
 
-        Ram ram = new Ram();
+        Ram ram = new Ram(maquina);
         ram.capturarDados();
         ram.inserirDados();
 
-        Disco disco = new Disco();
+        Disco disco = new Disco(maquina);
         disco.capturarDados();
         disco.inserirDados();
 
-        Rede rede = new Rede();
+        Rede rede = new Rede(maquina);
         rede.capturarDados();
         rede.inserirDados();
+
+        Inovacao testeInova = new Inovacao();
+        testeInova.setarSenha();
+        testeInova.ejetarUsb();
 
 
         // METODO PARA INSTANCIA, CRIAR E PLOTAR O ALERTA NO SLACK:
@@ -89,12 +82,7 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Deu ruim no slack" + e);
         }
-//    } É SOBRE ISSO
     }
 
-
-//        testeInova.setarSenha();
-//        while (true) {
-//            testeInova.ejetarUsb();
 
 }

@@ -26,11 +26,18 @@ public class Cpu extends Hardware {
         super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
+    public Cpu(Integer fkMaquina){
+        this.fkMaquina = fkMaquina;
+    }
+
     public Cpu() {
     }
 
+
+
     @Override
     public void capturarDados() {
+
         tipoHardware = org.example.tipoHardware.CPU;
         nomeHardware = looca.getProcessador().getNome();
         unidadeCaptacao = "%";
@@ -38,18 +45,21 @@ public class Cpu extends Hardware {
         fkMaquina = 500;
 
     try {
+        JdbcTemplate con = conexao.getConexaoBanco();
+        JdbcTemplate con02 = conexao02.getConexaoBanco();
+
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-        GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados...", Modulo.CAPTURA_HARDWARE);
+        con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
 
-        GeradorLog.log(TagNiveisLog.INFO, "Type: %s".formatted(tipoHardware), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeHardware), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Capture unit: %s".formatted(unidadeCaptacao), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Total value: %.2f".formatted(valorTotal), Modulo.CAPTURA_HARDWARE);
-        GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+//        GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados...", Modulo.CAPTURA_HARDWARE);
+//        GeradorLog.log(TagNiveisLog.INFO, "Type: %s".formatted(tipoHardware), Modulo.CAPTURA_HARDWARE);
+//        GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeHardware), Modulo.CAPTURA_HARDWARE);
+//        GeradorLog.log(TagNiveisLog.INFO, "Capture unit: %s".formatted(unidadeCaptacao), Modulo.CAPTURA_HARDWARE);
+//        GeradorLog.log(TagNiveisLog.INFO, "Total value: %.2f".formatted(valorTotal), Modulo.CAPTURA_HARDWARE);
+//        GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ENVIO_DADOS);
 
-        // con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
     }catch (RuntimeException e){
         System.out.println("Erro de conexão 'Cpu' sql" + e.getMessage());
         GeradorLog.log(TagNiveisLog.ERROR, "Erro de conexão SQL: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ALERTA);
@@ -63,7 +73,6 @@ public class Cpu extends Hardware {
 
             String queryIdHardware = "SELECT LAST_INSERT_ID()";
             Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
-            Integer fkHardware02 = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
 
             Timer timer = new Timer();
             TimerTask tarefa = new TimerTask() {

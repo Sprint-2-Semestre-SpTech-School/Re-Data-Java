@@ -28,6 +28,10 @@ public class Disco extends Hardware {
         super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
+    public Disco(Integer fkMaquina){
+        this.fkMaquina = fkMaquina;
+    }
+
     public Disco() {
 
     }
@@ -38,7 +42,7 @@ public class Disco extends Hardware {
         nomeHardware = looca.getGrupoDeDiscos().getDiscos().get(0).getModelo();
         unidadeCaptacao = "Gb";
         valorTotal = (double) Math.round(looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho() / 1e9);
-        fkMaquina = 500;
+        this.fkMaquina = 500;
 
         try {
             String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
@@ -106,7 +110,7 @@ public class Disco extends Hardware {
                     String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, bytesTransferenciaLeitura / 1e6, fkHardware);
-                    // con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura(), fkHardware);
+                     con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura(), fkHardware);
                     System.out.println(bytesTransferenciaLeitura / 1e9);
 
                     nomeRegistro = "bytesEscrita";
@@ -114,35 +118,35 @@ public class Disco extends Hardware {
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, bytesTransferenciaEscrita / 1e6, fkHardware);
-                    // con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas(), fkHardware);
+                     con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas(), fkHardware);
 
                     nomeRegistro = "leituras";
 
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, transferenciaLeitura, fkHardware);
-                    // con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getLeituras(), fkHardware);
+                     con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getLeituras(), fkHardware);
 
                     nomeRegistro = "escritas";
 
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, transferenciaEscrita, fkHardware);
-                    // con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getEscritas(), fkHardware);
+                     con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getEscritas(), fkHardware);
 
                     nomeRegistro = "tempo de transferência";
 
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, tempoTransferencia / 1000, fkHardware);
-                    //con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getTempoDeTransferencia(), fkHardware);
+                    con02.update(queryRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getTempoDeTransferencia(), fkHardware);
 
                     nomeRegistro = "memoriaDisponivel";
 
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1e9, fkHardware);
-                    // con02.update(queryRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel(), fkHardware);
+                     con02.update(queryRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel(), fkHardware);
 
                 }
             };

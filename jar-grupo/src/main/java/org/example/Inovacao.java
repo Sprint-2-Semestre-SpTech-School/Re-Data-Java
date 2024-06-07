@@ -2,6 +2,8 @@ package org.example;
 
 import java.io.*;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Inovacao {
     String nomeUser;
@@ -66,24 +68,31 @@ public class Inovacao {
     }
 
     public void ejetarUsb(){
-        String comando = "echo %s | sudo -S eject \"/media/%s/%s\"".formatted(senha, nomeUser, listarDiretorio);
-        String[] comandoExecutar = {"/bin/bash", "-c", comando};
+        Timer timer = new Timer();
+        TimerTask tarefa = new TimerTask() {
+            @Override
+            public void run() {
+                String comando = "echo %s | sudo -S eject \"/media/%s/%s\"".formatted(senha, nomeUser, listarDiretorio);
+                String[] comandoExecutar = {"/bin/bash", "-c", comando};
 
-        try {
-            reconhecerUser();
-            listarDiretorioMidia();
+                try {
+                    reconhecerUser();
+                    listarDiretorioMidia();
 
-            Process process = Runtime.getRuntime().exec(comandoExecutar);
+                    Process process = Runtime.getRuntime().exec(comandoExecutar);
 
-            int saida = process.waitFor();
-            if (saida == 0){
-                System.out.println("o USB foi ejetado com sucesso");
+                    int saida = process.waitFor();
+                    if (saida == 0){
+                        System.out.println("o USB foi ejetado com sucesso");
+                    }
+                } catch (IOException e) {
+                    System.out.println("Erro na ejeção: " + e.getMessage());
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
-        } catch (IOException e) {
-            System.out.println("Erro na ejeção: " + e.getMessage());
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+            };
+        timer.schedule(tarefa, 1000, 5000);
     }
 
 
