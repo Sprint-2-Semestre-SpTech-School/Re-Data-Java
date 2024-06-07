@@ -49,7 +49,12 @@ public class Rede extends Hardware {
             String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                     "VALUES (?, ?, ?, ? , ?)";
             con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-             con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+             try{
+                 con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+             } catch (RuntimeException e){
+                 e.getMessage();
+             }
+
         } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'Rede' sql" + e.getMessage());
         }
@@ -103,15 +108,22 @@ public class Rede extends Hardware {
                     pacotesEnviadosAnterior = pacotesEnviadosMomento;
                     pacotesRecebidosAnterior = pacotesRecebidosMomento;
 
+                    String queryRegistroServer;
+                    String queryRegistro;
+
                     String nomeRegistro = "Pacotes Enviados";
 
-                    String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                        queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, pacotesEnviados, fkHardware);
 
-                    String queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
-                            "VALUES (?, ?, SYSDATETIME(), ?)";
-                     con02.update(queryRegistroServer, nomeRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
+                    try{
+                        queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                                "VALUES (?, ?, SYSDATETIME(), ?)";
+                        con02.update(queryRegistroServer, nomeRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
+                    } catch (RuntimeException e){
+                        e.getMessage();
+                    }
 
                     nomeRegistro = "Pacotes Recebidos";
 
@@ -119,9 +131,13 @@ public class Rede extends Hardware {
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, pacotesRecebidos, fkHardware);
 
-                    queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
-                            "VALUES (?, ?, SYSDATETIME(), ?)";
-                    con02.update(queryRegistroServer, nomeRegistro, pacotesRecebidos, fkHardware);
+                    try{
+                        queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                                "VALUES (?, ?, SYSDATETIME(), ?)";
+                        con02.update(queryRegistroServer, nomeRegistro, pacotesRecebidos, fkHardware);
+                    } catch (RuntimeException e){
+                        e.getMessage();
+                    }
 
                     contadorTeste++;
                     System.out.println();

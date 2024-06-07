@@ -48,7 +48,11 @@ public class Ram extends Hardware {
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-        con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+        try{
+            con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+        } catch (RuntimeException e) {
+            e.getMessage();
+        }
 
         GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados ...", Modulo.CAPTURA_HARDWARE);
 
@@ -58,7 +62,6 @@ public class Ram extends Hardware {
 //        GeradorLog.log(TagNiveisLog.INFO, "Total value: %.2f".formatted(valorTotal), Modulo.CAPTURA_HARDWARE);
 //        GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ENVIO_DADOS);
 
-        // con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
     }
 
     @Override
@@ -75,14 +78,17 @@ public class Ram extends Hardware {
                 String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                         "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                 con.update(queryRegistro, nomeRegistro, (looca.getMemoria().getEmUso() / 1e9) * 100 / valorTotal, fkHardware);
-                con02.update(queryRegistro, nomeRegistro, (looca.getMemoria().getEmUso() / 1e9) * 100 / valorTotal, fkHardware);
+                try {
+                    con02.update(queryRegistro, nomeRegistro, (looca.getMemoria().getEmUso() / 1e9) * 100 / valorTotal, fkHardware);
+                } catch (RuntimeException e){
+                    e.getMessage();
+                }
 
 //                GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados: Máquina: %d...".formatted(fkMaquina), Modulo.CAPTURA_HARDWARE);
 //                GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeRegistro), Modulo.CAPTURA_HARDWARE);
 //                GeradorLog.log(TagNiveisLog.INFO, "RAM usage: %s".formatted(looca.getMemoria().getEmUso()), Modulo.CAPTURA_HARDWARE);
 //                GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.REGISTRO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
 
-                // con02.update(queryRegistro, (looca.getMemoria().getEmUso() / 1e9), fkHardware);
             }
         };
         timer.schedule(tarefa, 1000, 5000);

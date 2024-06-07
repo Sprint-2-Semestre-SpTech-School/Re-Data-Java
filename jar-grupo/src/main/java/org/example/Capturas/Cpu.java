@@ -44,12 +44,19 @@ public class Cpu extends Hardware {
 
     try {
         JdbcTemplate con = conexao.getConexaoBanco();
-        JdbcTemplate con02 = conexao02.getConexaoBanco();
+
 
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-        con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+
+        try{
+            JdbcTemplate con02 = conexao02.getConexaoBanco();
+            con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+        } catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
+
 
 //        GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados...", Modulo.CAPTURA_HARDWARE);
 //        GeradorLog.log(TagNiveisLog.INFO, "Type: %s".formatted(tipoHardware), Modulo.CAPTURA_HARDWARE);
@@ -80,14 +87,17 @@ public class Cpu extends Hardware {
                     String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, looca.getProcessador().getUso(), fkHardware);
-                    con02.update(queryRegistro, nomeRegistro, looca.getProcessador().getUso(), fkHardware);
+                    try {
+                        con02.update(queryRegistro, nomeRegistro, looca.getProcessador().getUso(), fkHardware);
+                    } catch (RuntimeException e){
+                        System.out.println("Erro de Conexão sql Server" + e.getMessage());
+                    }
 
-                    GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados: Máquina: %d...".formatted(fkMaquina), Modulo.CAPTURA_HARDWARE);
-                    GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeRegistro), Modulo.CAPTURA_HARDWARE);
-                    GeradorLog.log(TagNiveisLog.INFO, "CPU usage: %s".formatted(looca.getProcessador().getUso()), Modulo.CAPTURA_HARDWARE);
-                    GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.REGISTRO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
+//                    GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados: Máquina: %d...".formatted(fkMaquina), Modulo.CAPTURA_HARDWARE);
+//                    GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeRegistro), Modulo.CAPTURA_HARDWARE);
+//                    GeradorLog.log(TagNiveisLog.INFO, "CPU usage: %s".formatted(looca.getProcessador().getUso()), Modulo.CAPTURA_HARDWARE);
+//                    GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.REGISTRO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
 
-//                     con02.update(queryRegistro, looca.getProcessador().getUso(), fkHardware);
                 }
             };
             timer.schedule(tarefa, 1000, 5000);

@@ -48,7 +48,11 @@ public class Disco extends Hardware {
             String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                     "VALUES (?, ?, ?, ? , ?)";
             con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-             con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+            try{
+                con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+            }catch (RuntimeException e){
+                System.out.println(e.getMessage());
+            }
 
         } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'Disco' sql" + e.getMessage());
@@ -103,8 +107,6 @@ public class Disco extends Hardware {
 
                     Double tempoTransferencia = tempoTransferenciaMomento - tempoTransferenciaAnterior;
 
-                    String DateTime = "GETDATE()";
-
                     tempoTransferenciaAnterior = tempoTransferenciaMomento;
 
                     String nomeRegistro = "bytesLeitura";
@@ -113,10 +115,16 @@ public class Disco extends Hardware {
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, bytesTransferenciaLeitura / 1e6, fkHardware);
 
-                    String queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
-                            "VALUES (?, ?, SYSDATETIME(), ?)";
-                     con02.update(queryRegistroServer, nomeRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura(), fkHardware);
-                    System.out.println(bytesTransferenciaLeitura / 1e9);
+                    String queryRegistroServer;
+
+                    try{
+                         queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                                "VALUES (?, ?, SYSDATETIME(), ?)";
+                        con02.update(queryRegistroServer, nomeRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura(), fkHardware);
+                        System.out.println(bytesTransferenciaLeitura / 1e9);
+                    }catch (RuntimeException e){
+                        System.out.println(e.getMessage());
+                    }
 
                     nomeRegistro = "bytesEscrita";
 
@@ -124,10 +132,13 @@ public class Disco extends Hardware {
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, bytesTransferenciaEscrita / 1e6, fkHardware);
 
-                    queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
-                            "VALUES (?, ?, SYSDATETIME(), ?)";
-                    con02.update(queryRegistroServer, nomeRegistro, bytesTransferenciaEscrita / 1e6, fkHardware);
-                     con02.update(queryRegistro, nomeRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas(), fkHardware);
+                    try {
+                        queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                                "VALUES (?, ?, SYSDATETIME(), ?)";
+                        con02.update(queryRegistroServer, nomeRegistro, bytesTransferenciaEscrita / 1e6, fkHardware);
+                    } catch (RuntimeException e){
+                        e.getMessage();
+                    }
 
                     nomeRegistro = "leituras";
 
@@ -135,9 +146,13 @@ public class Disco extends Hardware {
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, transferenciaLeitura, fkHardware);
 
-                    queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
-                            "VALUES (?, ?, SYSDATETIME(), ?)";
-                    con02.update(queryRegistroServer, nomeRegistro, transferenciaLeitura, fkHardware);
+                    try {
+                        queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                                "VALUES (?, ?, SYSDATETIME(), ?)";
+                        con02.update(queryRegistroServer, nomeRegistro, transferenciaLeitura, fkHardware);
+                    } catch (RuntimeException e){
+                        System.out.println(e.getMessage());
+                    }
 
                     nomeRegistro = "escritas";
 
@@ -145,9 +160,13 @@ public class Disco extends Hardware {
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, transferenciaEscrita, fkHardware);
 
-                    queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
-                            "VALUES (?, ?, SYSDATETIME(), ?)";
-                    con02.update(queryRegistroServer, nomeRegistro, transferenciaEscrita, fkHardware);
+                    try {
+                        queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                                "VALUES (?, ?, SYSDATETIME(), ?)";
+                        con02.update(queryRegistroServer, nomeRegistro, transferenciaEscrita, fkHardware);
+                    } catch (RuntimeException e){
+                        System.out.println(e.getMessage());
+                    }
 
                     nomeRegistro = "tempo de transferência";
 
@@ -155,9 +174,13 @@ public class Disco extends Hardware {
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, tempoTransferencia / 1000, fkHardware);
 
-                    queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
-                            "VALUES (?, ?, SYSDATETIME(), ?)";
-                    con02.update(queryRegistroServer, nomeRegistro, tempoTransferencia / 1000, fkHardware);
+                    try {
+                        queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                                "VALUES (?, ?, SYSDATETIME(), ?)";
+                        con02.update(queryRegistroServer, nomeRegistro, tempoTransferencia / 1000, fkHardware);
+                    } catch (RuntimeException e){
+                        System.out.println(e.getMessage());
+                    }
 
 
                     nomeRegistro = "memoriaDisponivel";
@@ -166,10 +189,13 @@ public class Disco extends Hardware {
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1e9, fkHardware);
 
-                    queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
-                            "VALUES (?, ?, SYSDATETIME(), ?)";
-                    con02.update(queryRegistro, nomeRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1e9, fkHardware);
-
+                    try {
+                        queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                                "VALUES (?, ?, SYSDATETIME(), ?)";
+                        con02.update(queryRegistro, nomeRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1e9, fkHardware);
+                    } catch (RuntimeException e){
+                        e.getMessage();
+                    }
                 }
             };
             timer.schedule(tarefa, 1000, 5000);
