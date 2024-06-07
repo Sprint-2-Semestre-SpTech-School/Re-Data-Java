@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Capturas;
 
 import com.github.britooo.looca.api.core.Looca;
 import org.example.Jdbc.Conexao;
@@ -32,8 +32,6 @@ public class Cpu extends Hardware {
 
     public Cpu() {
     }
-
-
 
     @Override
     public void capturarDados() {
@@ -82,13 +80,14 @@ public class Cpu extends Hardware {
                     String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, looca.getProcessador().getUso(), fkHardware);
+                    con02.update(queryRegistro, nomeRegistro, looca.getProcessador().getUso(), fkHardware);
 
                     GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados: Máquina: %d...".formatted(fkMaquina), Modulo.CAPTURA_HARDWARE);
                     GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeRegistro), Modulo.CAPTURA_HARDWARE);
                     GeradorLog.log(TagNiveisLog.INFO, "CPU usage: %s".formatted(looca.getProcessador().getUso()), Modulo.CAPTURA_HARDWARE);
                     GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.REGISTRO.getDescricaoTabela()), Modulo.ENVIO_DADOS);
 
-                    // con02.update(queryRegistro, looca.getProcessador().getUso(), fkHardware02);
+//                     con02.update(queryRegistro, looca.getProcessador().getUso(), fkHardware);
                 }
             };
             timer.schedule(tarefa, 1000, 5000);

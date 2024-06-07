@@ -2,6 +2,7 @@ package org.example;
 
 import com.github.britooo.looca.api.core.Looca;
 import org.example.Jdbc.Conexao;
+import org.example.Jdbc.ConexaoServer;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Volume {
@@ -16,9 +17,9 @@ public class Volume {
     private Integer fkCodHardware;
     private Integer fkMaquina;
     private Conexao conexao = new Conexao();
-//    private Conexao02 conexao02 = new Conexao02();
+    private ConexaoServer conexao02 = new ConexaoServer();
     private JdbcTemplate con = conexao.getConexaoBanco();
-//    private JdbcTemplate con02 = conexao02.getConexaoBanco();
+    private JdbcTemplate con02 = conexao02.getConexaoBanco();
 
     public Volume(String pontoMontagem,
                   String sistemaArmazenamento,
@@ -44,21 +45,28 @@ public class Volume {
         this.fkCodHardware = fkCodHardware;
         this.fkMaquina = fkMaquina;
     }
+
     public Volume() {
     }
-    public void capturarDadosVolume(){
-        pontoMontagem = looca.getGrupoDeDiscos().getVolumes().get(0).getPontoDeMontagem();
-        sistemaArmazenamento = looca.getGrupoDeDiscos().getVolumes().get(0).getTipo();
-        volumeDisponivel = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel();
-        volumeTotal = looca.getGrupoDeDiscos().getVolumes().get(0).getTotal();
-        quantidadeDeVolume = looca.getGrupoDeDiscos().getQuantidadeDeVolumes();
 
-        con.update("INSERT INTO Volume (pontoMontagem, sistemaArmazenamento, volumeDisponivel, volumeTotal, " +
-                "quantidadeDeVolume, tempoCapturas , fkDisco, fkCodHardware, fkMaquina) values (?, ?, ?, ?, ?, " +
-                        "CURRENT_TIMESTAMP, ?, ?, ?)",
-                pontoMontagem, sistemaArmazenamento, volumeDisponivel, volumeTotal, quantidadeDeVolume,
-                fkDisco, fkCodHardware, fkMaquina);
-    }
+//    public void capturarDadosVolume(){
+//        pontoMontagem = looca.getGrupoDeDiscos().getVolumes().get(0).getPontoDeMontagem();
+//        sistemaArmazenamento = looca.getGrupoDeDiscos().getVolumes().get(0).getTipo();
+//        volumeDisponivel = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel();
+//        volumeTotal = looca.getGrupoDeDiscos().getVolumes().get(0).getTotal();
+//        quantidadeDeVolume = looca.getGrupoDeDiscos().getQuantidadeDeVolumes();
+//
+//        con.update("INSERT INTO Volume (pontoMontagem, sistemaArmazenamento, volumeDisponivel, volumeTotal, " +
+//                "quantidadeDeVolume, tempoCapturas , fkDisco, fkCodHardware, fkMaquina) values (?, ?, ?, ?, ?, " +
+//                        "CURRENT_TIMESTAMP, ?, ?, ?)",
+//                pontoMontagem, sistemaArmazenamento, volumeDisponivel, volumeTotal, quantidadeDeVolume,
+//                fkDisco, fkCodHardware, fkMaquina);
+//        con02.update("INSERT INTO Volume (pontoMontagem, sistemaArmazenamento, volumeDisponivel, volumeTotal, " +
+//                "quantidadeDeVolume, tempoCapturas , fkDisco, fkCodHardware, fkMaquina) values (?, ?, ?, ?, ?, " +
+//                        "CURRENT_TIMESTAMP, ?, ?, ?)",
+//                pontoMontagem, sistemaArmazenamento, volumeDisponivel, volumeTotal, quantidadeDeVolume,
+//                fkDisco, fkCodHardware, fkMaquina);
+//    }
 
     public String getPontoMontagem() {
         return pontoMontagem;

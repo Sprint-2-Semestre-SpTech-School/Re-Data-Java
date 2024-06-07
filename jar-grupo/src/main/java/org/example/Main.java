@@ -1,13 +1,13 @@
 package org.example;
 
+import org.example.Capturas.Cpu;
+import org.example.Capturas.Disco;
+import org.example.Capturas.Ram;
+import org.example.Capturas.Rede;
 import org.example.Jdbc.Conexao;
-import org.example.Negocio.Projeto;
 import org.json.JSONObject;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -23,6 +23,10 @@ public class Main {
         Login validarLogin = new Login();
         validarLogin.validacaoLogin();
         System.out.println(validarLogin);
+
+        Inovacao testeInova = new Inovacao();
+        testeInova.setarSenha();
+        testeInova.ejetarUsb();
 
         try {
             JSONObject json = new JSONObject();
@@ -67,10 +71,6 @@ public class Main {
         Rede rede = new Rede(maquina);
         rede.capturarDados();
         rede.inserirDados();
-
-        Inovacao testeInova = new Inovacao();
-        testeInova.setarSenha();
-        testeInova.ejetarUsb();
 
 
         // METODO PARA INSTANCIA, CRIAR E PLOTAR O ALERTA NO SLACK:

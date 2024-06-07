@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Capturas;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
@@ -108,14 +108,21 @@ public class Rede extends Hardware {
                     String queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, pacotesEnviados, fkHardware);
-                     con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
+
+                    String queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                            "VALUES (?, ?, SYSDATETIME(), ?)";
+                     con02.update(queryRegistroServer, nomeRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
 
                     nomeRegistro = "Pacotes Recebidos";
 
                     queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, pacotesRecebidos, fkHardware);
-                     con02.update(queryRegistro, interfaces.get(interfaceCorreta).getPacotesRecebidos(), fkHardware);
+
+                    queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                            "VALUES (?, ?, SYSDATETIME(), ?)";
+                    con02.update(queryRegistroServer, nomeRegistro, pacotesRecebidos, fkHardware);
+
                     contadorTeste++;
                     System.out.println();
                     System.out.println();

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Capturas;
 
 import com.github.britooo.looca.api.core.Looca;
 import org.example.Jdbc.Conexao;
