@@ -69,6 +69,8 @@ CREATE TABLE IF NOT EXISTS `Maquina` (
   `sistemaOperacional` VARCHAR(45) NOT NULL,
   `temperatura` DOUBLE NULL,
   `tempoAtividade` INT NULL,
+  `destino` VARCHAR(45) NULL,
+  `descricao` VARCHAR(200) NULL,
   `fkProjeto` INT NOT NULL,
   `fkEmpresa` INT NOT NULL,
   PRIMARY KEY (`idMaquina`),
@@ -84,8 +86,8 @@ CREATE TABLE IF NOT EXISTS `Maquina` (
   `descricao` VARCHAR(45) NULL
 	)auto_increment = 600;
 
-CREATE TABLE IF NOT EXISTS `blackList` (
-  `idBlackList` INT NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `blockList` (
+  `idBlockList` INT NOT NULL auto_increment,
   `statusBloqueio` TINYINT NOT NULL,
   `motivoBloqueio` VARCHAR(250) NULL,
   `fkDeviceId` INT NOT NULL,
@@ -212,11 +214,65 @@ FROM registro
 JOIN infoHardware ON fkHardware = idHardware
 JOIN maquina ON fkMaquina = idMaquina
 JOIN projeto ON fkProjeto = idProjeto
-WHERE tempoCapturas >= NOW() - INTERVAL 20 SECOND
+WHERE tempoCapturas >= NOW() - INTERVAL 20 hour
   AND valorRegistro >= 5
   AND tipoHardware = "Cpu"
   AND nomeRegistro = "usoCpu"
   AND fkProjeto = 400;
   
-  
-  
+  SELECT idMaquina, MAX(nomeRegistro) as nomeRegistro, count(idRegistro) as totalCapturas
+        FROM registro
+        JOIN infoHardware ON fkHardware = idHardware
+        JOIN maquina ON fkMaquina = idMaquina 
+        WHERE tipoHardware = 'Disco' AND valorRegistro >=  AND nomeRegistro = "tempo de transferência" and fkProjeto =400
+        GROUP BY idMaquina
+        ORDER BY totalCapturas DESC
+        LIMIT 1;
+        
+        SELECT idMaquina, MAX(nomeRegistro) as nomeRegistro, count(idRegistro) as totalCapturas
+        FROM registro
+        JOIN infoHardware ON fkHardware = idHardware
+        JOIN maquina ON fkMaquina = idMaquina 
+        WHERE tipoHardware = 'Rede' AND valorRegistro <= 10 AND nomeRegistro = "Pacotes Recebidos" and fkProjeto = 400
+        GROUP BY idMaquina
+        ORDER BY totalCapturas DESC
+        LIMIT 1;
+        
+        SELECT idMaquina, MAX(nomeRegistro) as nomeRegistro, count(idRegistro) as totalCapturas
+        FROM registro
+        JOIN infoHardware ON fkHardware = idHardware
+        JOIN maquina ON fkMaquina = idMaquina 
+        WHERE tipoHardware = 'Disco' AND valorRegistro >=700.00 AND nomeRegistro = "bytesEscrita" and fkProjeto = 400
+        GROUP BY idMaquina
+        ORDER BY totalCapturas DESC
+        LIMIT 1;
+        
+        
+        SELECT COUNT(*) AS eventos_criticos,
+        max(valorRegistro) as maior_valor
+        FROM registro
+        JOIN infoHardware ON fkHardware = idHardware
+        JOIN maquina ON fkMaquina = idMaquina
+        JOIN projeto ON fkProjeto = idProjeto
+        WHERE tempoCapturas >= NOW() - INTERVAL 20 SECOND
+        AND valorRegistro >= 1
+        AND tipoHardware = "Cpu"
+        AND nomeRegistro = "usoCpu"
+        AND fkProjeto = 400;
+        
+        SELECT COUNT(*) AS eventos_criticos,
+        max(valorRegistro) as maior_valor
+        FROM registro
+        JOIN infoHardware ON fkHardware = idHardware
+        JOIN maquina ON fkMaquina = idMaquina
+        JOIN projeto ON fkProjeto = idProjeto
+        WHERE tempoCapturas >= NOW() - INTERVAL 40 SECOND
+        AND valorRegistro >= 1
+        AND tipoHardware = "Cpu"
+        AND nomeRegistro = "usoCpu"
+        AND fkProjeto = 400;
+
+select count(idRegistro) as capturas_projeto from registro 
+join Infohardware on fkHardware = idHardware
+join maquina on idMaquina = fkMaquina 
+where fkProjeto = 400;
