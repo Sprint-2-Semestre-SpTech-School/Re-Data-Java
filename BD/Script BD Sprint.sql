@@ -92,11 +92,11 @@ CREATE TABLE IF NOT EXISTS `blockList` (
   `motivoBloqueio` VARCHAR(250) NULL,
   `fkDeviceId` INT NOT NULL,
   `fkMaquina` INT NOT NULL,
-  PRIMARY KEY (`idBlackList`, `fkDeviceId`, `fkMaquina`),
+  PRIMARY KEY (`idBlockList`, `fkDeviceId`, `fkMaquina`),
   CONSTRAINT `fk_Maquina_has_DispositivosUSB_DispositivosUSB1`
     FOREIGN KEY (`fkDeviceId`)
     REFERENCES `dispositivoUsb` (`idDispositivo`),
-  CONSTRAINT `fk_Blacklist_Maquina1`
+  CONSTRAINT `fk_Blocklist_Maquina1`
     FOREIGN KEY (`fkMaquina`)
     REFERENCES `Maquina` (`idMaquina`)
     ) auto_increment = 700;
@@ -139,6 +139,7 @@ CREATE TABLE IF NOT EXISTS `registro` (
     select * from contato;
     select * from Conta;
     select * from localizacaoEmpresa;
+    select * from blocklist;
     select idEmpresa from Empresa;
     SELECT * FROM projeto WHERE idProjeto = ? AND fkEmpresa = ?;
     
