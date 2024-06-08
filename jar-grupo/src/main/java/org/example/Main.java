@@ -47,8 +47,8 @@ public class Main {
         Integer maquina = idMaquina.getIdMaquina();
 
 
-        if (maquinaDemo.consultarUsuario() == false){
-            System.out.println("Necessário criar uma maquina na Dashboard");
+        if (!maquinaDemo.consultarUsuario()){
+            System.out.println("É necessário ter uma máquina associada ao projeto. Por favor insira-a no website");
             System.exit(0);
         }
 
