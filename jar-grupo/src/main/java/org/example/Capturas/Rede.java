@@ -4,6 +4,7 @@ import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
 import org.example.Jdbc.Conexao;
 import org.example.Jdbc.ConexaoServer;
+import org.example.TipoHardware;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class Rede extends Hardware {
     private Integer contadorTeste = 0;
     private Boolean primeiraCaptura = true;
 
-    public Rede(org.example.tipoHardware tipoHardware,
+    public Rede(TipoHardware tipoHardware,
                 String nomeHardware,
                 String unidadeCaptacao,
                 Double valorTotal,
@@ -38,7 +39,7 @@ public class Rede extends Hardware {
 
     @Override
     public void capturarDados() {
-        tipoHardware = org.example.tipoHardware.REDE;
+        tipoHardware = TipoHardware.REDE;
         nomeHardware = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getNomeExibicao();
         unidadeCaptacao = "pacotes";
         valorTotal = null;

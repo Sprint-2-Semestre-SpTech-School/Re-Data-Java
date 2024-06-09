@@ -3,13 +3,14 @@ package org.example.Capturas;
 import com.github.britooo.looca.api.core.Looca;
 import org.example.Jdbc.Conexao;
 import org.example.Jdbc.ConexaoServer;
+import org.example.TipoHardware;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Cpu extends Hardware {
-    public Cpu(org.example.tipoHardware tipoHardware,
+    public Cpu(TipoHardware tipoHardware,
                String nomeHardware,
                String unidadeCaptacao,
                Double valorTotal,
@@ -32,7 +33,7 @@ public class Cpu extends Hardware {
     @Override
     public void capturarDados() {
 
-        tipoHardware = org.example.tipoHardware.CPU;
+        tipoHardware = TipoHardware.CPU;
         nomeHardware = looca.getProcessador().getNome();
         unidadeCaptacao = "%";
         valorTotal = (double) looca.getProcessador().getFrequencia() / 1e9;

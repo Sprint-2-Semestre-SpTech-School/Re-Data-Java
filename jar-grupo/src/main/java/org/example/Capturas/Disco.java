@@ -3,6 +3,7 @@ package org.example.Capturas;
 import com.github.britooo.looca.api.core.Looca;
 import org.example.Jdbc.Conexao;
 import org.example.Jdbc.ConexaoServer;
+import org.example.TipoHardware;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.Timer;
@@ -15,7 +16,7 @@ public class Disco extends Hardware {
     private Double escritaAnterior = 0.0;
     private Double tempoTransferenciaAnterior = 0.0;
     private Boolean primeiraCaptura = true; // A primeira captura não pegará o momento
-    public Disco(org.example.tipoHardware tipoHardware,
+    public Disco(TipoHardware tipoHardware,
                  String nomeHardware,
                  String unidadeCaptacao,
                  Double valorTotal,
@@ -38,7 +39,7 @@ public class Disco extends Hardware {
 
     @Override
     public void capturarDados() {
-        tipoHardware = org.example.tipoHardware.DISCO;
+        tipoHardware = TipoHardware.DISCO;
         nomeHardware = looca.getGrupoDeDiscos().getDiscos().get(0).getModelo();
         unidadeCaptacao = "Gb";
         valorTotal = (double) Math.round(looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho() / 1e9);

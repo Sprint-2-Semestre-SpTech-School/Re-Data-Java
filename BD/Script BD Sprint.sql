@@ -89,8 +89,8 @@ CREATE TABLE IF NOT EXISTS `Maquina` (
     
     CREATE TABLE IF NOT EXISTS `dispositivoUsb` (
 	idDispositivo INT PRIMARY KEY AUTO_INCREMENT,
-	idDevice CHAR(50) NOT NULL UNIQUE,
-  `descricao` VARCHAR(45) NULL
+	idDevice CHAR(250) NOT NULL UNIQUE,
+  `descricao` VARCHAR(250) NULL
 	)auto_increment = 600;
 
 CREATE TABLE IF NOT EXISTS `blockList` (
@@ -145,6 +145,7 @@ CREATE TABLE IF NOT EXISTS `registro` (
     select * from Projeto;
     select * from contato;
     select * from Conta;
+    select * from dispositivoUsb;	
     select * from localizacaoEmpresa;
     select * from blocklist;
     
