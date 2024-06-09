@@ -1,5 +1,6 @@
 package org.example;
 
+import com.github.britooo.looca.api.core.Looca;
 import org.example.Capturas.Cpu;
 import org.example.Capturas.Disco;
 import org.example.Capturas.Ram;
@@ -11,14 +12,17 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
+        Looca looca = new Looca();
 
         Login validarLogin = new Login();
         validarLogin.validacaoLogin();
         System.out.println(validarLogin);
 
-        Inovacao testeInova = new Inovacao();
-        testeInova.setarSenha();
-        testeInova.ejetarUsb();
+        if (!looca.getSistema().getSistemaOperacional().equalsIgnoreCase("Windows")){
+            Inovacao testeInova = new Inovacao();
+            testeInova.setarSenha();
+            testeInova.ejetarUsb();
+        }
 
         try {
             JSONObject json = new JSONObject();
