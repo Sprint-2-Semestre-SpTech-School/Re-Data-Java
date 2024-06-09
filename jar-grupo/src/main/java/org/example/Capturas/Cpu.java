@@ -3,10 +3,6 @@ package org.example.Capturas;
 import com.github.britooo.looca.api.core.Looca;
 import org.example.Jdbc.Conexao;
 import org.example.Jdbc.ConexaoServer;
-import org.example.logging.GeradorLog;
-import org.example.logging.Modulo;
-import org.example.logging.Tabelas;
-import org.example.logging.TagNiveisLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.Timer;
@@ -57,17 +53,11 @@ public class Cpu extends Hardware {
             System.out.println(e.getMessage());
         }
 
-
-//        GeradorLog.log(TagNiveisLog.INFO,"Iniciando captura de dados...", Modulo.CAPTURA_HARDWARE);
-//        GeradorLog.log(TagNiveisLog.INFO, "Type: %s".formatted(tipoHardware), Modulo.CAPTURA_HARDWARE);
-//        GeradorLog.log(TagNiveisLog.INFO, "Name: %s".formatted(nomeHardware), Modulo.CAPTURA_HARDWARE);
-//        GeradorLog.log(TagNiveisLog.INFO, "Capture unit: %s".formatted(unidadeCaptacao), Modulo.CAPTURA_HARDWARE);
-//        GeradorLog.log(TagNiveisLog.INFO, "Total value: %.2f".formatted(valorTotal), Modulo.CAPTURA_HARDWARE);
 //        GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ENVIO_DADOS);
 
     }catch (RuntimeException e){
         System.out.println("Erro de conexão 'Cpu' sql" + e.getMessage());
-        GeradorLog.log(TagNiveisLog.ERROR, "Erro de conexão SQL: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ALERTA);
+//        GeradorLog.log(TagNiveisLog.ERROR, "Erro de conexão SQL: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ALERTA);
     }
     }
 

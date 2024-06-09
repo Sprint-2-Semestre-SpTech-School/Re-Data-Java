@@ -12,14 +12,6 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        Conexao conexao = new Conexao();
-
-//        Locale defaultLocale = Locale.getDefault();
-//        GeradorLog.log(TagNiveisLog.INFO, "Language: " + defaultLocale.getDisplayLanguage(), Modulo.GERAL);
-//        GeradorLog.log(TagNiveisLog.INFO, "OS name: " + looca.getSistema().getSistemaOperacional(), Modulo.GERAL);
-//        GeradorLog.log(TagNiveisLog.INFO, "Arch: " + looca.getSistema().getArquitetura() + "x bits", Modulo.GERAL);
-//        GeradorLog.log(TagNiveisLog.INFO, "Iniciando a aplicação...", Modulo.GERAL);
-
         Login validarLogin = new Login();
         validarLogin.validacaoLogin();
         System.out.println(validarLogin);
@@ -39,7 +31,6 @@ public class Main {
         }
 
         Maquina idMaquina = new Maquina();
-
 
         Maquina maquinaDemo = new Maquina(400, 1);
         maquinaDemo.capturarDadosMaquina();

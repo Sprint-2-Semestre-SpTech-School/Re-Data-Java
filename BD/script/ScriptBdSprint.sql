@@ -7,6 +7,9 @@ create table if not exists Empresa
 nomeEmpresa varchar(45) not null,
 CNPJ char (14) not null);
 
+INSERT INTO Empresa (nomeEmpresa, CNPJ) VALUES 
+('ReData.INC', '53719031000123');
+
 create table if not exists localizacaoEmpresa
 (idLocalizacaoEmpresa int primary key auto_increment,
 CEP char(8) not null,
@@ -18,6 +21,10 @@ complemento varchar(20),
 fkEmpresa int,
 	constraint fkEmpresaLocalizacao foreign key (fkEmpresa) references Empresa (idEmpresa));
     
+    INSERT INTO localizacaoEmpresa (CEP, estado, logradouro, numero, bairro, complemento, fkEmpresa) 
+VALUES ('03325764', 'São Paulo', 'Rua Database', '777', 'DataLake', 'Camada de Load', 
+        (SELECT MAX(idEmpresa) FROM Empresa));
+    
 create table if not exists Contato
 (idContato int primary key auto_increment,
 nome varchar(45) not null,
@@ -25,6 +32,11 @@ email varchar(45) not null,
 telefone varchar(11),
 fkEmpresa int,
 	constraint fkEmpresaContato foreign key(fkEmpresa) references Empresa (idEmpresa));
+
+INSERT INTO Contato (nome, email, telefone, fkEmpresa) 
+VALUES ('James Heat Field', 'James@gmail.com', '1197421670', 
+        (SELECT MAX(idEmpresa) FROM Empresa));
+
 
 create table if not exists Conta
 (idConta int primary key auto_increment,
@@ -45,6 +57,10 @@ descricao varchar(250),
 responsavel varchar(45),
 fkEmpresa int,
 	constraint fkEmpresaProjeto foreign key (fkEmpresa) references Empresa (idEmpresa));
+
+INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino, descricao, responsavel, fkEmpresa) 
+VALUES ('Venda de Coca-Cola', current_timestamp(), current_timestamp(), 'Aumentar vendas de Coca-Cola na Zona Norte', 'Julia', 
+        (SELECT MAX(idEmpresa) FROM Empresa));
         
 create table if not exists Maquina
 (idMaquina int primary key auto_increment,
@@ -169,4 +185,3 @@ select * from Disco;
 select * from DispositivosUSB;
 
 select * from Rede;
-

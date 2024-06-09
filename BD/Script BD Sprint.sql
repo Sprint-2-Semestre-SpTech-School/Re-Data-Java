@@ -9,6 +9,9 @@ CREATE TABLE IF NOT EXISTS `Empresa` (
   PRIMARY KEY (`idEmpresa`)
   );
   
+INSERT INTO Empresa (nomeEmpresa, CNPJ) VALUES 
+('ReData.INC', '53719031000123');
+  
 CREATE TABLE IF NOT EXISTS `Conta` (
   `idConta` INT NOT NULL auto_increment,
   `login` VARCHAR(45) NOT NULL,
@@ -62,6 +65,10 @@ CREATE TABLE IF NOT EXISTS `Projeto` (
     FOREIGN KEY (`fkEmpresa`)
     REFERENCES `Empresa` (`idEmpresa`)
     ) auto_increment = 400;
+    
+    INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino, descricao, responsavel, fkEmpresa) 
+VALUES ('Venda de Coca-Cola', current_timestamp(), current_timestamp(), 'Aumentar vendas de Coca-Cola na Zona Norte', 'Julia', 
+        (SELECT MAX(idEmpresa) FROM Empresa));
 
 CREATE TABLE IF NOT EXISTS `Maquina` (
   `idMaquina` INT NOT NULL auto_increment,
@@ -131,15 +138,18 @@ CREATE TABLE IF NOT EXISTS `registro` (
     
     select last_insert_id();	
     select * from registro;
-    select * from maquina;
+    select * from Maquina;
     select * from infoHardware;
     select * from empresa;
     select * from registro;
-    select * from projeto;
+    select * from Projeto;
     select * from contato;
     select * from Conta;
     select * from localizacaoEmpresa;
     select * from blocklist;
+    
+    truncate table registro;
+    
     select idEmpresa from Empresa;
     SELECT * FROM projeto WHERE idProjeto = ? AND fkEmpresa = ?;
     
@@ -221,14 +231,14 @@ WHERE tempoCapturas >= NOW() - INTERVAL 20 hour
   AND nomeRegistro = "usoCpu"
   AND fkProjeto = 400;
   
-  SELECT idMaquina, MAX(nomeRegistro) as nomeRegistro, count(idRegistro) as totalCapturas
-        FROM registro
-        JOIN infoHardware ON fkHardware = idHardware
-        JOIN maquina ON fkMaquina = idMaquina 
-        WHERE tipoHardware = 'Disco' AND valorRegistro >=  AND nomeRegistro = "tempo de transferência" and fkProjeto =400
-        GROUP BY idMaquina
-        ORDER BY totalCapturas DESC
-        LIMIT 1;
+  -- SELECT idMaquina, MAX(nomeRegistro) as nomeRegistro, count(idRegistro) as totalCapturas
+--         FROM registro
+--         JOIN infoHardware ON fkHardware = idHardware
+--         JOIN maquina ON fkMaquina = idMaquina 
+--         WHERE tipoHardware = 'Disco' AND valorRegistro >= AND nomeRegistro = "tempo de transferência" and fkProjeto =400
+--         GROUP BY idMaquina
+--         ORDER BY totalCapturas DESC
+--         LIMIT 1;
         
         SELECT idMaquina, MAX(nomeRegistro) as nomeRegistro, count(idRegistro) as totalCapturas
         FROM registro

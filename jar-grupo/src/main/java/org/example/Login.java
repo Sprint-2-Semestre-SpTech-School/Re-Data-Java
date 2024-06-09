@@ -1,9 +1,7 @@
 package org.example;
 
 import org.example.Jdbc.Conexao;
-import org.example.logging.GeradorLog;
-import org.example.logging.Modulo;
-import org.example.logging.TagNiveisLog;
+import org.example.Jdbc.ConexaoServer;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -42,9 +40,8 @@ public class Login {
     public void validacaoLogin() {
 
         try {
-            GeradorLog.log(TagNiveisLog.INFO, "Iniciando o processo de autenticação da aplicação...", Modulo.GERAL);
-
-            Conexao conexaoLogin = new Conexao();
+            ConexaoServer conexaoLogin = new ConexaoServer();
+//            Conexao conexaoLogin = new Conexao();
             JdbcTemplate conLogin = conexaoLogin.getConexaoBanco();
 
             conLogin.update(" INSERT INTO Conta (login, senha, siglaConta, dataCriacao ,fkEmpresa) VALUES ((select nomeEmpresa from Empresa where idEmpresa = (select max(idEmpresa) from Empresa)), 'SPtechPI', 'FCM', current_timestamp, 1)");
@@ -60,9 +57,7 @@ public class Login {
 //                new BeanPropertyRowMapper<>(Metodos.class),login,senha);
 
 //      MÉTODO
-//            System.out.println("Quer acessar sua página de usuário e acompanhar o monitoramento?");
-
-            System.out.println("Insira aqui seu nome de usuário:");
+            System.out.println("Insira o nome de usuário:");
             String usuarioInserido = inputLine.nextLine();
 
             Integer indiceLogin = 0;
@@ -94,16 +89,13 @@ public class Login {
                 Login senhaDaVez = loginDoBanco.get(i);
                 if (senhaDaVez.getSenha().equals(senhaInserida) && indiceLogin.equals(i)) {
                     System.out.println("Senha verificada com sucesso");
-                    GeradorLog.log(TagNiveisLog.INFO, "Login bem-sucedido para o usuário %s.".formatted(usuarioInserido), Modulo.AUTENTICACAO);
                     break;
                 } else {
                     if (i.equals(loginDoBanco.size() - 1)) {
 
-                        System.out.println("Senha incorreta, tente novamente");
-                        GeradorLog.log(TagNiveisLog.ERROR, "Senha incorreta. Falha ao realizar login para o usuário %s.".formatted(usuarioInserido), Modulo.AUTENTICACAO);
+                        System.out.println("Senha incorreta, tente novamente \n");
                         System.out.println("Insira aqui sua senha:");
                         senhaInserida = inputLine.nextLine();
-
                         i = -1;
                     }
                 }
