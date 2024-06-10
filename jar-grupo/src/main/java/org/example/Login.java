@@ -40,8 +40,8 @@ public class Login {
     public void validacaoLogin() {
 
         try {
-//            ConexaoServer conexaoLogin = new ConexaoServer();
-            Conexao conexaoLogin = new Conexao();
+            ConexaoServer conexaoLogin = new ConexaoServer();
+//            Conexao conexaoLogin = new Conexao();
             JdbcTemplate conLogin = conexaoLogin.getConexaoBanco();
 
             conLogin.update(" INSERT INTO Conta (login, senha, siglaConta, dataCriacao ,fkEmpresa) VALUES ((select nomeEmpresa from Empresa where idEmpresa = (select max(idEmpresa) from Empresa)), 'SPtechPI', 'FCM', current_timestamp, 1)");

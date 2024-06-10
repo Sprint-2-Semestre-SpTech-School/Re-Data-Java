@@ -11,7 +11,6 @@ public class ConexaoServer{
          dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
          dataSource.setUrl("jdbc:sqlserver://44.194.59.3:1433;databaseName=redata;encrypt=true;trustServerCertificate=true");
 
-        // Usuario e Senha usados por mim
         dataSource.setUsername("sa");
         dataSource.setPassword("redata");
 

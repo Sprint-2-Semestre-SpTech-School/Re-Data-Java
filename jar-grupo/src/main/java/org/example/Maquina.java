@@ -86,15 +86,15 @@ public class Maquina {
     }
 
     public Integer consultarId() {
-
+        try{
         String comandoSql = "SELECT idMaquina from Maquina order by idMaquina DESC LIMIT 1";
         idMaquina = con.queryForObject(comandoSql, Integer.class);
+        }catch (RuntimeException e){
+            System.out.println(" Erro na consulta de ID " + e.getMessage());
+        }
         return idMaquina;
     }
 
-//    public Integer consultarUser(){
-//        Inte
-//    }
 
     public Integer consultarProjeto(){
         String comandoSql = "SELECT fkProjeto from maquina where idMaquina = %d".formatted(consultarId());
@@ -109,12 +109,13 @@ public class Maquina {
     public String consultarUsuarioPorId() {
         Integer ultimoIdMaquina = consultarId();
         if(ultimoIdMaquina != null) {
-            String querySql = "SELECT usuario from maquina where idMaquina = %d".formatted(ultimoIdMaquina);
+            String querySql = "SELECT usuario from Maquina where idMaquina = %d".formatted(ultimoIdMaquina);
             String usuario = con.queryForObject(querySql, String.class);
             return usuario;
         }
-        return "erro";
+        return "erro ";
     }
+
     public Looca getLooca() {
         return looca;
     }

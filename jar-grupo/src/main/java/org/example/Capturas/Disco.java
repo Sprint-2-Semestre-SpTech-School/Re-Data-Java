@@ -3,9 +3,12 @@ package org.example.Capturas;
 import com.github.britooo.looca.api.core.Looca;
 import org.example.Jdbc.Conexao;
 import org.example.Jdbc.ConexaoServer;
+import org.example.Slack;
 import org.example.TipoHardware;
+import org.json.JSONObject;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -144,6 +147,28 @@ public class Disco extends Hardware {
                         con02.update(queryRegistroServer, nomeRegistro, bytesTransferenciaEscrita / 1e6, fkHardware);
                     } catch (RuntimeException e){
                         e.getMessage();
+                    }
+
+                    if(bytesTransferenciaEscrita <= 2 && bytesTransferenciaEscrita > 1){
+                        try {
+                            JSONObject json = new JSONObject();
+                            json.put("text", "ALERTA AMARELO DE MONITORAMENTO: O seu " + nomeHardware + " da maquina " + fkMaquina + " Pode estar começando a funcionar fora do parametro correto");
+                            Slack.sendMessage(json);
+                        } catch (IOException e) {
+                            System.out.println("Deu ruim no slack" + e);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else if(bytesTransferenciaEscrita <= 1) {
+                        try {
+                            JSONObject json = new JSONObject();
+                            json.put("text", "ALERTA VERMELHO DE MONITORAMENTO: O seu " + nomeHardware + " da maquina " + fkMaquina + " ESTÁ FUNCIONANDO FORA DOS PARAMETROS");
+                            Slack.sendMessage(json);
+                        } catch (IOException e) {
+                            System.out.println("Deu ruim no slack" + e);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
 
                     nomeRegistro = "leituras";
