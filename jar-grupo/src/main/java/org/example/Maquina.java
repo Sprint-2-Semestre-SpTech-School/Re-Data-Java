@@ -15,6 +15,8 @@ public class Maquina {
     private String sistemaOperacional;
     private Double temperatura;
     private Long tempoAtividade;
+    private String destino;
+    private String descricao;
     private Integer fkProjeto;
     private Integer fkEmpresa;
     private Conexao conexao = new Conexao();
@@ -29,6 +31,8 @@ public class Maquina {
             String sistemaOperacional,
             Double temperatura,
             Long tempoAtividade,
+            String destino,
+            String descricao,
             Integer fkProjeto,
             Integer fkEmpresa,
             Conexao conexao,
@@ -40,6 +44,8 @@ public class Maquina {
         this.sistemaOperacional = sistemaOperacional;
         this.temperatura = temperatura;
         this.tempoAtividade = tempoAtividade;
+        this.destino = destino;
+        this.descricao = descricao;
         this.fkProjeto = fkProjeto;
         this.fkEmpresa = fkEmpresa;
         this.conexao = conexao;
@@ -64,15 +70,15 @@ public class Maquina {
 
     }
 
-    public void inserirDadosMaquina() {
+    public void inserirDadosMaquina(Integer fkProjeto, Integer fkEmpresa) {
         try {
-            con02.update("INSERT INTO Maquina (usuario, sistemaOperacional, temperatura, tempoAtividade, " +
-                            "fkProjeto, fkEmpresa) values (?, ?, ?, ?, ?, ?)", usuario, sistemaOperacional,
-                    temperatura, tempoAtividade, 400, 1);
+            con02.update("UPDATE Maquina SET usuario =?, sistemaOperacional =?, temperatura =?, tempoAtividade =?, " +
+                            "fkProjeto =?, fkEmpresa =?",
+                    usuario, sistemaOperacional, temperatura, tempoAtividade, fkProjeto, fkEmpresa);
 
-            con.update("INSERT INTO Maquina (usuario, sistemaOperacional, temperatura, tempoAtividade, " +
-                            "fkProjeto, fkEmpresa) values (?, ?, ?, ?, ?, ?)", usuario, sistemaOperacional,
-                    temperatura, tempoAtividade, 400, 1);
+            con.update("UPDATE Maquina SET usuario =?, sistemaOperacional =?, temperatura =?, tempoAtividade =?, " +
+                            "fkProjeto =?, fkEmpresa =?",
+                    usuario, sistemaOperacional, temperatura, tempoAtividade, fkProjeto, fkEmpresa);
 
         } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'Maquina' sql" + e.getMessage());
@@ -80,27 +86,34 @@ public class Maquina {
     }
 
     public Integer consultarId() {
-        List<Integer> idsMaquina;
 
-        String comandoSql = ("SELECT idMaquina from Maquina");
-        idsMaquina = con.queryForList(comandoSql, Integer.class);
-        return idsMaquina.get(idsMaquina.size() - 1);
+        String comandoSql = "SELECT idMaquina from Maquina order by idMaquina DESC LIMIT 1";
+        idMaquina = con.queryForObject(comandoSql, Integer.class);
+        return idMaquina;
     }
 
-    public boolean consultarUsuario() {
-        List<String> idsMaquina;
+//    public Integer consultarUser(){
+//        Inte
+//    }
 
-        String comandoSql = ("SELECT usuario from Maquina");
-        idsMaquina = con.queryForList(comandoSql, String.class);
+    public Integer consultarProjeto(){
+        String comandoSql = "SELECT fkProjeto from maquina where idMaquina = %d".formatted(consultarId());
+        return fkProjeto = con.queryForObject(comandoSql, Integer.class);
+    }
 
-        for (int i = 0; i < idsMaquina.size(); i++) {
-            if (idsMaquina.get(i).equals(usuario)){
-                System.out.println("Usuario Existe no Banco");
-                return true;
-            }
-            else System.out.println("Usuario não existe no banco, por favor cadastrar");
+    public Integer consultarEmpresa(){
+        String comandoSql = "SELECT fkEmpresa from maquina where idMaquina = %d".formatted(consultarId());
+        return fkEmpresa = con.queryForObject(comandoSql, Integer.class);
+    }
+
+    public String consultarUsuarioPorId() {
+        Integer ultimoIdMaquina = consultarId();
+        if(ultimoIdMaquina != null) {
+            String querySql = "SELECT usuario from maquina where idMaquina = %d".formatted(ultimoIdMaquina);
+            String usuario = con.queryForObject(querySql, String.class);
+            return usuario;
         }
-        return false;
+        return "erro";
     }
     public Looca getLooca() {
         return looca;

@@ -39,11 +39,16 @@ public class Rede extends Hardware {
 
     @Override
     public void capturarDados() {
+
+    }
+
+    @Override
+    public void capturarDados(Integer fkMaquina) {
         tipoHardware = TipoHardware.REDE;
         nomeHardware = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getNomeExibicao();
         unidadeCaptacao = "pacotes";
         valorTotal = null;
-        fkMaquina = 500;
+//        fkMaquina = 500;
 
         try {
 

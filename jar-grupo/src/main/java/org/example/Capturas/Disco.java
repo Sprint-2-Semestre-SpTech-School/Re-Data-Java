@@ -39,11 +39,16 @@ public class Disco extends Hardware {
 
     @Override
     public void capturarDados() {
+
+    }
+
+    @Override
+    public void capturarDados(Integer fkMaquina) {
         tipoHardware = TipoHardware.DISCO;
         nomeHardware = looca.getGrupoDeDiscos().getDiscos().get(0).getModelo();
         unidadeCaptacao = "Gb";
         valorTotal = (double) Math.round(looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho() / 1e9);
-        this.fkMaquina = 500;
+//        this.fkMaquina = 500;
 
         try {
             String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +

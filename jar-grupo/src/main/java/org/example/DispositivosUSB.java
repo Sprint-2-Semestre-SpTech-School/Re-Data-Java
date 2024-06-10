@@ -34,8 +34,8 @@ public class DispositivosUSB {
 
     public static void main(String[] args) {
         DispositivosUSB dispositivosUSB = new DispositivosUSB();
-//        dispositivosUSB.monitorarPortas();
-        dispositivosUSB.bloquearPortas();
+        dispositivosUSB.monitorarPortas();
+//        dispositivosUSB.bloquearPortas();
     }
 
     public void monitorarPortas() {
@@ -47,6 +47,7 @@ public class DispositivosUSB {
                 @Override
                 public void run() {
                     List<DispositivoUsb> dispositivosUsb = looca.getDispositivosUsbGrupo().getDispositivosUsb();
+
                     System.out.println("");
                     System.out.println("");
 //                    System.out.println(dispositivosUsb);
@@ -57,14 +58,14 @@ public class DispositivosUSB {
 
 //                        Integer qtdDispositivos = con.queryForObject(queryCheck, Integer.class);
 
-                        if(dispositivosUsb.get(i).getIdDispositivoUsbExclusivo().equals(idDevice)){
-                            System.out.println("Dispositivo já inserido");
-                        } else {
+//                        if(dispositivosUsb.get(i).getIdDispositivoUsbExclusivo().equals(idDevice)){
+//                            System.out.println("Dispositivo já inserido");
+//                        } else {
                             con.update(queryInsert, idDevice, descricao);
                         }
                     }
 //                    System.out.println(looca.getDispositivosUsbGrupo().getDispositivosUsb().size());
-                }
+//                }
             };
             timer.schedule(tarefa, 2000, 5000);
         } catch (RuntimeException e) {

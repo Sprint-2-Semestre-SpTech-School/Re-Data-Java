@@ -35,13 +35,18 @@ public class Ram extends Hardware {
 
     @Override
     public void capturarDados() {
+
+    }
+
+    @Override
+    public void capturarDados(Integer fkMaquina) {
         Maquina maquina = new Maquina();
 
         tipoHardware = TipoHardware.RAM;
         nomeHardware = null;
         unidadeCaptacao = "Gb";
         valorTotal = (double) Math.round(looca.getMemoria().getTotal() / 1e9);
-        fkMaquina = 500;
+//        fkMaquina = 500;
 
         String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";

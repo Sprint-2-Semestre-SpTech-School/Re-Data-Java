@@ -43,6 +43,7 @@ public abstract class Hardware {
     public Hardware() {
     }
 
+    public abstract void capturarDados(Integer fkMaquina);
     public abstract void capturarDados();
     public abstract void inserirDados();
 }

@@ -33,11 +33,16 @@ public class Cpu extends Hardware {
     @Override
     public void capturarDados() {
 
+    }
+
+    @Override
+    public void capturarDados(Integer fkMaquina) {
+
         tipoHardware = TipoHardware.CPU;
         nomeHardware = looca.getProcessador().getNome();
         unidadeCaptacao = "%";
         valorTotal = (double) looca.getProcessador().getFrequencia() / 1e9;
-        fkMaquina = 500;
+//        fkMaquina = 500;
 
     try {
         JdbcTemplate con = conexao.getConexaoBanco();
