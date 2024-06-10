@@ -4,9 +4,12 @@ import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
 import org.example.Jdbc.Conexao;
 import org.example.Jdbc.ConexaoServer;
+import org.example.Slack;
 import org.example.TipoHardware;
+import org.json.JSONObject;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -143,6 +146,29 @@ public class Rede extends Hardware {
                         con02.update(queryRegistroServer, nomeRegistro, pacotesRecebidos, fkHardware);
                     } catch (RuntimeException e){
                         e.getMessage();
+                    }
+
+                    if(pacotesRecebidos <= 7 && pacotesRecebidos > 3){
+                        try {
+                            JSONObject json = new JSONObject();
+                            json.put("text", "ALERTA AMARELO DE MONITORAMENTO: O seu " + nomeHardware + " da maquina " + fkMaquina + " Pode estar começando a funcionar fora do parametro correto");
+                            Slack.sendMessage(json);
+                        } catch (IOException e) {
+                            System.out.println("Deu ruim no slack" + e);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    } else if(pacotesRecebidos <= 3) {
+                        try {
+                            JSONObject json = new JSONObject();
+                            json.put("text", "ALERTA VERMELHO DE MONITORAMENTO: O " + nomeHardware + " da maquina " + fkMaquina + " ESTÁ FUNCIONANDO FORA DOS PARAMETROS");
+                            Slack.sendMessage(json);
+                        } catch (IOException e) {
+                            System.out.println("Deu ruim no slack" + e);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
 
                     contadorTeste++;
