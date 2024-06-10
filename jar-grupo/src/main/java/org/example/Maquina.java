@@ -109,7 +109,7 @@ public class Maquina {
     public String consultarUsuarioPorId() {
         Integer ultimoIdMaquina = consultarId();
         if(ultimoIdMaquina != null) {
-            String querySql = "SELECT usuario from maquina where idMaquina = %d".formatted(ultimoIdMaquina);
+            String querySql = "SELECT usuario from Maquina where idMaquina = %d".formatted(ultimoIdMaquina);
             String usuario = con.queryForObject(querySql, String.class);
             return usuario;
         }
