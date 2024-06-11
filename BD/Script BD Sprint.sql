@@ -25,10 +25,10 @@ CREATE TABLE IF NOT EXISTS `Conta` (
     REFERENCES `Empresa` (`idEmpresa`)
   ) auto_increment = 100;
   
-  INSERT INTO Conta (login, senha, siglaConta, fkEmpresa) VALUES
+  INSERT INTO Conta (login, senha, siglaConta, dataCriacao, fkEmpresa) VALUES
 ("ReDataConta", "SPtechPI", "ABC", NOW(), 1);
 
-  CREATE TABLE IF NOT EXISTS `localizacaoEmpresa` (
+  CREATE TABLE IF NOT EXISTS `LocalizacaoEmpresa` (
   `idLocalizacaoEmpresa` INT NOT NULL auto_increment,
   `CEP` INT(8) NOT NULL UNIQUE,
   `estado` VARCHAR(45) NULL,
@@ -68,11 +68,15 @@ CREATE TABLE IF NOT EXISTS `Projeto` (
     FOREIGN KEY (`fkEmpresa`)
     REFERENCES `Empresa` (`idEmpresa`)
     ) auto_increment = 400;
+    
+    INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino, descricao, responsavel, fkEmpresa) VALUES
+    ("Venda de Coca-cola", current_timestamp(), current_timestamp(), "Aumentar venda de coca-colas", "Julia", (SELECT MAX(idEmpresa) FROM Empresa));
+    
 
 CREATE TABLE IF NOT EXISTS `Maquina` (
   `idMaquina` INT NOT NULL auto_increment,
-  `usuario` VARCHAR(45) NOT NULL,
-  `sistemaOperacional` VARCHAR(45) NOT NULL,
+  `usuario` VARCHAR(45) NULL,
+  `sistemaOperacional` VARCHAR(45) NULL,
   `temperatura` DOUBLE NULL,
   `tempoAtividade` INT NULL,
   `destino` VARCHAR(45) NULL,
@@ -86,13 +90,13 @@ CREATE TABLE IF NOT EXISTS `Maquina` (
     REFERENCES `Projeto` (`idProjeto` , `fkEmpresa`)
     ) auto_increment = 500;
     
-    CREATE TABLE IF NOT EXISTS `dispositivoUsb` (
+    CREATE TABLE IF NOT EXISTS `DispositivoUsb` (
 	idDispositivo INT PRIMARY KEY AUTO_INCREMENT,
 	idDevice CHAR(50) NOT NULL UNIQUE,
   `descricao` VARCHAR(45) NULL
 	)auto_increment = 600;
 
-CREATE TABLE IF NOT EXISTS `blockList` (
+CREATE TABLE IF NOT EXISTS `BlockList` (
   `idBlockList` INT NOT NULL auto_increment,
   `statusBloqueio` TINYINT NULL,
   `motivoBloqueio` VARCHAR(250) NULL,
@@ -101,13 +105,13 @@ CREATE TABLE IF NOT EXISTS `blockList` (
   PRIMARY KEY (`idBlockList`, `fkDeviceId`, `fkMaquina`),
   CONSTRAINT `fk_Maquina_has_DispositivosUSB_DispositivosUSB1`
     FOREIGN KEY (`fkDeviceId`)
-    REFERENCES `dispositivoUsb` (`idDispositivo`),
+    REFERENCES `DispositivoUsb` (`idDispositivo`),
   CONSTRAINT `fk_Blocklist_Maquina1`
     FOREIGN KEY (`fkMaquina`)
     REFERENCES `Maquina` (`idMaquina`)
 ) auto_increment = 700;
 
-CREATE TABLE IF NOT EXISTS `infoHardware` (
+CREATE TABLE IF NOT EXISTS `InfoHardware` (
   `idHardware` INT NOT NULL auto_increment,
   `tipoHardware` VARCHAR(45) NULL,
   `nomeHardware` VARCHAR(150) NULL,
@@ -120,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `infoHardware` (
     REFERENCES `Maquina` (`idMaquina`)
     )auto_increment = 1000;
 
-CREATE TABLE IF NOT EXISTS `registro` (
+CREATE TABLE IF NOT EXISTS `Registro` (
   `idRegistro` INT NOT NULL auto_increment,
   `nomeRegistro` VARCHAR(250),
   `valorRegistro` DECIMAL(20,4) NULL,
@@ -129,61 +133,57 @@ CREATE TABLE IF NOT EXISTS `registro` (
   PRIMARY KEY (`idRegistro`, `fkHardware`),
   CONSTRAINT `fk_registro_InfoHardware1`
     FOREIGN KEY (`fkHardware`)
-    REFERENCES `infoHardware` (`idHardware`)
+    REFERENCES `InfoHardware` (`idHardware`)
     )auto_increment = 10000;
 --     
 -- INSERT INTO Conta (login, senha, siglaConta, dataCriacao, fkEmpresa) VALUES 
 -- ('sabrina', '123chris', 'FCM', NOW(),1);
 
-INSERT INTO dispositivoUsb (idDevice, descricao) VALUES
-("a", "descricao");
-
-select * from blockList;
+-- INSERT INTO DispositivoUsb (idDevice, descricao) VALUES
+-- ("a", "descricao");
 
 -- INSERT INTO blockList (fkDeviceId, motivoBloqueio, fkMaquina) VALUES
 -- (600, "teste", 500);
 
-select * from dispositivoUsb;
-
 -- SHOW CREATE TABLE blockList;
     
     select last_insert_id();	
-    select * from registro;
+    select * from Registro;
     select * from Maquina;
-    select * from infoHardware;
-    select * from empresa;
-    select * from registro;
-    select * from projeto;
-    select * from contato;
+    select * from InfoHardware;
+    select * from Empresa;
+    select * from Registro;
+    select * from Projeto;
+    select * from Contato;
     select * from Conta;
-    select * from localizacaoEmpresa;
-    select * from blockList;
-    select * from dispositivoUsb;
+    select * from LocalizacaoEmpresa;
+    select * from BlockList;
+    select * from DispositivoUsb;
     select idEmpresa from Empresa;
-    SELECT * FROM projeto WHERE idProjeto = ? AND fkEmpresa = ?;
+    SELECT * FROM Projeto WHERE idProjeto = ? AND fkEmpresa = ?;
     
-    select idRegistro, nomeRegistro, valorRegistro, tempoCapturas, idProjeto, idMaquina from registro 
-		join infoHardware on fkHardware = idHardware
-        join maquina on fkMaquina = idMaquina
-        join projeto on fkProjeto = idProjeto
+    select idRegistro, nomeRegistro, valorRegistro, tempoCapturas, idProjeto, idMaquina from Registro 
+		join InfoHardware on fkHardware = idHardware
+        join Maquina on fkMaquina = idMaquina
+        join Projeto on fkProjeto = idProjeto
         where idProjeto = 400 and nomeRegistro = "usoRam" and valorRegistro >= 15;
         
 SELECT idRegistro, nomeRegistro, tempoCapturas, idProjeto, idMaquina, AVG(valorRegistro) AS mediaDados
-FROM registro 
-JOIN infoHardware ON fkHardware = idHardware
-JOIN maquina ON fkMaquina = idMaquina
-JOIN projeto ON fkProjeto = idProjeto
+FROM Registro 
+JOIN InfoHardware ON fkHardware = idHardware
+JOIN Maquina ON fkMaquina = idMaquina
+JOIN Projeto ON fkProjeto = idProjeto
 WHERE idProjeto = 400 
 GROUP BY idRegistro, nomeRegistro, tempoCapturas, idProjeto, idMaquina;
 
- SELECT idMaquina, COUNT(idRegistro) as totalCapturas from registro
- join infoHardware on fkHardware = idHardware
- join maquina on fkMaquina = idMaquina
+ SELECT idMaquina, COUNT(idRegistro) as totalCapturas from Registro
+ join InfoHardware on fkHardware = idHardware
+ join Maquina on fkMaquina = idMaquina
  where nomeHardware = 'Ram' and valorRegistro > 4 group by idMaquina order by registro desc limit 1;
  
- select idMaquina, count(idRegistro) as totalCapturas from registro
- join infoHardware on fkHardware = idHardware
- join maquina on fkMaquina = idMaquina 
+ select idMaquina, count(idRegistro) as totalCapturas from Registro
+ join InfoHardware on fkHardware = idHardware
+ join Maquina on fkMaquina = idMaquina 
  where tipoHardware = 'Cpu' or 'Ram' and valorRegistro >= 70 and fkProjeto = 400
  group by idMaquina order by totalCapturas desc limit 1;
  
@@ -195,9 +195,9 @@ GROUP BY idRegistro, nomeRegistro, tempoCapturas, idProjeto, idMaquina;
     SUM(CASE WHEN tipoHardware = 'Disco' AND valorRegistro >= 1 THEN 1 ELSE 0 END) AS totalCapturasDisco,
     SUM(CASE WHEN tipoHardware = 'Rede' AND valorRegistro >= 1 THEN 1 ELSE 0 END) AS totalCapturasRede
 FROM
-    registro
-JOIN infoHardware ON fkHardware = idHardware
-JOIN maquina ON fkMaquina = idMaquina
+    Registro
+JOIN InfoHardware ON fkHardware = idHardware
+JOIN Maquina ON fkMaquina = idMaquina
 GROUP BY
     idMaquina
 ORDER BY
@@ -208,9 +208,9 @@ ORDER BY
 LIMIT 1;
 
 
-select idMaquina, count(idRegistro) as totalCapturas from registro
-        join infoHardware on fkHardware = idHardware
-        join maquina on fkMaquina = idMaquina 
+select idMaquina, count(idRegistro) as totalCapturas from Registro
+        join InfoHardware on fkHardware = idHardware
+        join Maquina on fkMaquina = idMaquina 
         where tipoHardware = 'Cpu' and valorRegistro >= 5 and fkProjeto = 400
         group by idMaquina order by totalCapturas desc limit 1;
         
@@ -218,14 +218,14 @@ select idMaquina, count(idRegistro) as totalCapturas from registro
 select count(idRegistro) as eventos_criticos,
 DATE_FORMAT(tempoCapturas, '%Y-%m-%d: %H:%i:%s') AS intervalo_tempo,
 max(valorRegistro) as maior_valor
-from registro 
+from Registro 
 join infoHardware on fkHardware = idHardware
 JOIN maquina ON fkMaquina = idMaquina
 join projeto on fkProjeto = idProjeto
 where tempoCapturas >= NOW() - interval 20 second and valorRegistro >= 1 and tipoHardware = "Cpu" and nomeRegistro = "usoCpu" and fkProjeto = 400
 group by DATE_FORMAT(tempoCapturas, '%Y-%m-%d: %H:%i:%s') order by maior_valor desc limit 1;
 
-select * from registro WHERE nomeRegistro = "bytesEscrita" and valorRegistro <= 1;
+select * from Registro WHERE nomeRegistro = "bytesEscrita" and valorRegistro <= 1;
 
 -- SELECT COUNT(*) AS eventos_criticos,
 -- max(valorRegistro) as maior_valor
@@ -249,18 +249,18 @@ select * from registro WHERE nomeRegistro = "bytesEscrita" and valorRegistro <= 
 --         LIMIT 1;
         
         SELECT idMaquina, MAX(nomeRegistro) as nomeRegistro, count(idRegistro) as totalCapturas
-        FROM registro
-        JOIN infoHardware ON fkHardware = idHardware
-        JOIN maquina ON fkMaquina = idMaquina 
+        FROM Registro
+        JOIN InfoHardware ON fkHardware = idHardware
+        JOIN Maquina ON fkMaquina = idMaquina 
         WHERE tipoHardware = 'Rede' AND valorRegistro <= 10 AND nomeRegistro = "Pacotes Recebidos" and fkProjeto = 400
         GROUP BY idMaquina
         ORDER BY totalCapturas DESC
         LIMIT 1;
         
         SELECT idMaquina, MAX(nomeRegistro) as nomeRegistro, count(idRegistro) as totalCapturas
-        FROM registro
-        JOIN infoHardware ON fkHardware = idHardware
-        JOIN maquina ON fkMaquina = idMaquina 
+        FROM Registro
+        JOIN InfoHardware ON fkHardware = idHardware
+        JOIN Maquina ON fkMaquina = idMaquina 
         WHERE tipoHardware = 'Disco' AND valorRegistro >=700.00 AND nomeRegistro = "bytesEscrita" and fkProjeto = 400
         GROUP BY idMaquina
         ORDER BY totalCapturas DESC
@@ -269,10 +269,10 @@ select * from registro WHERE nomeRegistro = "bytesEscrita" and valorRegistro <= 
         
         SELECT COUNT(*) AS eventos_criticos,
         max(valorRegistro) as maior_valor
-        FROM registro
-        JOIN infoHardware ON fkHardware = idHardware
-        JOIN maquina ON fkMaquina = idMaquina
-        JOIN projeto ON fkProjeto = idProjeto
+        FROM Registro
+        JOIN InfoHardware ON fkHardware = idHardware
+        JOIN Maquina ON fkMaquina = idMaquina
+        JOIN Projeto ON fkProjeto = idProjeto
         WHERE tempoCapturas >= NOW() - INTERVAL 20 SECOND
         AND valorRegistro >= 1
         AND tipoHardware = "Cpu"
@@ -281,10 +281,10 @@ select * from registro WHERE nomeRegistro = "bytesEscrita" and valorRegistro <= 
         
         SELECT COUNT(*) AS eventos_criticos,
         max(valorRegistro) as maior_valor
-        FROM registro
-        JOIN infoHardware ON fkHardware = idHardware
-        JOIN maquina ON fkMaquina = idMaquina
-        JOIN projeto ON fkProjeto = idProjeto
+        FROM Registro
+        JOIN InfoHardware ON fkHardware = idHardware
+        JOIN Maquina ON fkMaquina = idMaquina
+        JOIN Projeto ON fkProjeto = idProjeto
         WHERE tempoCapturas >= NOW() - INTERVAL 40 SECOND
         AND valorRegistro >= 1
         AND tipoHardware = "Cpu"
@@ -293,5 +293,5 @@ select * from registro WHERE nomeRegistro = "bytesEscrita" and valorRegistro <= 
 
 select count(idRegistro) as capturas_projeto from registro 
 join Infohardware on fkHardware = idHardware
-join maquina on idMaquina = fkMaquina 
+join Maquina on idMaquina = fkMaquina 
 where fkProjeto = 400;
