@@ -40,7 +40,7 @@ public class DispositivosUSB {
     }
 
     public void monitorarPortas() {
-        String queryInsert = "INSERT IGNORE INTO dispositivoUsb (idDevice, descricao) values (?, ?)";
+        String queryInsert = "INSERT IGNORE INTO DispositivoUsb (idDevice, descricao) values (?, ?)";
 //        String queryCheck = "SELECT "
         try {
             Timer timer = new Timer();

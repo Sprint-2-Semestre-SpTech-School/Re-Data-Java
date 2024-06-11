@@ -55,7 +55,7 @@ public class Rede extends Hardware {
 
         try {
 
-            String queryInfoHardware = "INSERT INTO infoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
+            String queryInfoHardware = "INSERT INTO InfoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                     "VALUES (?, ?, ?, ? , ?)";
             con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
              try{
@@ -122,12 +122,12 @@ public class Rede extends Hardware {
 
                     String nomeRegistro = "Pacotes Enviados";
 
-                        queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                        queryRegistro = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, pacotesEnviados, fkHardware);
 
                     try{
-                        queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                        queryRegistroServer = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                                 "VALUES (?, ?, SYSDATETIME(), ?)";
                         con02.update(queryRegistroServer, nomeRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
                     } catch (RuntimeException e){
@@ -136,12 +136,12 @@ public class Rede extends Hardware {
 
                     nomeRegistro = "Pacotes Recebidos";
 
-                    queryRegistro = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                    queryRegistro = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, pacotesRecebidos, fkHardware);
 
                     try{
-                        queryRegistroServer = "INSERT INTO registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                        queryRegistroServer = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                                 "VALUES (?, ?, SYSDATETIME(), ?)";
                         con02.update(queryRegistroServer, nomeRegistro, pacotesRecebidos, fkHardware);
                     } catch (RuntimeException e){

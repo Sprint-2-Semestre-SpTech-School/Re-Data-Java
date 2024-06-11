@@ -19,8 +19,8 @@ public class Conexao {
             dataSource.setPassword("UrubuAbutre100");
             conexaoBanco = new JdbcTemplate(dataSource);
         } else {
-            dataSource.setUsername("root");
-            dataSource.setPassword("urubu100");
+            dataSource.setUsername("Re;Data");
+            dataSource.setPassword("UrubuAbutre100");
             conexaoBanco = new JdbcTemplate(dataSource);
         }
     }

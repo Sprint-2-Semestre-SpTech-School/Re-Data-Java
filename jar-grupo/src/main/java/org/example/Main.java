@@ -56,7 +56,7 @@ public class Main {
             Integer idProjeto = maquina.consultarProjeto();
             Integer idEmpresa = maquina.consultarEmpresa();
 
-            String queryVerificarTipoHardwareExiste = "SELECT COUNT(*) FROM infoHardware Where fkMaquina = %d".formatted(idMaquina);
+            String queryVerificarTipoHardwareExiste = "SELECT COUNT(*) FROM InfoHardware Where fkMaquina = %d".formatted(idMaquina);
             Integer contador = con.queryForObject(queryVerificarTipoHardwareExiste, Integer.class);
 
             if (contador == 0) {

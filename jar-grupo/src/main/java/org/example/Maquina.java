@@ -97,12 +97,12 @@ public class Maquina {
 
 
     public Integer consultarProjeto(){
-        String comandoSql = "SELECT fkProjeto from maquina where idMaquina = %d".formatted(consultarId());
+        String comandoSql = "SELECT fkProjeto from Maquina where idMaquina = %d".formatted(consultarId());
         return fkProjeto = con.queryForObject(comandoSql, Integer.class);
     }
 
     public Integer consultarEmpresa(){
-        String comandoSql = "SELECT fkEmpresa from maquina where idMaquina = %d".formatted(consultarId());
+        String comandoSql = "SELECT fkEmpresa from Maquina where idMaquina = %d".formatted(consultarId());
         return fkEmpresa = con.queryForObject(comandoSql, Integer.class);
     }
 

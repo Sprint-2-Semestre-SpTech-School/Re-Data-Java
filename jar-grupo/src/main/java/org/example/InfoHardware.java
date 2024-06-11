@@ -57,9 +57,9 @@ public class InfoHardware {
 //        nomeRede = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(2).getNomeExibicao();
 
         try {
-            con.update("INSERT INTO infoHardware (nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina)" +
+            con.update("INSERT INTO InfoHardware (nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina)" +
                     "values (?, ?, ?, ?, ?)", nomeCpu, memoriaTotalRam, nomeDisco, null, fkMaquina);
-            con02.update("INSERT INTO infoHardware (nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina)" +
+            con02.update("INSERT INTO InfoHardware (nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina)" +
                     "values (?, ?, ?, ?, ?)", nomeCpu, memoriaTotalRam, nomeDisco, null, fkMaquina);
         }catch (RuntimeException e){
             System.out.println("Erro de conexão 'infoHardware' sql" + e.getMessage());
@@ -69,7 +69,7 @@ public class InfoHardware {
     public Integer consultarId(){
         List<Integer> codsHardware;
 
-        String comandoSql = ("SELECT codHardware from infoHardware");
+        String comandoSql = ("SELECT codHardware from InfoHardware");
         codsHardware = con.queryForList(comandoSql, Integer.class);
         return codsHardware.get(codsHardware.size() - 1);
     }
