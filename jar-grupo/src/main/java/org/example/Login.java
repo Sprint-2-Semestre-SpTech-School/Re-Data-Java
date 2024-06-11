@@ -157,6 +157,6 @@ public class Login {
     public String toString() {
         return """
                 Obrigada, %s, por fazer login no nosso sistema.
-                Você será direcionado à sua página de login.""".formatted(login);
+                Seus dados estão sendo capturados.""".formatted(login);
     }
 }

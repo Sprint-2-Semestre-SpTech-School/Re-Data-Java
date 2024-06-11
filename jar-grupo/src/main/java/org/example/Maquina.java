@@ -95,7 +95,6 @@ public class Maquina {
         return idMaquina;
     }
 
-
     public Integer consultarProjeto(){
         String comandoSql = "SELECT fkProjeto from maquina where idMaquina = %d".formatted(consultarId());
         return fkProjeto = con.queryForObject(comandoSql, Integer.class);

@@ -49,7 +49,7 @@ public class Main {
 
         if (maquina.consultarUsuarioPorId() != null) {
             System.out.println("É necessário ter uma máquina associada ao projeto. Por favor insira-a no website");
-            System.exit(0);
+//            System.exit(0);
 //        } else if (maquina.consultarUsuarioPorId().equals(System.getProperty("user.name"))){
         } else {
             Integer idMaquina = maquina.consultarId();
