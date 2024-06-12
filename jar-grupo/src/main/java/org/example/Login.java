@@ -38,65 +38,49 @@ public class Login {
     private Scanner inputLine = new Scanner(System.in);
 
     public void validacaoLogin() {
-
         try {
-//            ConexaoServer conexaoLogin = new ConexaoServer();
             Conexao conexaoLogin = new Conexao();
             JdbcTemplate conLogin = conexaoLogin.getConexaoBanco();
 
-            conLogin.update(" INSERT INTO Conta (login, senha, siglaConta, dataCriacao ,fkEmpresa) VALUES ((select nomeEmpresa from Empresa where idEmpresa = (select max(idEmpresa) from Empresa)), 'SPtechPI', 'FCM', current_timestamp, 1)");
+            conLogin.update(" INSERT IGNORE INTO Conta (login, senha, siglaConta, dataCriacao ,fkEmpresa) VALUES ((select nomeEmpresa from Empresa where idEmpresa = (select max(idEmpresa) from Empresa)), 'SPtechPI', 'FCM', current_timestamp, 1)");
 
             List<Login> loginDoBanco = conLogin.query("SELECT * FROM Conta",
                     new BeanPropertyRowMapper<>(Login.class));
 
-            List<String> loginUsuario = conLogin.queryForList("SELECT login FROM Conta", String.class);
+            boolean usuarioEncontrado = false;
 
-            List<String> senhaUsuario = conLogin.queryForList("SELECT senha FROM Conta", String.class);
+            while (!usuarioEncontrado) {
+                System.out.println("Insira o nome de usuário:");
+                String usuarioInserido = inputLine.nextLine();
 
-//      List<Metodos> loginTeste = conLogin.query("SELECT idConta as id, login, senha FROM Conta WHERE login = ?  AND senha = ?",
-//                new BeanPropertyRowMapper<>(Metodos.class),login,senha);
+                Integer indiceLogin = null;
 
-//      MÉTODO
-            System.out.println("Insira o nome de usuário:");
-            String usuarioInserido = inputLine.nextLine();
-
-            Integer indiceLogin = 0;
-
-            for (Integer i = 0; i < loginDoBanco.size(); i++) {
-                Login loginDaVez = loginDoBanco.get(i);
-                if (loginDaVez.getLogin().equals(usuarioInserido)) {
-                    System.out.println("Usuário encontrado");
-                    indiceLogin = i;
-                    login = usuarioInserido;
-                    break;
-                } else {
-
-                    if (i.equals(loginDoBanco.size() - 1)) {
-
-                        System.out.println("Usuário não encontrado, tente novamente");
-                        System.out.println("Insira aqui seu nome de usuário:");
-                        usuarioInserido = inputLine.nextLine();
-
-                        i = -1;
+                for (Integer i = 0; i < loginDoBanco.size(); i++) {
+                    Login loginDaVez = loginDoBanco.get(i);
+                    if (loginDaVez.getLogin().equals(usuarioInserido)) {
+                        System.out.println("Usuário encontrado");
+                        indiceLogin = i;
+                        usuarioEncontrado = true;
+                        break;
                     }
                 }
-            }
 
-            System.out.println("Insira aqui sua senha:");
-            String senhaInserida = inputLine.nextLine();
-
-            for (Integer i = 0; i < loginDoBanco.size(); i++) {
-                Login senhaDaVez = loginDoBanco.get(i);
-                if (senhaDaVez.getSenha().equals(senhaInserida) && indiceLogin.equals(i)) {
-                    System.out.println("Senha verificada com sucesso");
-                    break;
+                if (!usuarioEncontrado) {
+                    System.out.println("Usuário não encontrado, tente novamente");
                 } else {
-                    if (i.equals(loginDoBanco.size() - 1)) {
+                    System.out.println("Insira aqui sua senha:");
+                    String senhaInserida = inputLine.nextLine();
 
-                        System.out.println("Senha incorreta, tente novamente \n");
-                        System.out.println("Insira aqui sua senha:");
-                        senhaInserida = inputLine.nextLine();
-                        i = -1;
+                    while (true) {
+                        Login senhaDaVez = loginDoBanco.get(indiceLogin);
+                        if (senhaDaVez.getSenha().equals(senhaInserida)) {
+                            System.out.println("Senha verificada com sucesso");
+                            return;
+                        } else {
+                            System.out.println("Senha incorreta, tente novamente \n");
+                            System.out.println("Insira aqui sua senha:");
+                            senhaInserida = inputLine.nextLine();
+                        }
                     }
                 }
             }
@@ -156,7 +140,7 @@ public class Login {
     @Override
     public String toString() {
         return """
-                Obrigada, %s, por fazer login no nosso sistema.
-                Seus dados estão sendo capturados.""".formatted(login);
+                Obrigado, seus dados foram verificados.
+                Agora seus dados estão sendo capturados.""".formatted(login);
     }
 }

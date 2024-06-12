@@ -136,7 +136,7 @@ public class Maquina {
             String usuario = con.queryForObject(querySql, String.class);
             return usuario;
         }
-        return "erro ";
+        return "Não foi encontado nenhum ID";
     }
 
     public Looca getLooca() {
