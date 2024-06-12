@@ -43,7 +43,7 @@ public class Cpu extends Hardware {
 
         tipoHardware = TipoHardware.CPU;
         nomeHardware = looca.getProcessador().getNome();
-        unidadeCaptacao = "%";
+        unidadeCaptacao = "Ghz";
         valorTotal = (double) looca.getProcessador().getFrequencia() / 1e9;
 //        fkMaquina = 500;
 
