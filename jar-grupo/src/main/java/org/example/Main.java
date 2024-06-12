@@ -22,9 +22,9 @@ public class Main {
         Disco disco = new Disco();
         Rede rede = new Rede();
 
+
         Login validarLogin = new Login();
         validarLogin.validacaoLogin();
-        System.out.println(validarLogin);
 
         if (!looca.getSistema().getSistemaOperacional().equalsIgnoreCase("Windows")) { // Inovação Linux
             Inovacao testeInova = new Inovacao();
@@ -53,12 +53,6 @@ public class Main {
             Integer idProjeto = maquina.consultarProjeto();
             Integer idEmpresa = maquina.consultarEmpresa();
 
-            Integer idHardwareCpu = maquina.consultarHardwareCpu();
-            Integer idHardwareRam = maquina.consultarHardwareRam();
-            Integer idHardwareDisco = maquina.consultarHardwareDisco();
-            Integer idHardwareRede = maquina.consultarHardwareRede();
-
-
             String queryVerificarTipoHardwareExiste = "SELECT COUNT(*) FROM InfoHardware Where fkMaquina = %d".formatted(idMaquina);
             Integer contador = con.queryForObject(queryVerificarTipoHardwareExiste, Integer.class);
 
@@ -73,12 +67,24 @@ public class Main {
 
                 rede.capturarDados(idMaquina);
 
+                // CONSULTANDO IDS PRA INSERIR NO HARDAWRE CORRETO
+                Integer idHardwareCpu = maquina.consultarHardwareCpu();
+                Integer idHardwareRam = maquina.consultarHardwareRam();
+                Integer idHardwareDisco = maquina.consultarHardwareDisco();
+                Integer idHardwareRede = maquina.consultarHardwareRede();
+
                 cpu.inserirDados(idHardwareCpu);
                 ram.inserirDados(idHardwareRam);
                 disco.inserirDados(idHardwareDisco);
                 rede.inserirDados(idHardwareRede);
 
             } else {
+                // CONSULTANDO IDS PRA INSERIR NO HARDAWRE CORRETO
+                Integer idHardwareCpu = maquina.consultarHardwareCpu();
+                Integer idHardwareRam = maquina.consultarHardwareRam();
+                Integer idHardwareDisco = maquina.consultarHardwareDisco();
+                Integer idHardwareRede = maquina.consultarHardwareRede();
+
                 cpu.inserirDados(idHardwareCpu);
                 ram.inserirDados(idHardwareRam);
                 disco.inserirDados(idHardwareDisco);

@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `Empresa` (
   
 CREATE TABLE IF NOT EXISTS `Conta` (
   `idConta` INT NOT NULL auto_increment,
-  `login` VARCHAR(45) NOT NULL,
+  `login` VARCHAR(45) NOT NULL UNIQUE,
   `senha` VARCHAR(45) NOT NULL,
   `siglaConta` CHAR(3) NOT NULL,
   `dataCriacao` DATETIME NOT NULL,
@@ -52,8 +52,8 @@ CREATE TABLE IF NOT EXISTS `Conta` (
 CREATE TABLE IF NOT EXISTS `Projeto` (
   `idProjeto` INT NOT NULL auto_increment,
   `nomeDemanda` VARCHAR(45) NULL,
-  `dataInicio` DATETIME NULL,
-  `dataTermino` DATETIME NULL,
+  `dataInicio` char(10) NULL,
+  `dataTermino` char(10) NULL,
   `descricao` VARCHAR(250) NULL,
   `responsavel` VARCHAR(45) NULL,
   `fkEmpresa` INT NOT NULL,
@@ -125,3 +125,4 @@ CREATE TABLE IF NOT EXISTS `Registro` (
     FOREIGN KEY (`fkHardware`)
     REFERENCES `InfoHardware` (`idHardware`)
     )auto_increment = 10000;
+    
