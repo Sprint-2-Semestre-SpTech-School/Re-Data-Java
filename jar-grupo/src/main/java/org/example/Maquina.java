@@ -106,25 +106,25 @@ public class Maquina {
     }
 
     public Integer consultarHardwareCpu() {
-        String comandoSql = "SELECT idHardware from infoHardware join Maquina on idMaquina = fkMaquina " +
+        String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
                 "where idMaquina = %d and tipoHardware = 'Cpu';".formatted(consultarId());
         return con.queryForObject(comandoSql, Integer.class);
     }
 
     public Integer consultarHardwareRam() {
-        String comandoSql = "SELECT idHardware from infoHardware join Maquina on idMaquina = fkMaquina " +
+        String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
                 "where idMaquina = %d and tipoHardware = 'Ram';".formatted(consultarId());
         return con.queryForObject(comandoSql, Integer.class);
     }
 
     public Integer consultarHardwareDisco() {
-        String comandoSql = "SELECT idHardware from infoHardware join Maquina on idMaquina = fkMaquina " +
+        String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
                 "where idMaquina = %d and tipoHardware = 'Disco';".formatted(consultarId());
         return con.queryForObject(comandoSql, Integer.class);
     }
 
     public Integer consultarHardwareRede() {
-        String comandoSql = "SELECT idHardware from infoHardware join Maquina on idMaquina = fkMaquina " +
+        String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
                 "where idMaquina = %d and tipoHardware = 'Rede';".formatted(consultarId());
         return con.queryForObject(comandoSql, Integer.class);
     }
