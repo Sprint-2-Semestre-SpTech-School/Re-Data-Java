@@ -72,11 +72,13 @@ public class Cpu extends Hardware {
 
     @Override
     public void inserirDados() {
+
+    }
+
+    @Override
+    public void inserirDados(Integer fkHardware) {
         try {
             String nomeRegistro = "usoCpu";
-
-            String queryIdHardware = "SELECT LAST_INSERT_ID()";
-            Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
 
             Timer timer = new Timer();
             TimerTask tarefa = new TimerTask() {

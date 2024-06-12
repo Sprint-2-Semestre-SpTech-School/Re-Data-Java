@@ -57,11 +57,6 @@ public class DispositivosUSB {
                         idDevice = looca.getDispositivosUsbGrupo().getDispositivosUsb().get(i).getIdDispositivoUsbExclusivo();
                         descricao = looca.getDispositivosUsbGrupo().getDispositivosUsb().get(i).getNome();
 
-//                        Integer qtdDispositivos = con.queryForObject(queryCheck, Integer.class);
-//
-//                        if(dispositivosUsb.get(i).getIdDispositivoUsbExclusivo().equals(idDevice)){
-//                            System.out.println("Dispositivo já inserido");
-//                        } else {
                         con.update(queryInsert, idDevice, descricao);
                     }
                 }
@@ -91,7 +86,7 @@ public class DispositivosUSB {
 
 
                         for (String deviceDaVez : todosDispositivos) {
-                            if (dispBloqueados.contains(deviceDaVez)){
+                            if (dispBloqueados.contains(deviceDaVez)) {
                                 idDevice = deviceDaVez;
                                 bloquearDispositivo(idDevice);
                             } else {
@@ -156,7 +151,7 @@ public class DispositivosUSB {
                     }
                 }
 
-                public void desbloquearDispositivo(String idDevice){
+                public void desbloquearDispositivo(String idDevice) {
                     try {
                         // Cria um script PowerShell temporário com a extensão .ps1 correta
                         Path pathTemporario = Files.createTempFile("disable_device", ".ps1");

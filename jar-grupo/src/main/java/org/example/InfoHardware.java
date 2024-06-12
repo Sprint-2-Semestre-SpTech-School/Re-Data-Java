@@ -50,6 +50,7 @@ public class InfoHardware {
 
     public InfoHardware() {
     }
+
     public void capturarDadosInfoHardware() {
         nomeCpu = looca.getProcessador().getNome();
         memoriaTotalRam = looca.getMemoria().getTotal() / (1024 * 1024);
@@ -61,12 +62,13 @@ public class InfoHardware {
                     "values (?, ?, ?, ?, ?)", nomeCpu, memoriaTotalRam, nomeDisco, null, fkMaquina);
             con02.update("INSERT INTO InfoHardware (nomeCpu, memoriaTotalRam, nomeDisco, nomeRede, fkMaquina)" +
                     "values (?, ?, ?, ?, ?)", nomeCpu, memoriaTotalRam, nomeDisco, null, fkMaquina);
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'infoHardware' sql" + e.getMessage());
         }
 
     }
-    public Integer consultarId(){
+
+    public Integer consultarId() {
         List<Integer> codsHardware;
 
         String comandoSql = ("SELECT codHardware from InfoHardware");
@@ -121,15 +123,16 @@ public class InfoHardware {
     public void setFkMaquina(Integer fkMaquina) {
         this.fkMaquina = fkMaquina;
     }
+
     @Override
     public String toString() {
         return """
-            codHardware: %d
-            nomeCpu: '%s'
-            memoriaTotalRam: %d
-            nomeDisco: '%s'
-            nomeRede: '%s'
-            fkMaquina: %d""".formatted(codHardware,
+                codHardware: %d
+                nomeCpu: '%s'
+                memoriaTotalRam: %d
+                nomeDisco: '%s'
+                nomeRede: '%s'
+                fkMaquina: %d""".formatted(codHardware,
                 nomeCpu,
                 memoriaTotalRam,
                 nomeDisco,

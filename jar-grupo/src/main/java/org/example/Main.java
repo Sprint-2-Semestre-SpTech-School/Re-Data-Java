@@ -26,7 +26,7 @@ public class Main {
         validarLogin.validacaoLogin();
         System.out.println(validarLogin);
 
-        if (!looca.getSistema().getSistemaOperacional().equalsIgnoreCase("Windows")) {
+        if (!looca.getSistema().getSistemaOperacional().equalsIgnoreCase("Windows")) { // Inovação Linux
             Inovacao testeInova = new Inovacao();
             testeInova.setarSenha();
             testeInova.ejetarUsb();
@@ -44,9 +44,6 @@ public class Main {
 
         Maquina maquina = new Maquina();
 
-        System.out.println("Função" + maquina.consultarUsuarioPorId());
-
-
         if (maquina.consultarUsuarioPorId() != null) {
             System.out.println("É necessário ter uma máquina associada ao projeto. Por favor insira-a no website");
 //            System.exit(0);
@@ -55,6 +52,12 @@ public class Main {
             Integer idMaquina = maquina.consultarId();
             Integer idProjeto = maquina.consultarProjeto();
             Integer idEmpresa = maquina.consultarEmpresa();
+
+            Integer idHardwareCpu = maquina.consultarHardwareCpu();
+            Integer idHardwareRam = maquina.consultarHardwareRam();
+            Integer idHardwareDisco = maquina.consultarHardwareDisco();
+            Integer idHardwareRede = maquina.consultarHardwareRede();
+
 
             String queryVerificarTipoHardwareExiste = "SELECT COUNT(*) FROM InfoHardware Where fkMaquina = %d".formatted(idMaquina);
             Integer contador = con.queryForObject(queryVerificarTipoHardwareExiste, Integer.class);
@@ -70,64 +73,27 @@ public class Main {
 
                 rede.capturarDados(idMaquina);
 
-//                String queryIdHardware = "SELECT idHardware from infoHardware where fkMaquina = %d"
-//                        .formatted(idMaquina);
-//                Integer idHardware = con.queryForObject(queryIdHardware, Integer.class);
-
-                cpu.inserirDados();
-                ram.inserirDados();
-                disco.inserirDados();
-                rede.inserirDados();
+                cpu.inserirDados(idHardwareCpu);
+                ram.inserirDados(idHardwareRam);
+                disco.inserirDados(idHardwareDisco);
+                rede.inserirDados(idHardwareRede);
 
             } else {
-                cpu.inserirDados();
-                ram.inserirDados();
-                disco.inserirDados();
-                rede.inserirDados();
+                cpu.inserirDados(idHardwareCpu);
+                ram.inserirDados(idHardwareRam);
+                disco.inserirDados(idHardwareDisco);
+                rede.inserirDados(idHardwareRede);
             }
         }
 
 
-//        if(){
-//            maquina = new Maquina(400, 1)
-//            Maquina maquinaCriar = new Maquina(400, 1);
-//            maquinaCriar.capturarDadosMaquina();
-//        }
-
-
-//        maquina.inserirDadosMaquina();
-
-
-//        Integer fkMaquina = maquina.consultarId();
-//        System.out.println("fkMaquina: " + fkMaquina);
-//        System.out.println(maquina);
-
-//        Cpu cpu = new Cpu(fkMaquina); // Isso tem que ficar em baixo
-//        cpu.capturarDados();
-//        cpu.inserirDados();
-//
-//        Ram ram = new Ram();
-//        ram.capturarDados();
-//        ram.inserirDados();
-//
-//        Disco disco = new Disco();
-//        disco.capturarDados();
-//        disco.inserirDados();
-//
-//        Rede rede = new Rede();
-//        rede.capturarDados();
-//        rede.inserirDados();
-
-
-            // METODO PARA INSTANCIA, CRIAR E PLOTAR O ALERTA NO SLACK:
-//        if(temperatura > metrica) {
-            try {
-                JSONObject json = new JSONObject();
-                json.put("text", "Aqui colocaremos os alertas!!");
-                Slack.sendMessage(json);
-            } catch (IOException e) {
-                System.out.println("Deu ruim no slack" + e);
-            }
+        try {
+            JSONObject json = new JSONObject();
+            json.put("text", "Aqui colocaremos os alertas!!");
+            Slack.sendMessage(json);
+        } catch (IOException e) {
+            System.out.println("Deu ruim no slack" + e);
         }
     }
+}
 

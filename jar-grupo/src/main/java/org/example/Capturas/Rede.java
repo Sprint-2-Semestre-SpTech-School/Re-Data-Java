@@ -33,7 +33,7 @@ public class Rede extends Hardware {
         super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
-    public Rede(Integer fkMaquina){
+    public Rede(Integer fkMaquina) {
         this.fkMaquina = fkMaquina;
     }
 
@@ -49,7 +49,7 @@ public class Rede extends Hardware {
     public void capturarDados(Integer fkMaquina) {
         tipoHardware = TipoHardware.REDE;
         nomeHardware = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getNomeExibicao();
-        unidadeCaptacao = "pacotes";
+        unidadeCaptacao = null;
         valorTotal = null;
 //        fkMaquina = 500;
 
@@ -58,11 +58,11 @@ public class Rede extends Hardware {
             String queryInfoHardware = "INSERT INTO InfoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                     "VALUES (?, ?, ?, ? , ?)";
             con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-             try{
-                 con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-             } catch (RuntimeException e){
-                 e.getMessage();
-             }
+            try {
+                con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
+            } catch (RuntimeException e) {
+                e.getMessage();
+            }
 
         } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'Rede' sql" + e.getMessage());
@@ -71,9 +71,11 @@ public class Rede extends Hardware {
 
     @Override
     public void inserirDados() {
-        String queryIdHardware = "SELECT LAST_INSERT_ID()";
-        Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class); // Espera que o retorno seja inteiro
 
+    }
+
+    @Override
+    public void inserirDados(Integer fkHardware) {
         try {
             Timer timer = new Timer();
             TimerTask tarefa = new TimerTask() {
@@ -122,15 +124,15 @@ public class Rede extends Hardware {
 
                     String nomeRegistro = "Pacotes Enviados";
 
-                        queryRegistro = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                    queryRegistro = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, pacotesEnviados, fkHardware);
 
-                    try{
+                    try {
                         queryRegistroServer = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                                 "VALUES (?, ?, SYSDATETIME(), ?)";
                         con02.update(queryRegistroServer, nomeRegistro, interfaces.get(interfaceCorreta).getPacotesEnviados(), fkHardware);
-                    } catch (RuntimeException e){
+                    } catch (RuntimeException e) {
                         e.getMessage();
                     }
 
@@ -140,15 +142,15 @@ public class Rede extends Hardware {
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
                     con.update(queryRegistro, nomeRegistro, pacotesRecebidos, fkHardware);
 
-                    try{
+                    try {
                         queryRegistroServer = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                                 "VALUES (?, ?, SYSDATETIME(), ?)";
                         con02.update(queryRegistroServer, nomeRegistro, pacotesRecebidos, fkHardware);
-                    } catch (RuntimeException e){
+                    } catch (RuntimeException e) {
                         e.getMessage();
                     }
 
-                    if(pacotesRecebidos <= 7 && pacotesRecebidos > 3){
+                    if (pacotesRecebidos <= 7 && pacotesRecebidos > 3) {
                         try {
                             JSONObject json = new JSONObject();
                             json.put("text", "ALERTA AMARELO DE MONITORAMENTO: O seu " + nomeHardware + " da maquina " + fkMaquina + " Pode estar começando a funcionar fora do parametro correto");
@@ -159,7 +161,7 @@ public class Rede extends Hardware {
                             throw new RuntimeException(e);
                         }
 
-                    } else if(pacotesRecebidos <= 3) {
+                    } else if (pacotesRecebidos <= 3) {
                         try {
                             JSONObject json = new JSONObject();
                             json.put("text", "ALERTA VERMELHO DE MONITORAMENTO: O " + nomeHardware + " da maquina " + fkMaquina + " ESTÁ FUNCIONANDO FORA DOS PARAMETROS");

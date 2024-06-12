@@ -29,7 +29,7 @@ public class Ram extends Hardware {
         super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
-    public Ram(Integer fkMaquina){
+    public Ram(Integer fkMaquina) {
         this.fkMaquina = fkMaquina;
     }
 
@@ -54,7 +54,7 @@ public class Ram extends Hardware {
         String queryInfoHardware = "INSERT INTO InfoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                 "VALUES (?, ?, ?, ? , ?)";
         con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-        try{
+        try {
             con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
         } catch (RuntimeException e) {
             e.getMessage();
@@ -64,9 +64,11 @@ public class Ram extends Hardware {
 
     @Override
     public void inserirDados() {
-        String queryIdHardware = "SELECT LAST_INSERT_ID()";
-        Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class);
 
+    }
+
+    @Override
+    public void inserirDados(Integer fkHardware) {
         String nomeRegistro = "usoRam";
 
         Timer timer = new Timer();
@@ -78,11 +80,11 @@ public class Ram extends Hardware {
                 con.update(queryRegistro, nomeRegistro, (looca.getMemoria().getEmUso() / 1e9) * 100 / valorTotal, fkHardware);
                 try {
                     con02.update(queryRegistro, nomeRegistro, (looca.getMemoria().getEmUso() / 1e9) * 100 / valorTotal, fkHardware);
-                } catch (RuntimeException e){
+                } catch (RuntimeException e) {
                     e.getMessage();
                 }
 
-                if(looca.getMemoria().getEmUso() >= 70 && looca.getMemoria().getEmUso() < 85){
+                if (looca.getMemoria().getEmUso() >= 70 && looca.getMemoria().getEmUso() < 85) {
                     try {
                         JSONObject json = new JSONObject();
                         json.put("text", "ALERTA AMARELO DE MONITORAMENTO: O seu " + nomeHardware + " da maquina " + fkMaquina + " Pode estar começando a funcionar fora do parametro correto");
@@ -93,7 +95,7 @@ public class Ram extends Hardware {
                         throw new RuntimeException(e);
                     }
 
-                } else if(looca.getMemoria().getEmUso() >= 80) {
+                } else if (looca.getMemoria().getEmUso() >= 80) {
                     try {
                         JSONObject json = new JSONObject();
                         json.put("text", "ALERTA VERMELHO DE MONITORAMENTO: O " + nomeHardware + " da maquina " + fkMaquina + " ESTÁ FUNCIONANDO FORA DOS PARAMETROS");

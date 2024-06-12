@@ -100,7 +100,7 @@ public class Login {
                     }
                 }
             }
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             System.out.println("Erro no login" + e.getMessage());
         }
     }

@@ -19,6 +19,7 @@ public class Disco extends Hardware {
     private Double escritaAnterior = 0.0;
     private Double tempoTransferenciaAnterior = 0.0;
     private Boolean primeiraCaptura = true; // A primeira captura não pegará o momento
+
     public Disco(TipoHardware tipoHardware,
                  String nomeHardware,
                  String unidadeCaptacao,
@@ -32,7 +33,7 @@ public class Disco extends Hardware {
         super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
-    public Disco(Integer fkMaquina){
+    public Disco(Integer fkMaquina) {
         this.fkMaquina = fkMaquina;
     }
 
@@ -57,9 +58,9 @@ public class Disco extends Hardware {
             String queryInfoHardware = "INSERT INTO InfoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
                     "VALUES (?, ?, ?, ? , ?)";
             con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-            try{
+            try {
                 con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-            }catch (RuntimeException e){
+            } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
             }
 
@@ -67,11 +68,14 @@ public class Disco extends Hardware {
             System.out.println("Erro de conexão 'Disco' sql" + e.getMessage());
         }
     }
+
     @Override
     public void inserirDados() {
-        String queryIdHardware = "SELECT LAST_INSERT_ID()";
-        Integer fkHardware = con.queryForObject(queryIdHardware, Integer.class);
 
+    }
+
+    @Override
+    public void inserirDados(Integer fkHardware) {
         try {
             Timer timer = new Timer();
             TimerTask tarefa = new TimerTask() {
@@ -126,12 +130,12 @@ public class Disco extends Hardware {
 
                     String queryRegistroServer;
 
-                    try{
-                         queryRegistroServer = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
+                    try {
+                        queryRegistroServer = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                                 "VALUES (?, ?, SYSDATETIME(), ?)";
                         con02.update(queryRegistroServer, nomeRegistro, looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura(), fkHardware);
                         System.out.println(bytesTransferenciaLeitura / 1e9);
-                    }catch (RuntimeException e){
+                    } catch (RuntimeException e) {
                         System.out.println(e.getMessage());
                     }
 
@@ -145,11 +149,11 @@ public class Disco extends Hardware {
                         queryRegistroServer = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                                 "VALUES (?, ?, SYSDATETIME(), ?)";
                         con02.update(queryRegistroServer, nomeRegistro, bytesTransferenciaEscrita / 1e6, fkHardware);
-                    } catch (RuntimeException e){
+                    } catch (RuntimeException e) {
                         e.getMessage();
                     }
 
-                    if(bytesTransferenciaEscrita <= 2 && bytesTransferenciaEscrita > 1){
+                    if (bytesTransferenciaEscrita <= 2 && bytesTransferenciaEscrita > 1) {
                         try {
                             JSONObject json = new JSONObject();
                             json.put("text", "ALERTA AMARELO DE MONITORAMENTO: O seu " + nomeHardware + " da maquina " + fkMaquina + " Pode estar começando a funcionar fora do parametro correto");
@@ -159,7 +163,7 @@ public class Disco extends Hardware {
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);
                         }
-                    } else if(bytesTransferenciaEscrita <= 1) {
+                    } else if (bytesTransferenciaEscrita <= 1) {
                         try {
                             JSONObject json = new JSONObject();
                             json.put("text", "ALERTA VERMELHO DE MONITORAMENTO: O seu " + nomeHardware + " da maquina " + fkMaquina + " ESTÁ FUNCIONANDO FORA DOS PARAMETROS");
@@ -181,7 +185,7 @@ public class Disco extends Hardware {
                         queryRegistroServer = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                                 "VALUES (?, ?, SYSDATETIME(), ?)";
                         con02.update(queryRegistroServer, nomeRegistro, transferenciaLeitura, fkHardware);
-                    } catch (RuntimeException e){
+                    } catch (RuntimeException e) {
                         System.out.println(e.getMessage());
                     }
 
@@ -195,7 +199,7 @@ public class Disco extends Hardware {
                         queryRegistroServer = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                                 "VALUES (?, ?, SYSDATETIME(), ?)";
                         con02.update(queryRegistroServer, nomeRegistro, transferenciaEscrita, fkHardware);
-                    } catch (RuntimeException e){
+                    } catch (RuntimeException e) {
                         System.out.println(e.getMessage());
                     }
 
@@ -209,7 +213,7 @@ public class Disco extends Hardware {
                         queryRegistroServer = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                                 "VALUES (?, ?, SYSDATETIME(), ?)";
                         con02.update(queryRegistroServer, nomeRegistro, tempoTransferencia / 1000, fkHardware);
-                    } catch (RuntimeException e){
+                    } catch (RuntimeException e) {
                         System.out.println(e.getMessage());
                     }
 
@@ -224,13 +228,13 @@ public class Disco extends Hardware {
                         queryRegistro = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                                 "VALUES (?, ?, SYSDATETIME(), ?)";
                         con02.update(queryRegistro, nomeRegistro, looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1e9, fkHardware);
-                    } catch (RuntimeException e){
+                    } catch (RuntimeException e) {
                         e.getMessage();
                     }
                 }
             };
             timer.schedule(tarefa, 1000, 5000);
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'Disco' sql" + e.getMessage());
         }
     }

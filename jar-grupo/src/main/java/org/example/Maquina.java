@@ -86,28 +86,52 @@ public class Maquina {
     }
 
     public Integer consultarId() {
-        try{
-        String comandoSql = "SELECT idMaquina from Maquina order by idMaquina DESC LIMIT 1";
-        idMaquina = con.queryForObject(comandoSql, Integer.class);
-        }catch (RuntimeException e){
+        try {
+            String comandoSql = "SELECT idMaquina from Maquina order by idMaquina DESC LIMIT 1";
+            idMaquina = con.queryForObject(comandoSql, Integer.class);
+        } catch (RuntimeException e) {
             System.out.println(" Erro na consulta de ID " + e.getMessage());
         }
         return idMaquina;
     }
 
-    public Integer consultarProjeto(){
+    public Integer consultarProjeto() {
         String comandoSql = "SELECT fkProjeto from Maquina where idMaquina = %d".formatted(consultarId());
         return fkProjeto = con.queryForObject(comandoSql, Integer.class);
     }
 
-    public Integer consultarEmpresa(){
+    public Integer consultarEmpresa() {
         String comandoSql = "SELECT fkEmpresa from Maquina where idMaquina = %d".formatted(consultarId());
         return fkEmpresa = con.queryForObject(comandoSql, Integer.class);
     }
 
+    public Integer consultarHardwareCpu() {
+        String comandoSql = "SELECT idHardware from infoHardware join Maquina on idMaquina = fkMaquina " +
+                "where idMaquina = %d and tipoHardware = 'Cpu';".formatted(consultarId());
+        return con.queryForObject(comandoSql, Integer.class);
+    }
+
+    public Integer consultarHardwareRam() {
+        String comandoSql = "SELECT idHardware from infoHardware join Maquina on idMaquina = fkMaquina " +
+                "where idMaquina = %d and tipoHardware = 'Ram';".formatted(consultarId());
+        return con.queryForObject(comandoSql, Integer.class);
+    }
+
+    public Integer consultarHardwareDisco() {
+        String comandoSql = "SELECT idHardware from infoHardware join Maquina on idMaquina = fkMaquina " +
+                "where idMaquina = %d and tipoHardware = 'Disco';".formatted(consultarId());
+        return con.queryForObject(comandoSql, Integer.class);
+    }
+
+    public Integer consultarHardwareRede() {
+        String comandoSql = "SELECT idHardware from infoHardware join Maquina on idMaquina = fkMaquina " +
+                "where idMaquina = %d and tipoHardware = 'Rede';".formatted(consultarId());
+        return con.queryForObject(comandoSql, Integer.class);
+    }
+
     public String consultarUsuarioPorId() {
         Integer ultimoIdMaquina = consultarId();
-        if(ultimoIdMaquina != null) {
+        if (ultimoIdMaquina != null) {
             String querySql = "SELECT usuario from Maquina where idMaquina = %d".formatted(ultimoIdMaquina);
             String usuario = con.queryForObject(querySql, String.class);
             return usuario;
