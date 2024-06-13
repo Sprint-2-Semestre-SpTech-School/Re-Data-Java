@@ -51,17 +51,31 @@ public class Main {
         if (maquina.consultarUsuarioPorId() == null) {
             Integer idProjeto = maquina.consultarProjeto();
             Integer idEmpresa = maquina.consultarEmpresa();
+            Integer idMaquina = maquina.consultarId();
 
             maquina.capturarDadosMaquina();
             maquina.inserirDadosMaquina(idProjeto, idEmpresa);
 
+            cpu.capturarDados(idMaquina);
+
+            ram.capturarDados(idMaquina);
+
+            disco.capturarDados(idMaquina);
+
+            rede.capturarDados(idMaquina);
+
+            Integer idHardwareCpu = maquina.consultarHardwareCpu();
+            Integer idHardwareRam = maquina.consultarHardwareRam();
+            Integer idHardwareDisco = maquina.consultarHardwareDisco();
+            Integer idHardwareRede = maquina.consultarHardwareRede();
+
+            cpu.inserirDados(idHardwareCpu);
+            ram.inserirDados(idHardwareRam);
+            disco.inserirDados(idHardwareDisco);
+            rede.inserirDados(idHardwareRede);
+
         } else {
             Integer idMaquina = maquina.consultarId();
-//            Integer idProjeto = maquina.consultarProjeto();
-//            Integer idEmpresa = maquina.consultarEmpresa();
-
-//            String queryVerificarTipoHardwareExiste = "SELECT COUNT(*) FROM InfoHardware Where fkMaquina = %d".formatted(idMaquina);
-//            Integer contador = con.queryForObject(queryVerificarTipoHardwareExiste, Integer.class);
 
             String queryVerificarTipoHardwareExiste = "SELECT COUNT(*) FROM InfoHardware Where fkMaquina = %d".formatted(idMaquina);
             Integer contador = con02.queryForObject(queryVerificarTipoHardwareExiste, Integer.class);
