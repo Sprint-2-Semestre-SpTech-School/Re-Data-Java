@@ -43,21 +43,17 @@ public class Ram extends Hardware {
 
     @Override
     public void capturarDados(Integer fkMaquina) {
-        Maquina maquina = new Maquina();
-
         tipoHardware = TipoHardware.RAM;
         nomeHardware = null;
         unidadeCaptacao = "Gb";
         valorTotal = (double) Math.round(looca.getMemoria().getTotal() / 1e9);
-//        fkMaquina = 500;
 
-        String queryInfoHardware = "INSERT INTO InfoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
-                "VALUES (?, ?, ?, ? , ?)";
-        con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
         try {
+            String queryInfoHardware = "INSERT INTO InfoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
+                    "VALUES (?, ?, ?, ? , ?)";
             con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
         } catch (RuntimeException e) {
-            e.getMessage();
+            System.out.println("Erro de conexão 'Ram' sql" + e.getMessage());
         }
 
     }
@@ -77,7 +73,7 @@ public class Ram extends Hardware {
             public void run() {
                 String queryRegistro = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                         "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
-                con.update(queryRegistro, nomeRegistro, (looca.getMemoria().getEmUso() / 1e9) * 100 / valorTotal, fkHardware);
+                con02.update(queryRegistro, nomeRegistro, (looca.getMemoria().getEmUso() / 1e9) * 100 / valorTotal, fkHardware);
                 try {
                     con02.update(queryRegistro, nomeRegistro, (looca.getMemoria().getEmUso() / 1e9) * 100 / valorTotal, fkHardware);
                 } catch (RuntimeException e) {

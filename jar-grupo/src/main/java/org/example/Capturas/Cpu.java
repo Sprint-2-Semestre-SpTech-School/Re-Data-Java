@@ -26,7 +26,7 @@ public class Cpu extends Hardware {
         super(tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina, looca, conexao, conexao02, con, con02);
     }
 
-    public Cpu(Integer fkMaquina){
+    public Cpu(Integer fkMaquina) {
         this.fkMaquina = fkMaquina;
     }
 
@@ -45,29 +45,15 @@ public class Cpu extends Hardware {
         nomeHardware = looca.getProcessador().getNome();
         unidadeCaptacao = "Ghz";
         valorTotal = (double) looca.getProcessador().getFrequencia() / 1e9;
-//        fkMaquina = 500;
 
-    try {
-        JdbcTemplate con = conexao.getConexaoBanco();
-
-
-        String queryInfoHardware = "INSERT INTO InfoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
-                "VALUES (?, ?, ?, ? , ?)";
-        con.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-
-        try{
-            JdbcTemplate con02 = conexao02.getConexaoBanco();
+        try {
+            String queryInfoHardware = "INSERT INTO InfoHardware (tipoHardware, nomeHardware, unidadeCaptacao, valorTotal, fkMaquina)" +
+                    "VALUES (?, ?, ?, ? , ?)";
             con02.update(queryInfoHardware, tipoHardware.getNome(), nomeHardware, unidadeCaptacao, valorTotal, fkMaquina);
-        } catch (RuntimeException e){
-            System.out.println(e.getMessage());
+
+        } catch (RuntimeException e) {
+            System.out.println("Erro de conexão 'Cpu' sql" + e.getMessage());
         }
-
-//        GeradorLog.log(TagNiveisLog.INFO, "Dados enviados com sucesso! Re;Data Local/MySQL DB: Table: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ENVIO_DADOS);
-
-    }catch (RuntimeException e){
-        System.out.println("Erro de conexão 'Cpu' sql" + e.getMessage());
-//        GeradorLog.log(TagNiveisLog.ERROR, "Erro de conexão SQL: %s".formatted(Tabelas.INFO_HARDWARE.getDescricaoTabela()), Modulo.ALERTA);
-    }
     }
 
     @Override
@@ -87,14 +73,9 @@ public class Cpu extends Hardware {
 
                     String queryRegistro = "INSERT INTO Registro (nomeRegistro, valorRegistro, tempoCapturas, fkHardware) " +
                             "VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
-                    con.update(queryRegistro, nomeRegistro, looca.getProcessador().getUso(), fkHardware);
-                    try {
-                        con02.update(queryRegistro, nomeRegistro, looca.getProcessador().getUso(), fkHardware);
-                    } catch (RuntimeException e){
-                        System.out.println("Erro de Conexão sql Server" + e.getMessage());
-                    }
+                    con02.update(queryRegistro, nomeRegistro, looca.getProcessador().getUso(), fkHardware);
 
-                    if(looca.getProcessador().getUso() >= 70 && looca.getProcessador().getUso() < 85){
+                    if (looca.getProcessador().getUso() >= 70 && looca.getProcessador().getUso() < 85) {
                         try {
                             JSONObject json = new JSONObject();
                             json.put("text", "ALERTA AMARELO DE MONITORAMENTO: O seu " + nomeHardware + " da maquina " + fkMaquina + " Pode estar começando a funcionar fora do parametro correto");
@@ -105,7 +86,7 @@ public class Cpu extends Hardware {
                             throw new RuntimeException(e);
                         }
 
-                    } else if(looca.getProcessador().getUso() >= 80) {
+                    } else if (looca.getProcessador().getUso() >= 80) {
                         try {
                             JSONObject json = new JSONObject();
                             json.put("text", "ALERTA VERMELHO DE MONITORAMENTO: O seu " + nomeHardware + " da maquina " + fkMaquina + " ESTÁ FUNCIONANDO FORA DOS PARAMETROS");
@@ -119,7 +100,7 @@ public class Cpu extends Hardware {
                 }
             };
             timer.schedule(tarefa, 1000, 5000);
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'Cpu' mysql" + e.getMessage());
         }
     }

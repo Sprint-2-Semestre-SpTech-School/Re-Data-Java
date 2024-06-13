@@ -76,69 +76,128 @@ public class Maquina {
                             "fkProjeto =?, fkEmpresa =?",
                     usuario, sistemaOperacional, temperatura, tempoAtividade, fkProjeto, fkEmpresa);
 
-            con.update("UPDATE Maquina SET usuario =?, sistemaOperacional =?, temperatura =?, tempoAtividade =?, " +
-                            "fkProjeto =?, fkEmpresa =?",
-                    usuario, sistemaOperacional, temperatura, tempoAtividade, fkProjeto, fkEmpresa);
+//            con.update("UPDATE Maquina SET usuario =?, sistemaOperacional =?, temperatura =?, tempoAtividade =?, " +
+//                            "fkProjeto =?, fkEmpresa =?",
+//                    usuario, sistemaOperacional, temperatura, tempoAtividade, fkProjeto, fkEmpresa);
 
         } catch (RuntimeException e) {
             System.out.println("Erro de conexão 'Maquina' sql" + e.getMessage());
         }
     }
 
+    //    ================================================ SERVER =====================================================
     public Integer consultarId() {
         try {
-            String comandoSql = "SELECT idMaquina from Maquina order by idMaquina DESC LIMIT 1";
-            idMaquina = con.queryForObject(comandoSql, Integer.class);
+            String comandoSql = "SELECT TOP 1 idMaquina FROM Maquina ORDER BY idMaquina DESC";
+            idMaquina = con02.queryForObject(comandoSql, Integer.class);
         } catch (RuntimeException e) {
             System.out.println(" Erro na consulta de ID " + e.getMessage());
         }
         return idMaquina;
     }
 
+//    ================================================ LOCAL =====================================================
+//    public Integer consultarId() {
+//        try {
+//            String comandoSql = "SELECT idMaquina from Maquina order by idMaquina DESC LIMIT 1";
+//            idMaquina = con.queryForObject(comandoSql, Integer.class);
+//        } catch (RuntimeException e) {
+//            System.out.println(" Erro na consulta de ID " + e.getMessage());
+//        }
+//        return idMaquina;
+//    }
+
+//    public Integer consultarProjeto() {
+//        String comandoSql = "SELECT fkProjeto from Maquina where idMaquina = %d".formatted(consultarId());
+//        return fkProjeto = con.queryForObject(comandoSql, Integer.class);
+//    }
+
     public Integer consultarProjeto() {
         String comandoSql = "SELECT fkProjeto from Maquina where idMaquina = %d".formatted(consultarId());
-        return fkProjeto = con.queryForObject(comandoSql, Integer.class);
+        return fkProjeto = con02.queryForObject(comandoSql, Integer.class);
     }
+
+//    public Integer consultarEmpresa() {
+//        String comandoSql = "SELECT fkEmpresa from Maquina where idMaquina = %d".formatted(consultarId());
+//        return fkEmpresa = con.queryForObject(comandoSql, Integer.class);
+//    }
 
     public Integer consultarEmpresa() {
         String comandoSql = "SELECT fkEmpresa from Maquina where idMaquina = %d".formatted(consultarId());
-        return fkEmpresa = con.queryForObject(comandoSql, Integer.class);
+        return fkEmpresa = con02.queryForObject(comandoSql, Integer.class);
     }
+
+//    public Integer consultarHardwareCpu() {
+//        String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
+//                "where idMaquina = %d and tipoHardware = 'Cpu';".formatted(consultarId());
+//        return con.queryForObject(comandoSql, Integer.class);
+//    }
 
     public Integer consultarHardwareCpu() {
         String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
                 "where idMaquina = %d and tipoHardware = 'Cpu';".formatted(consultarId());
-        return con.queryForObject(comandoSql, Integer.class);
+        return con02.queryForObject(comandoSql, Integer.class);
     }
+
+//    public Integer consultarHardwareRam() {
+//        String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
+//                "where idMaquina = %d and tipoHardware = 'Ram';".formatted(consultarId());
+//        return con.queryForObject(comandoSql, Integer.class);
+//    }
 
     public Integer consultarHardwareRam() {
         String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
                 "where idMaquina = %d and tipoHardware = 'Ram';".formatted(consultarId());
-        return con.queryForObject(comandoSql, Integer.class);
+        return con02.queryForObject(comandoSql, Integer.class);
     }
+
+//    public Integer consultarHardwareDisco() {
+//        String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
+//                "where idMaquina = %d and tipoHardware = 'Disco';".formatted(consultarId());
+//        return con.queryForObject(comandoSql, Integer.class);
+//    }
 
     public Integer consultarHardwareDisco() {
         String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
                 "where idMaquina = %d and tipoHardware = 'Disco';".formatted(consultarId());
-        return con.queryForObject(comandoSql, Integer.class);
+        return con02.queryForObject(comandoSql, Integer.class);
     }
+
+//    public Integer consultarHardwareRede() {
+//        String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
+//                "where idMaquina = %d and tipoHardware = 'Rede';".formatted(consultarId());
+//        return con.queryForObject(comandoSql, Integer.class);
+//    }
 
     public Integer consultarHardwareRede() {
         String comandoSql = "SELECT idHardware from InfoHardware join Maquina on idMaquina = fkMaquina " +
                 "where idMaquina = %d and tipoHardware = 'Rede';".formatted(consultarId());
-        return con.queryForObject(comandoSql, Integer.class);
+        return con02.queryForObject(comandoSql, Integer.class);
     }
+
+//    public String consultarUsuarioPorId() {
+//        Integer ultimoIdMaquina = consultarId();
+//        if (ultimoIdMaquina != null) {
+//            String querySql = "SELECT usuario from Maquina where idMaquina = %d".formatted(ultimoIdMaquina);
+//            String usuario = con.queryForObject(querySql, String.class);
+//            return usuario;
+//        }
+//        System.out.println("Por favor insira uma máquina na parte de Dashboard no nosso site institucional");
+//        System.exit(0);
+//        return null;
+//    }
 
     public String consultarUsuarioPorId() {
         Integer ultimoIdMaquina = consultarId();
         if (ultimoIdMaquina != null) {
             String querySql = "SELECT usuario from Maquina where idMaquina = %d".formatted(ultimoIdMaquina);
-            String usuario = con.queryForObject(querySql, String.class);
+            usuario = con02.queryForObject(querySql, String.class);
             return usuario;
+        } else {
+            System.out.println("Por favor insira uma máquina na parte de Dashboard no nosso site institucional");
+            System.exit(0);
+            return null;
         }
-        System.out.println("Por favor insira uma máquina na parte de Dashboard no nosso site institucional");
-        System.exit(0);
-        return null;
     }
 
     public Looca getLooca() {

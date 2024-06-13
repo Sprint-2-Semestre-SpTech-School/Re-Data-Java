@@ -6,14 +6,18 @@ import org.example.Capturas.Disco;
 import org.example.Capturas.Ram;
 import org.example.Capturas.Rede;
 import org.example.Jdbc.Conexao;
+import org.example.Jdbc.ConexaoServer;
 import org.json.JSONObject;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.io.IOException;
 
 public class Main {
-    private static final Conexao conexao = new Conexao();
-    private static final JdbcTemplate con = conexao.getConexaoBanco();
+//    private static final Conexao conexao = new Conexao();
+    private static final ConexaoServer conexao = new ConexaoServer();
+//    private static final JdbcTemplate con = conexao.getConexaoBanco();
+    private static final JdbcTemplate con02 = conexao.getConexaoBanco();
+
 
     public static void main(String[] args) throws IOException, InterruptedException {
         Looca looca = new Looca();
@@ -44,21 +48,25 @@ public class Main {
 
         Maquina maquina = new Maquina();
 
-        if (maquina.consultarUsuarioPorId() != null) {
-            System.out.println("É necessário ter uma máquina associada ao projeto. Por favor insira-a no website");
-//            System.exit(0);
-//        } else if (maquina.consultarUsuarioPorId().equals(System.getProperty("user.name"))){
-        } else {
-            Integer idMaquina = maquina.consultarId();
+        if (maquina.consultarUsuarioPorId() == null) {
             Integer idProjeto = maquina.consultarProjeto();
             Integer idEmpresa = maquina.consultarEmpresa();
 
+            maquina.capturarDadosMaquina();
+            maquina.inserirDadosMaquina(idProjeto, idEmpresa);
+
+        } else {
+            Integer idMaquina = maquina.consultarId();
+//            Integer idProjeto = maquina.consultarProjeto();
+//            Integer idEmpresa = maquina.consultarEmpresa();
+
+//            String queryVerificarTipoHardwareExiste = "SELECT COUNT(*) FROM InfoHardware Where fkMaquina = %d".formatted(idMaquina);
+//            Integer contador = con.queryForObject(queryVerificarTipoHardwareExiste, Integer.class);
+
             String queryVerificarTipoHardwareExiste = "SELECT COUNT(*) FROM InfoHardware Where fkMaquina = %d".formatted(idMaquina);
-            Integer contador = con.queryForObject(queryVerificarTipoHardwareExiste, Integer.class);
+            Integer contador = con02.queryForObject(queryVerificarTipoHardwareExiste, Integer.class);
 
             if (contador == 0) {
-                maquina.inserirDadosMaquina(idProjeto, idEmpresa);
-
                 cpu.capturarDados(idMaquina);
 
                 ram.capturarDados(idMaquina);
@@ -89,16 +97,15 @@ public class Main {
                 ram.inserirDados(idHardwareRam);
                 disco.inserirDados(idHardwareDisco);
                 rede.inserirDados(idHardwareRede);
+
+                try {
+                    JSONObject json = new JSONObject();
+                    json.put("text", "Aqui colocaremos os alertas!!");
+                    Slack.sendMessage(json);
+                } catch (IOException e) {
+                    System.out.println("Deu ruim no slack" + e);
+                }
             }
-        }
-
-
-        try {
-            JSONObject json = new JSONObject();
-            json.put("text", "Aqui colocaremos os alertas!!");
-            Slack.sendMessage(json);
-        } catch (IOException e) {
-            System.out.println("Deu ruim no slack" + e);
         }
     }
 }
