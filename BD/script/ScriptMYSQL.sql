@@ -9,12 +9,9 @@ CREATE TABLE IF NOT EXISTS `Empresa` (
   PRIMARY KEY (`idEmpresa`)
   );
   
-INSERT INTO Empresa (nomeEmpresa, CNPJ) VALUES 
-('ReData.INC', '53719031000123');
-  
 CREATE TABLE IF NOT EXISTS `Conta` (
   `idConta` INT NOT NULL auto_increment,
-  `login` VARCHAR(45) NOT NULL,
+  `login` VARCHAR(45) NOT NULL UNIQUE,
   `senha` VARCHAR(45) NOT NULL,
   `siglaConta` CHAR(3) NOT NULL,
   `dataCriacao` DATETIME NOT NULL,
@@ -25,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `Conta` (
     REFERENCES `Empresa` (`idEmpresa`)
   ) auto_increment = 100;
 
-  CREATE TABLE IF NOT EXISTS `localizacaoEmpresa` (
+  CREATE TABLE IF NOT EXISTS `LocalizacaoEmpresa` (
   `idLocalizacaoEmpresa` INT NOT NULL auto_increment,
   `CEP` INT(8) NOT NULL UNIQUE,
   `estado` VARCHAR(45) NULL,
@@ -55,8 +52,8 @@ CREATE TABLE IF NOT EXISTS `Conta` (
 CREATE TABLE IF NOT EXISTS `Projeto` (
   `idProjeto` INT NOT NULL auto_increment,
   `nomeDemanda` VARCHAR(45) NULL,
-  `dataInicio` DATETIME NULL,
-  `dataTermino` DATETIME NULL,
+  `dataInicio` char(10) NULL,
+  `dataTermino` char(10) NULL,
   `descricao` VARCHAR(250) NULL,
   `responsavel` VARCHAR(45) NULL,
   `fkEmpresa` INT NOT NULL,
@@ -64,16 +61,12 @@ CREATE TABLE IF NOT EXISTS `Projeto` (
   CONSTRAINT `fk_Projeto_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
     REFERENCES `Empresa` (`idEmpresa`)
-    ) auto_increment = 400;
-    
-    INSERT INTO Projeto (nomeDemanda, dataInicio, dataTermino, descricao, responsavel, fkEmpresa) 
-VALUES ('Venda de Coca-Cola', current_timestamp(), current_timestamp(), 'Aumentar vendas de Coca-Cola na Zona Norte', 'Julia', 
-        (SELECT MAX(idEmpresa) FROM Empresa));
+    ) auto_increment = 400;    
 
 CREATE TABLE IF NOT EXISTS `Maquina` (
   `idMaquina` INT NOT NULL auto_increment,
-  `usuario` VARCHAR(45) NOT NULL,
-  `sistemaOperacional` VARCHAR(45) NOT NULL,
+  `usuario` VARCHAR(45) NULL,
+  `sistemaOperacional` VARCHAR(45) NULL,
   `temperatura` DOUBLE NULL,
   `tempoAtividade` INT NULL,
   `destino` VARCHAR(45) NULL,
@@ -87,28 +80,28 @@ CREATE TABLE IF NOT EXISTS `Maquina` (
     REFERENCES `Projeto` (`idProjeto` , `fkEmpresa`)
     ) auto_increment = 500;
     
-    CREATE TABLE IF NOT EXISTS `dispositivoUsb` (
+    CREATE TABLE IF NOT EXISTS `DispositivoUsb` (
 	idDispositivo INT PRIMARY KEY AUTO_INCREMENT,
-	idDevice CHAR(250) NOT NULL UNIQUE,
-  `descricao` VARCHAR(250) NULL
+	idDevice CHAR(50) NOT NULL UNIQUE,
+  `descricao` VARCHAR(45) NULL
 	)auto_increment = 600;
 
-CREATE TABLE IF NOT EXISTS `blockList` (
+CREATE TABLE IF NOT EXISTS `BlockList` (
   `idBlockList` INT NOT NULL auto_increment,
-  `statusBloqueio` TINYINT NOT NULL,
+  `statusBloqueio` TINYINT NULL,
   `motivoBloqueio` VARCHAR(250) NULL,
   `fkDeviceId` INT NOT NULL,
   `fkMaquina` INT NOT NULL,
   PRIMARY KEY (`idBlockList`, `fkDeviceId`, `fkMaquina`),
   CONSTRAINT `fk_Maquina_has_DispositivosUSB_DispositivosUSB1`
     FOREIGN KEY (`fkDeviceId`)
-    REFERENCES `dispositivoUsb` (`idDispositivo`),
+    REFERENCES `DispositivoUsb` (`idDispositivo`),
   CONSTRAINT `fk_Blocklist_Maquina1`
     FOREIGN KEY (`fkMaquina`)
     REFERENCES `Maquina` (`idMaquina`)
-    ) auto_increment = 700;
+) auto_increment = 700;
 
-CREATE TABLE IF NOT EXISTS `infoHardware` (
+CREATE TABLE IF NOT EXISTS `InfoHardware` (
   `idHardware` INT NOT NULL auto_increment,
   `tipoHardware` VARCHAR(45) NULL,
   `nomeHardware` VARCHAR(150) NULL,
@@ -121,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `infoHardware` (
     REFERENCES `Maquina` (`idMaquina`)
     )auto_increment = 1000;
 
-CREATE TABLE IF NOT EXISTS `registro` (
+CREATE TABLE IF NOT EXISTS `Registro` (
   `idRegistro` INT NOT NULL auto_increment,
   `nomeRegistro` VARCHAR(250),
   `valorRegistro` DECIMAL(20,4) NULL,
@@ -130,5 +123,6 @@ CREATE TABLE IF NOT EXISTS `registro` (
   PRIMARY KEY (`idRegistro`, `fkHardware`),
   CONSTRAINT `fk_registro_InfoHardware1`
     FOREIGN KEY (`fkHardware`)
-    REFERENCES `infoHardware` (`idHardware`)
+    REFERENCES `InfoHardware` (`idHardware`)
     )auto_increment = 10000;
+    

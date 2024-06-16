@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mysqlbd:
-    image: arthsurs/msqyl:v5.5
+    image: arthsurs/msqyl:v20.0
     container_name: mysql-redata-container
     privileged: true
     environment:
@@ -14,7 +14,7 @@ services:
       - redata-network
 
   java:
-    image: arthsurs/monitoramento-java:v5.0
+    image: arthsurs/monitoramento-java:v20.0
     container_name: java-redata-container
     privileged: true
     depends_on:

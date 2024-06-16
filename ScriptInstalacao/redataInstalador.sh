@@ -61,3 +61,5 @@ if [ $? == 0 ];
 fi
 
 git clone https://github.com/Sprint-2-Semestre-SpTech-School/Instalacao-e-uso.git
+
+rm redataInstalador.sh
